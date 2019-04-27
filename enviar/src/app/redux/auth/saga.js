@@ -54,7 +54,8 @@ function* loginAccount({ payload }) {
         payload.history.push('/');
         yield put(loginUserSuccess(loginUser.data));
     } catch (error) {
-        yield put(loginUserError(error.response.data.message));
+        let msg = error.response ? error.response.data.message : error;
+        yield put(loginUserError(msg));
     }
 }
 
