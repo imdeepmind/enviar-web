@@ -1,5 +1,5 @@
 import React from 'react';
-import ReallySmoothScroll from 'really-smooth-scroll';
+// import ReallySmoothScroll from 'really-smooth-scroll';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from "react-redux";
 

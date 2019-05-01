@@ -38,9 +38,8 @@ class Home extends Component{
                                                     key={val._id}
                                                     id={val._id}
                                                     postImage={val.content} 
-                                                    author={val.author} 
-                                                    avatar={""}
-
+                                                    author={val.author[0].username} 
+                                                    avatar={val.author[0].avatar}
                                                     dateTime={val.createdAt}
                                                     caption={val.caption} 
                                                 />
