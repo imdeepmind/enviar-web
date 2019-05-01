@@ -15,9 +15,13 @@ const getPostsAsync = async (page, limit) => {
     if (!page || page < 0) page = 0;
     if (!limit || limit <= 0) limit = 10;
 
-    const url = `${POSTS} ?page=${page}&limit=${limit}`;
+    const url = `${POSTS}?page=${page}&limit=${limit}`;
 
-    return axios.get(url);
+    const config = {
+        headers: { 'Authorization': localStorage.getItem('user') }
+    };
+
+    return axios.get(url, config);
 }
 
 function* getPosts({ payload }) {    
