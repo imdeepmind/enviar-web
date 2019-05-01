@@ -14,7 +14,7 @@ import {
     registerUserSuccess
 } from './action';
 
-const registerAccountAsync = async (name, email, username, password, country, gender, dob) => {
+const registerAccountAsync = async (name, email, username, password, country, gender, dob, conformPassword) => {
     const data = {
         name: name,
         email: email,
@@ -23,14 +23,15 @@ const registerAccountAsync = async (name, email, username, password, country, ge
         country: country,
         gender: gender.value,
         dob: dob,
+        conformPassword: conformPassword
     }
     return axios.post(REGISTER, data);
 }
 
 function* registerAccount({ payload }) {    
     try {
-        const { name, email, username, password, country, gender, dob } = payload.user;
-        const registerUser = yield call(registerAccountAsync, name, email, username, password, country, gender, dob);
+        const { name, email, username, password, country, gender, dob, conformPassword } = payload.user;
+        const registerUser = yield call(registerAccountAsync, name, email, username, password, country, gender, dob, conformPassword);
         yield put(registerUserSuccess(registerUser.data));
     } catch (error) {
         payload.history.push('/login');
