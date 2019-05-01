@@ -6,3 +6,8 @@ export const REGISTER_USER = 'REGISTER_USER';
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export const REGISTER_USER_ERROR = 'REGISTER_USER_ERROR';
 export const LOGOUT_USER = 'LOGOUT_USER';
+
+/* HOME */
+export const POSTS = 'POSTS';
+export const POSTS_SUCCESS = 'POSTS_SUCCESS';
+export const POSTS_ERROR = 'POSTS_ERROR';
