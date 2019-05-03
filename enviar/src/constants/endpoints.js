@@ -9,3 +9,7 @@ export const RESOURCE = ENDPOINT + 'resource/';
 
 // HOME
 export const POSTS = ENDPOINT + 'posts/';
+
+// USERS
+export const USERS = ENDPOINT + 'users/';
+

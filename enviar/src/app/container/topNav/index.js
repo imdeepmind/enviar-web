@@ -36,6 +36,9 @@ class TopNav extends Component{
                                 <NavLink className="m-1 text-dark"  title="messages" to="/messages"><i className="fas fa-comments"></i></NavLink>
                             </NavItem>
                             <NavItem>
+                                <NavLink className="m-1 text-dark"  title="users" to="/users"><i className="fas fa-users"></i></NavLink>
+                            </NavItem>
+                            <NavItem>
                                 <NavLink className="m-1 text-dark"  title="profile" to="/profile"><i className="fas fa-user-alt"></i></NavLink>
                             </NavItem>
                             <NavItem>

@@ -40,7 +40,7 @@ class Home extends Component{
                                                     postImage={val.content} 
                                                     author={val.author[0].username} 
                                                     avatar={val.author[0].avatar}
-                                                    dateTime={val.createdAt}
+                                                    dateTime={val.author.status ? val.author.status : val.createdAt}
                                                     caption={val.caption} 
                                                 />
                                             )

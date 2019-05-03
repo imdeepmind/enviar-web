@@ -11,3 +11,9 @@ export const LOGOUT_USER = 'LOGOUT_USER';
 export const POSTS = 'POSTS';
 export const POSTS_SUCCESS = 'POSTS_SUCCESS';
 export const POSTS_ERROR = 'POSTS_ERROR';
+
+/* USERS */
+export const USERS = 'USERS';
+export const USERS_SUCCESS = 'USERS_SUCCESS';
+export const USERS_ERROR = 'USERS_ERROR';
+

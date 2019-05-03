@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 
 import Login from './app/router/login';
 import Home from './app/router/home';
+import Users from './app/router/users';
 import E404 from './app/router/e404';
 
 import store from './app/redux/store';
@@ -31,6 +32,7 @@ function App() {
           <Switch>
             <Route path={'/login'} exact component={Login} />
             <PrivateRoute path={'/'} exact component={Home} />
+            <PrivateRoute path={'/users'} exact component={Users} />
             <Route component={E404} />
           </Switch>
         </div>
