@@ -13,7 +13,7 @@ const Ucard = (props) => {
                         <Avatar source={props.avatar} title={props.name} />
                     </Col>
                     <Col xs="7" md="9" className="text-left">
-                        <CardTitle><Link to={`users/${props.username}`}>{props.username}</Link></CardTitle>
+                        <CardTitle><Link to={`users/${props.username}`}>{props.name}<br /><small>@{props.username}</small></Link></CardTitle>
                         <CardSubtitle>{props.status}</CardSubtitle>
                     </Col>
                     <Col xs="1" className="d-flex justify-content-center align-items-center">

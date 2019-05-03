@@ -9,14 +9,8 @@ import Ucard from './components/ucard';
 import { users } from '../../redux/actions';
 
 class Users extends Component{
-    constructor(props){
-        super(props);
-    }
     componentDidMount(){
         this.dataListRender();
-    }
-    componentDidUpdate(nextProps){
-        
     }
     dataListRender = () => {
         if (this.props.userReducer.loading){
