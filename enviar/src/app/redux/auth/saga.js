@@ -1,5 +1,7 @@
 import axios from 'axios';
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
+import { toast } from 'react-toastify';
+
 import { LOGIN, REGISTER, VERIFY as VERIFY_ROUTE } from '../../../constants/endpoints';
 import {
     REGISTER_USER,
@@ -55,10 +57,12 @@ function* loginAccount({ payload }) {
         const { username, password } = payload.user;
         const loginUser = yield call(loginAccountAsync, username, password);
         localStorage.setItem('user', loginUser.data.token);
+        toast.success('Successfully logged in');
         payload.history.push('/');
         yield put(loginUserSuccess(loginUser.data));
     } catch (error) {
         let msg = error.response ? error.response.data.message : error;
+        toast.error(msg);
         yield put(loginUserError(msg));
     }
 }

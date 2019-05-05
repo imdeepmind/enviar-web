@@ -1,5 +1,6 @@
 import React from 'react';
 import decode from 'jwt-decode';
+import { ToastContainer } from 'react-toastify';
 // import ReallySmoothScroll from 'really-smooth-scroll';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from "react-redux";
@@ -10,6 +11,7 @@ import Users from './app/router/users';
 import UserDetail from './app/router/userDetail';
 import E404 from './app/router/e404';
 
+import 'react-toastify/dist/ReactToastify.min.css'; 
 
 import store from './app/redux/store';
 
@@ -50,6 +52,11 @@ function App() {
             <PrivateRoute path={'/users/:username'} exact component={UserDetail} />
             <Route component={E404} />
           </Switch>
+          <ToastContainer 
+            position="bottom-left"
+            hideProgressBar={true}
+            autoClose={2000}
+          />
         </div>
       </Router>
     </Provider>

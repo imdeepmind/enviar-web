@@ -24,7 +24,6 @@ let LoginUser = (props) => {
         <Form onSubmit={handleSubmit}>
             <Field name="username" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Username" />
             <Field name="password" component={OwnInput} type="password" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Password" />
-            {props.authReducer ? <p className="text-danger text-center">{props.authReducer.error}</p> : ""}
             <Button color="primary" className="w-100" type="submit">Login</Button>
         </Form>
     )
