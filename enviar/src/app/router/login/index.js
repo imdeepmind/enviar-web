@@ -35,7 +35,6 @@ class Login extends Component {
         this.props.registerUser(data, this.props.history);
     }
     render(){
-        console.log('props', this.props);
         return (
             <Fragment>
                 <Hero registerMethod={this.toggleRegisterModal} loginMethod={this.toggleLoginModal}/>

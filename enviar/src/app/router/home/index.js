@@ -22,7 +22,7 @@ class Home extends Component{
         this.props.posts(data, this.props.history);
     }
     render(){
-        console.log('props',this.props);
+        // console.log('props',this.props);
         return (
             <Fragment>
                 <TopNav />

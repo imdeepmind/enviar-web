@@ -1,5 +1,5 @@
 import React from 'react';
-import axios from 'axios';
+import decode from 'jwt-decode';
 // import ReallySmoothScroll from 'really-smooth-scroll';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from "react-redux";
@@ -10,32 +10,28 @@ import Users from './app/router/users';
 import UserDetail from './app/router/userDetail';
 import E404 from './app/router/e404';
 
-import {VERIFY} from './constants/endpoints';
 
 import store from './app/redux/store';
-
 
 // ReallySmoothScroll.shim();
 const baseUrl = process.env.PUBLIC_URL;
 
+const isTokenExpired = () => {
+  const token = localStorage.getItem("user");
+  try {
+    const date = new Date(0);
+    const decoded = decode(token);
+    date.setUTCSeconds(decoded.exp);
+    return date.valueOf() > new Date().valueOf();
+  } catch (err) {
+    return false;
+  }
+};
+
 const PrivateRoute = ({ component: Component, ...rest }) => {
-  //TODO: Need to connect it with Redux
-  let auth = false;
-
-  const config = {
-      headers: { 'Authorization': localStorage.getItem('user') }
-  };
-
-  axios.get(VERIFY, config).then(resp => {
-    auth = true;
-  })
-  .catch(err => {
-    auth = false;
-  })
-
   return (
     <Route {...rest} render={(props) => (
-      auth
+      isTokenExpired()
         ? <Component {...props} />
         : <Redirect to='/login' />
     )} />

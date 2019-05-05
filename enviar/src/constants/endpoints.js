@@ -3,7 +3,7 @@ export const ENDPOINT = "http://localhost:5111/api/v1/"
 // AUTH
 export const LOGIN = ENDPOINT + "auth/login/";
 export const REGISTER = ENDPOINT + 'auth/register/';
-export const VERIFY = ENDPOINT + 'token/';
+export const VERIFY = ENDPOINT + 'auth/token/';
 
 //RESOURCE 
 export const RESOURCE = ENDPOINT + 'resource/';
