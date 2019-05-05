@@ -1,4 +1,5 @@
-export const ENDPOINT = "http://localhost:5111/api/v1/"
+// export const ENDPOINT = "http://localhost:5111/api/v1/"
+export const ENDPOINT = "https://young-river-55469.herokuapp.com/api/v1/" 
 
 // AUTH
 export const LOGIN = ENDPOINT + "auth/login/";
