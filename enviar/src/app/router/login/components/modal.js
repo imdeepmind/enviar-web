@@ -9,7 +9,7 @@ const MyModal = props => {
         <Modal isOpen={props.isOpen} toggle={props.toggle}>
             <ModalHeader toggle={props.toggle} className="text-capitalize">{props.type}</ModalHeader>
             <ModalBody>
-                {props.type === 'login' ? <LoginForm onSubmit={props.onSubmit} myError={props.error ? props.error : null}/> : <RegisterForm onSubmit={data => props.onSubmit(data)} myError={props.error ? props.error : null}/>}
+                {props.type === 'login' ? <LoginForm onSubmit={props.onSubmit} /> : <RegisterForm onSubmit={data => props.onSubmit(data)} />}
             </ModalBody>
             <ModalFooter>
                 <Button color="secondary" onClick={props.toggle}>Cancel</Button>

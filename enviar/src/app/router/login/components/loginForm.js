@@ -19,7 +19,6 @@ let OwnInput = (field) => (
 
 let LoginUser = (props) => {
     const { handleSubmit } = props;
-    console.log(props);
     return (
         <Form onSubmit={handleSubmit}>
             <Field name="username" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Username" />

@@ -39,7 +39,7 @@ class Login extends Component {
             <Fragment>
                 <Hero registerMethod={this.toggleRegisterModal} loginMethod={this.toggleLoginModal}/>
                 <Modal isOpen={this.state.loginModal} toggle={this.toggleLoginModal} type="login" onSubmit={this.onLogin}/> 
-                <Modal isOpen={this.state.registerModal} toggle={this.toggleRegisterModal} type="register" onSubmit={this.onRegister} error={this.props.authReducer ? this.props.authReducer : null}/> 
+                <Modal isOpen={this.state.registerModal} toggle={this.toggleRegisterModal} type="register" onSubmit={this.onRegister} /> 
             </Fragment>
         )
     }

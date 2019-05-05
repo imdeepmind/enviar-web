@@ -50,7 +50,6 @@ let CustomSelect = (props) =>
     </Fragment>
 
 let RegisterUser = (props) => {
-    console.log(props)
     const { handleSubmit } = props;
     return (
         <Form onSubmit={handleSubmit}>
@@ -62,7 +61,6 @@ let RegisterUser = (props) => {
             <Field name="country" component={OwnInput} type="text" validate={[required()]} placeholder="Country"/>
             <Field name="gender" component={CustomSelect} type="text" validate={[required()]} placeholder="Gender" options={genderOptions} />
             <Field name="dob" component={OwnInput} type="date" validate={[required()]} placeholder="Date of Birth" />
-            {props.myError ? <p className="text-danger text-center">{props.myError.error}</p> : ""}
             <Button color="primary" className="w-100" type="submit">Register</Button>
         </Form>
     )

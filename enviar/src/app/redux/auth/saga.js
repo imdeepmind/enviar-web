@@ -37,9 +37,10 @@ function* registerAccount({ payload }) {
     try {
         const { name, email, username, password, country, gender, dob, conformPassword } = payload.user;
         const registerUser = yield call(registerAccountAsync, name, email, username, password, country, gender, dob, conformPassword);
+        toast.success(`Successfully created user with ${registerUser.data.username}`);
         yield put(registerUserSuccess(registerUser.data));
     } catch (error) {
-        payload.history.push('/login');
+        toast.error(error.response.data.message);
         yield put(registerUserError(error.response.data.message));
     }
 }
