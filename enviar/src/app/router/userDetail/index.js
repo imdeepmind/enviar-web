@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 
 import { usersIndividual } from '../../../app/redux/actions';
+
+import Hero from './components/hero';
 
 class UserDetail extends Component {
     componentDidMount(){
@@ -13,7 +15,15 @@ class UserDetail extends Component {
     render(){
         console.log(this.props);
         return (
-            <h1>Hello</h1>
+            <Fragment>
+                {this.props.userReducer.loading ? "loading" : (
+                    <Hero 
+                        name={this.props.userReducer.user.name} 
+                        username={this.props.userReducer.user.username} 
+                        avatar={this.props.userReducer.user.avatar} 
+                    />
+                )}
+            </Fragment>
         )
     }
 }

@@ -5,7 +5,8 @@ import {
     LOGOUT_USER,
     REGISTER_USER,
     REGISTER_USER_SUCCESS,
-    REGISTER_USER_ERROR
+    REGISTER_USER_ERROR,
+    VERIFY, VERIFY_SUCCESS, VERIFY_ERROR
   } from '../../../constants/actions';
 
 export const loginUser = (user, history) => ({
@@ -40,3 +41,17 @@ export const logoutUser = (history) => ({
     type: LOGOUT_USER,
     payload : {history}
 });
+
+export const verify = (history) => ({
+    type: VERIFY,
+    payload: { history }
+});
+export const verifySuccess = (user) => ({
+    type: VERIFY_SUCCESS,
+    payload: user
+});
+
+export const verifyError = (error) => ({
+    type: VERIFY_ERROR,
+    payload: error
+})

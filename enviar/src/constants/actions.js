@@ -6,6 +6,9 @@ export const REGISTER_USER = 'REGISTER_USER';
 export const REGISTER_USER_SUCCESS = 'REGISTER_USER_SUCCESS';
 export const REGISTER_USER_ERROR = 'REGISTER_USER_ERROR';
 export const LOGOUT_USER = 'LOGOUT_USER';
+export const VERIFY = 'VERIFY';
+export const VERIFY_SUCCESS = 'VERIFY';
+export const VERIFY_ERROR = 'VERIFY';
 
 /* HOME */
 export const POSTS = 'POSTS';

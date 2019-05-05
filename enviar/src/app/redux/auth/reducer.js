@@ -5,7 +5,8 @@ import {
     REGISTER_USER,
     REGISTER_USER_SUCCESS,
     REGISTER_USER_ERROR,
-    LOGOUT_USER
+    LOGOUT_USER,
+    VERIFY, VERIFY_SUCCESS, VERIFY_ERROR
 } from '../../../constants/actions';
 
 const INIT_STATE = {
@@ -29,6 +30,12 @@ export default (state = INIT_STATE, action) => {
             return { ...state, loading: false, error: action.payload};
         case LOGOUT_USER:
             return { ...state ,user:null};
+        case VERIFY:
+            return { ...state, loading: true };
+        case VERIFY_SUCCESS:
+            return { ...state, loading: false, token: action.payload };
+        case VERIFY_ERROR:
+            return { ...state, loading: false, error: action.payload};
         default: return { ...state };
     }
 }

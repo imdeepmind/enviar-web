@@ -1,17 +1,20 @@
 import axios from 'axios';
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
-import { LOGIN, REGISTER } from '../../../constants/endpoints';
+import { LOGIN, REGISTER, VERIFY as VERIFY_ROUTE } from '../../../constants/endpoints';
 import {
     REGISTER_USER,
     LOGIN_USER,
     LOGOUT_USER,
+    VERIFY
 } from '../../../constants/actions';
 
 import {
     loginUserError,
     loginUserSuccess,
     registerUserError,
-    registerUserSuccess
+    registerUserSuccess,
+    verifySuccess,
+    verifyError
 } from './action';
 
 const registerAccountAsync = async (name, email, username, password, country, gender, dob, conformPassword) => {
@@ -73,6 +76,22 @@ function* logout({payload}) {
     }
 }
 
+const verifyAsync = async () => {
+    const config = {
+        headers: { 'Authorization': localStorage.getItem('user') }
+    };
+    return axios.get(VERIFY_ROUTE, config);
+}
+
+function* verify(){
+    try{
+        const res = yield call(verifyAsync);
+        yield put(verifySuccess(res));
+    } catch(ex){
+        yield put(verifyError(ex));
+    }
+}
+
 export function* watchRegisterUser() {
     yield takeEvery(REGISTER_USER, registerAccount);
 }
@@ -85,11 +104,16 @@ export function* watchLogoutUser() {
     yield takeEvery(LOGOUT_USER, logout);
 }
 
+export function* watchVerify(){
+    yield takeEvery(VERIFY, verify);
+}
+
 
 export default function* rootSaga() {
     yield all([
         fork(watchRegisterUser),
         fork(watchLoginUser),
         fork(watchLogoutUser),
+        fork(watchVerify),
     ]);
 }
