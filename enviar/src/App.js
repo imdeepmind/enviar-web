@@ -6,9 +6,13 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { Provider } from "react-redux";
 
 import Login from './app/router/login';
+
 import Home from './app/router/home';
+import CreatePost from './app/router/createPost';
+
 import Users from './app/router/users';
 import UserDetail from './app/router/userDetail';
+
 import E404 from './app/router/e404';
 
 import 'react-toastify/dist/ReactToastify.min.css'; 
@@ -48,6 +52,7 @@ function App() {
           <Switch>
             <Route path={'/login'} exact component={Login} />
             <PrivateRoute path={'/'} exact component={Home} />
+            <PrivateRoute path={'/post'} exact component={CreatePost} />
             <PrivateRoute path={'/users'} exact component={Users} />
             <PrivateRoute path={'/users/:username'} exact component={UserDetail} />
             <Route component={E404} />

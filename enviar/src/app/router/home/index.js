@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import TopNav from '../../container/topNav';
 import Post from './components/posts';
+import New from './components/new';
 
 import { posts } from '../../redux/actions';
 
@@ -28,7 +29,7 @@ class Home extends Component{
                 <TopNav />
                 <Container>
                     <Row>
-                        <Col xs="12">Post Something</Col>
+                        <Col xs="12"><New /></Col>
                         <Col xs="12" lg="7" className="mt-4 ">
                             {!this.props.homeReducer.loading ? 
                                     this.props.homeReducer.posts.length > 0 ? 
