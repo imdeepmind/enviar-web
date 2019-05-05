@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/enviar-web/static/css/main.175dd85f.chunk.css",
-    "main.js": "/enviar-web/static/js/main.f9465042.chunk.js",
-    "main.js.map": "/enviar-web/static/js/main.f9465042.chunk.js.map",
+    "main.css": "/enviar-web/static/css/main.6a7405dd.chunk.css",
+    "main.js": "/enviar-web/static/js/main.50796b72.chunk.js",
+    "main.js.map": "/enviar-web/static/js/main.50796b72.chunk.js.map",
     "runtime~main.js": "/enviar-web/static/js/runtime~main.364048e3.js",
     "runtime~main.js.map": "/enviar-web/static/js/runtime~main.364048e3.js.map",
-    "static/js/2.5bdb583e.chunk.js": "/enviar-web/static/js/2.5bdb583e.chunk.js",
-    "static/js/2.5bdb583e.chunk.js.map": "/enviar-web/static/js/2.5bdb583e.chunk.js.map",
+    "static/js/2.687ac0a1.chunk.js": "/enviar-web/static/js/2.687ac0a1.chunk.js",
+    "static/js/2.687ac0a1.chunk.js.map": "/enviar-web/static/js/2.687ac0a1.chunk.js.map",
     "index.html": "/enviar-web/index.html",
-    "precache-manifest.0a6be7a9e956e09678fca81c01052129.js": "/enviar-web/precache-manifest.0a6be7a9e956e09678fca81c01052129.js",
+    "precache-manifest.4ca462201733db3155000e7de1cb475e.js": "/enviar-web/precache-manifest.4ca462201733db3155000e7de1cb475e.js",
     "service-worker.js": "/enviar-web/service-worker.js",
-    "static/css/main.175dd85f.chunk.css.map": "/enviar-web/static/css/main.175dd85f.chunk.css.map"
+    "static/css/main.6a7405dd.chunk.css.map": "/enviar-web/static/css/main.6a7405dd.chunk.css.map"
   }
 }
