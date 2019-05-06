@@ -69,14 +69,14 @@ function* loginAccount({ payload }) {
 }
 
 const logoutAsync = async (history) => {
-    history.push('/')
+    history.push('/login')
 }
 
 function* logout({payload}) {
     const { history } = payload
     try {
-        yield call(logoutAsync,history);
         localStorage.removeItem('user');
+        yield call(logoutAsync,history);
     } catch (error) {
     }
 }
