@@ -1,7 +1,6 @@
 import React, { Fragment } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { required, email } from 'redux-form-validators';
-import Select from 'react-select';
 import {
     Form,
     Input,
@@ -9,6 +8,10 @@ import {
 } from 'reactstrap';
 
 const genderOptions = [
+    {
+        "label" : "Gender",
+        "value" : ""
+    },
     {
         "label" : "Male",
         "value" : "m",
@@ -33,21 +36,20 @@ let OwnInput = (field) => (
     </Fragment>
 )
 
-let CustomSelect = (props) =>
+let selectBox = (field) => (
     <Fragment>
-        <Select
-            className="form-control"
-            {...props}
-            onChange={(value) => props.input.onChange(value)}
-            onBlur={() => props.input.onBlur(props.input.value)}
-            options={props.options}
-            value={props.input.value}
-        />
+        <Input {...field.input}  {...field}>
+            {field.options.map(val => {
+                return <option key={val.value} value={val.value}>{val.label}</option>
+            })}
+        </Input>
         {
-            props.meta.touched && props.meta.error &&
-            <span className="has-error text-danger">{props.meta.error}</span>
+            field.meta.touched && field.meta.error &&
+            <span className="has-error text-danger">{field.meta.error}</span>
         }
     </Fragment>
+)
+
 
 let RegisterUser = (props) => {
     const { handleSubmit } = props;
@@ -59,7 +61,7 @@ let RegisterUser = (props) => {
             <Field name="password" component={OwnInput} type="password" validate={[required()]} placeholder="Password" />
             <Field name="conformPassword" component={OwnInput} type="password" validate={[required()]} placeholder="Password again" />
             <Field name="country" component={OwnInput} type="text" validate={[required()]} placeholder="Country"/>
-            <Field name="gender" component={CustomSelect} type="text" validate={[required()]} placeholder="Gender" options={genderOptions} />
+            <Field name="gender" component={selectBox} type="select" validate={[required()]} placeholder="Gender" options={genderOptions} />
             <Field name="dob" component={OwnInput} type="date" validate={[required()]} placeholder="Date of Birth" />
             <Button color="primary" className="w-100" type="submit">Register</Button>
         </Form>

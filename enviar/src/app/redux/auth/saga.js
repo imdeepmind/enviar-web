@@ -27,7 +27,7 @@ const registerAccountAsync = async (name, email, username, password, country, ge
         username: username,
         password: password,
         country: country,
-        gender: gender.value,
+        gender: gender,
         dob: dob,
         conformPassword: conformPassword
     }
