@@ -1,6 +1,7 @@
 import React from 'react';
 import decode from 'jwt-decode';
 import { ToastContainer } from 'react-toastify';
+import LoadingBar from 'react-redux-loading-bar'
 // import ReallySmoothScroll from 'really-smooth-scroll';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from "react-redux";
@@ -47,8 +48,12 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 function App() {
   return (
     <Provider store={store} >
+    
         <Router basename={baseUrl}>
         <div className="App">
+          <LoadingBar
+            style={{ backgroundColor: 'black', height: '3px' }} 
+          />
           <Switch>
             <Route path={'/login'} exact component={Login} />
             <PrivateRoute path={'/'} exact component={Home} />
@@ -62,6 +67,7 @@ function App() {
             hideProgressBar={true}
             autoClose={2000}
           />
+          
         </div>
       </Router>
     </Provider>

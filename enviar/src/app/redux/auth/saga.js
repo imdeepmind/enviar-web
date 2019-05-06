@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { LOGIN, REGISTER, VERIFY as VERIFY_ROUTE } from '../../../constants/endpoints';
 import {
@@ -35,6 +36,7 @@ const registerAccountAsync = async (name, email, username, password, country, ge
 
 function* registerAccount({ payload }) {    
     try {
+        yield put(showLoading());
         const { name, email, username, password, country, gender, dob, conformPassword } = payload.user;
         const registerUser = yield call(registerAccountAsync, name, email, username, password, country, gender, dob, conformPassword);
         toast.success(`Successfully created user with ${registerUser.data.username}`);
@@ -42,6 +44,8 @@ function* registerAccount({ payload }) {
     } catch (error) {
         toast.error(error.response.data.message);
         yield put(registerUserError(error.response.data.message));
+    } finally {
+        yield put(hideLoading());
     }
 }
 
@@ -55,6 +59,7 @@ const loginAccountAsync = async (username, password) => {
 
 function* loginAccount({ payload }) {    
     try {
+        yield put(showLoading());
         const { username, password } = payload.user;
         const loginUser = yield call(loginAccountAsync, username, password);
         localStorage.setItem('user', loginUser.data.token);
@@ -65,6 +70,9 @@ function* loginAccount({ payload }) {
         let msg = error.response ? error.response.data.message : error;
         toast.error(msg);
         yield put(loginUserError(msg));
+    }
+    finally{
+        yield put(hideLoading());
     }
 }
 

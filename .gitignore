@@ -2,6 +2,8 @@
 
 # dependencies
 enviar/node_modules
+enviar/dist
+enviar/build
 .pnp
 .pnp.js
 
@@ -9,7 +11,7 @@ enviar/node_modules
 /coverage
 
 # production
-/build
+enviar/build
 
 # misc
 .DS_Store
