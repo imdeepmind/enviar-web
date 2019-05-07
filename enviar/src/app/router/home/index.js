@@ -1,12 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import { Container, Row, Col } from 'reactstrap';
+import { BeatLoader } from 'react-spinners';
 import { connect } from 'react-redux';
 
 import TopNav from '../../container/topNav';
 import Post from './components/posts';
 import New from './components/new';
+import NoPost from './components/nopost';
 
 import { posts } from '../../redux/actions';
+
+const loading = {
+    display: 'flex',
+    justifyContent: 'center',
+}
 
 class Home extends Component{
     constructor(props){
@@ -23,7 +30,6 @@ class Home extends Component{
         this.props.posts(data, this.props.history);
     }
     render(){
-        // console.log('props',this.props);
         return (
             <Fragment>
                 <TopNav />
@@ -46,8 +52,12 @@ class Home extends Component{
                                                 />
                                             )
                                         })
-                                    : "no posts"
-                                : "loading"}
+                                    : <NoPost />
+                                : (
+                                    <BeatLoader 
+                                        css={loading} 
+                                    />
+                                  )} 
                         </Col>
                         <Col xs="12" lg="5" className="mt-4 d-none d-lg-block">
                             Controllers

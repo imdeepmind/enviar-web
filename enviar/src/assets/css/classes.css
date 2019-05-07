@@ -21,6 +21,11 @@
     height: 100vh;
 }
 
+.loading{
+    display: flex;
+    justify-content: center;
+}
+
 @media (min-width: 992px){
     .class-landing{
         border-bottom-right-radius: 100%;
