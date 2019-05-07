@@ -6,8 +6,16 @@ import mySaga from "./sagas";
 
 // create the saga middleware
 const sagaMiddleware = createSagaMiddleware();
+
 // mount it on the Store
-export default createStore(reducer, applyMiddleware(sagaMiddleware));
+
+const store = createStore(reducer, applyMiddleware(sagaMiddleware));
+
+store.subscribe(() => {
+    console.log('Store changed', store.getState());
+})
 
 // then run the saga
 sagaMiddleware.run(mySaga);
+
+export default store;

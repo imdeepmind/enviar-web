@@ -2,6 +2,7 @@ import axios from 'axios';
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import store from '../store';
 
 import { LOGIN, REGISTER, VERIFY as VERIFY_ROUTE } from '../../../constants/endpoints';
 import {
@@ -84,6 +85,9 @@ function* logout({payload}) {
     const { history } = payload
     try {
         localStorage.removeItem('user');
+        store.dispatch(store.dispatch({
+            type: 'USER_LOGOUT'
+        }));
         yield call(logoutAsync,history);
     } catch (error) {
     }

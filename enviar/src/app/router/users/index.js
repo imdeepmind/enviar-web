@@ -19,8 +19,7 @@ class Users extends Component{
                 limit: 3
             }
             this.props.users(data, this.props.history);
-        }
-        
+        } 
     }
     loadMore = () => {
         if (this.props.userReducer.loading === false){
@@ -30,7 +29,6 @@ class Users extends Component{
             }
             this.props.users(data, this.props.history);
         }
-        
     }
     render(){
         const items = this.props.userReducer.users.map(val => {

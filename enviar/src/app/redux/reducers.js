@@ -8,7 +8,8 @@ import authReducer from './auth/reducer';
 import homeReducer from './home/reducer';
 import userReducer from './users/reducer';
 
-export default combineReducers({
+
+const appReducer = combineReducers({
     form: formReducer,
     authReducer,
     homeReducer,
@@ -18,3 +19,13 @@ export default combineReducers({
 
     loadingBar: loadingBarReducer,
 });
+
+const rootReducer = (state, action) => {
+    if (action.type === 'USER_LOGOUT') {
+        state = undefined
+    }
+    
+    return appReducer(state, action)
+}
+
+export default rootReducer;

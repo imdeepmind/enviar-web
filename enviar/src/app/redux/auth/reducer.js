@@ -29,7 +29,7 @@ export default (state = INIT_STATE, action) => {
         case REGISTER_USER_ERROR:
             return { ...state, loading: false, error: action.payload};
         case LOGOUT_USER:
-            return { ...state ,user:null};
+            return { ...state , user:null};
         case VERIFY:
             return { ...state, loading: true };
         case VERIFY_SUCCESS:
