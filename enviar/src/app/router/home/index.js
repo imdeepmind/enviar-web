@@ -69,21 +69,6 @@ class Home extends Component{
                         </InfiniteScroll>
 
                         {items.length < 1 && this.props.homeReducer.loading === false ? <NoPost /> : ""}
-
-
-{/*                                 
-                            {this.props.userReducer.loading ? "" : 
-                                items.length < 1 ? <NoPost /> : 
-                            (
-                                <InfiniteScroll
-                                    pageStart={1}
-                                    loadMore={this.loadMore}
-                                    hasMore={this.props.homeReducer.pages >= this.props.homeReducer.page}
-                                    loader={<BeatLoader css={loading} />}
-                                >
-                                    {items}
-                                </InfiniteScroll>
-                            )} */}
                         </Col>
                         <Col xs="12" lg="5" className="mt-4 d-none d-lg-block">
                             Controllers

@@ -7,6 +7,7 @@ import { loadingBarReducer } from 'react-redux-loading-bar'
 import authReducer from './auth/reducer';
 import homeReducer from './home/reducer';
 import userReducer from './users/reducer';
+import createPostReducer from './users/reducer';
 
 
 const appReducer = combineReducers({
@@ -14,7 +15,7 @@ const appReducer = combineReducers({
     authReducer,
     homeReducer,
     userReducer,
-
+    createPostReducer,
 
 
     loadingBar: loadingBarReducer,

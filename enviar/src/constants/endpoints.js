@@ -14,4 +14,3 @@ export const POSTS = ENDPOINT + 'posts/';
 
 // USERS
 export const USERS = ENDPOINT + 'users/';
-

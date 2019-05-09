@@ -1,20 +1,34 @@
 import React, { Component, Fragment } from 'react';
 import { Container } from 'reactstrap';
+import { connect } from 'react-redux';
 
 import TopNav from '../../container/topNav';
+import PostForm from './components/postForm';
+
+import { createPost } from '../../redux/actions';
 
 
 class CreatePost extends Component{
+    submitPost = data => {
+        this.props.createPost(data, this.props.history);
+    }
     render(){
         return (
             <Fragment>
                 <TopNav />
                 <Container>
-                    <h1>Component works!</h1>
+                    <PostForm onSubmit={this.submitPost} />
                 </Container>
             </Fragment>
         )
     }
 }
 
-export default CreatePost;
+const mapStateToProps = (state) => state;
+  
+export default connect(
+    mapStateToProps,
+    {
+        createPost
+    }
+)(CreatePost);
