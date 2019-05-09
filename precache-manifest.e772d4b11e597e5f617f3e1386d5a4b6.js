@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "7b1670b3845d704fea1882a0062fc3f7",
+    "revision": "b72bfbb27413510bb9cb8ddd7d7532f3",
     "url": "/enviar-web/index.html"
   },
   {
-    "revision": "5ef56599fb46306b013f",
+    "revision": "132a3106b819817592c9",
     "url": "/enviar-web/static/css/2.f4948e68.chunk.css"
   },
   {
-    "revision": "a31e6afa8a4bf7a5a6ba",
+    "revision": "35d210aaaa431130d15f",
     "url": "/enviar-web/static/css/main.e74b84f6.chunk.css"
   },
   {
-    "revision": "5ef56599fb46306b013f",
-    "url": "/enviar-web/static/js/2.349e9728.chunk.js"
+    "revision": "132a3106b819817592c9",
+    "url": "/enviar-web/static/js/2.06837887.chunk.js"
   },
   {
-    "revision": "a31e6afa8a4bf7a5a6ba",
-    "url": "/enviar-web/static/js/main.3c395535.chunk.js"
+    "revision": "35d210aaaa431130d15f",
+    "url": "/enviar-web/static/js/main.efa0f003.chunk.js"
   },
   {
     "revision": "86cedb7a7cb81b55f0c9",
