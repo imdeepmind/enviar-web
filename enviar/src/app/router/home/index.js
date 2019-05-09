@@ -24,7 +24,7 @@ class Home extends Component{
         if (this.props.homeReducer.loading){
             const data = {
                 page:  1,
-                limit: 3
+                limit: 10
             }
             this.props.posts(data, this.props.history);
         } 
@@ -33,7 +33,7 @@ class Home extends Component{
         if (this.props.homeReducer.loading === false){
             const data = {
                 page: this.props.homeReducer.page + 1,
-                limit: 3
+                limit: 10
             }
             this.props.posts(data, this.props.history);
         }

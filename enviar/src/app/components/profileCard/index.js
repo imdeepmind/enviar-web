@@ -11,7 +11,7 @@ const ProfileCard = props => {
                 <Avatar source={props.avatar} title={props.name} />
             </div>{" "}
             <div className="p-0 d-flex justify-content-center align-items-start flex-column">
-                <Link to={`/profile/${props.name}`}>{props.name}</Link>
+                <Link to={`/users/${props.name}`}>{props.name}</Link>
                 <small>
                    {props.text}
                 </small>

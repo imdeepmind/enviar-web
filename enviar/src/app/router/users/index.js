@@ -23,7 +23,7 @@ class Users extends Component{
         if (this.props.userReducer.loading){
             const data = {
                 page:  1,
-                limit: 3
+                limit: 10
             }
             this.props.users(data, this.props.history);
         } 
@@ -32,7 +32,7 @@ class Users extends Component{
         if (this.props.userReducer.loading === false){
             const data = {
                 page: this.props.userReducer.page + 1,
-                limit: 3
+                limit: 10
             }
             this.props.users(data, this.props.history);
         }
