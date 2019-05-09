@@ -1,12 +1,19 @@
 import React, { Component, Fragment } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
 import { Container } from 'reactstrap';
+import { BeatLoader } from 'react-spinners';
 import { connect } from 'react-redux';
 
 import TopNav from '../../container/topNav';
 import Ucard from './components/ucard';
+import NoUsers from './components/noUsers';
 
 import { users } from '../../redux/actions';
+
+const loading = {
+    display: 'flex',
+    justifyContent: 'center',
+}
 
 class Users extends Component{
     componentDidMount(){
@@ -50,16 +57,16 @@ class Users extends Component{
             <Fragment>
                 <TopNav />
                 <Container>
-                    {this.props.userReducer.loading ? "" : (
-                        <InfiniteScroll
-                            pageStart={1}
-                            loadMore={this.loadMore}
-                            hasMore={this.props.userReducer.pages >= this.props.userReducer.page}
-                            loader={<div className="loader" key={0}>Loading ...</div>}
-                        >
-                            {items}
-                        </InfiniteScroll>
-                    )}
+                    <InfiniteScroll
+                        pageStart={1}
+                        loadMore={this.loadMore}
+                        hasMore={this.props.userReducer.pages >= this.props.userReducer.page}
+                        loader={<BeatLoader key={0} css={loading} />}
+                    >
+                        {items}
+                    </InfiniteScroll>
+
+                    {items.length < 1 && this.props.userReducer.loading === false ? <NoUsers /> : ""}
                 </Container>
             </Fragment>
         )

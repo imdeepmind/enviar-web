@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { required, length } from 'redux-form-validators';
+import { required } from 'redux-form-validators';
 import {
     Form,
     Input,
