@@ -17,11 +17,7 @@ const getUsersAsync = async (page, limit) => {
 
     const url = `${USERS}?page=${page}&limit=${limit}`;
 
-    const config = {
-        headers: { 'Authorization': localStorage.getItem('user') }
-    };
-
-    return axios.get(url, config);
+    return axios.get(url);
 }
 
 function* getUsers({ payload }) {    
@@ -35,14 +31,9 @@ function* getUsers({ payload }) {
 }
 
 const getUserAsync = async (username) => {
-
     const url = `${USERS}${username}`;
 
-    const config = {
-        headers: { 'Authorization': localStorage.getItem('user') }
-    };
-
-    return axios.get(url, config);
+    return axios.get(url);
 }
 
 function* getUser({ payload }) {    

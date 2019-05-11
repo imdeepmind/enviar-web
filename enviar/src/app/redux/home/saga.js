@@ -17,11 +17,7 @@ const getPostsAsync = async (page, limit) => {
 
     const url = `${POSTS}?page=${page}&limit=${limit}`;
 
-    const config = {
-        headers: { 'Authorization': localStorage.getItem('user') }
-    };
-
-    return axios.get(url, config);
+    return axios.get(url);
 }
 
 function* getPosts({ payload }) {    

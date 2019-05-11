@@ -1,7 +1,8 @@
 import React from 'react';
 import decode from 'jwt-decode';
 import { ToastContainer } from 'react-toastify';
-import LoadingBar from 'react-redux-loading-bar'
+import LoadingBar from 'react-redux-loading-bar';
+import axios from 'axios';
 // import ReallySmoothScroll from 'really-smooth-scroll';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from "react-redux";
@@ -44,6 +45,11 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
     )} />
   )
 }
+
+axios.interceptors.request.use((config) => {
+  config.headers.Authorization = localStorage.getItem('user') ? localStorage.getItem('user') : "";
+  return config;
+});
 
 function App() {
   return (
