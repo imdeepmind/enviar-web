@@ -3,6 +3,7 @@ import decode from 'jwt-decode';
 import { ToastContainer } from 'react-toastify';
 import LoadingBar from 'react-redux-loading-bar';
 import axios from 'axios';
+import { createBrowserHistory } from 'history';
 // import ReallySmoothScroll from 'really-smooth-scroll';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from "react-redux";
@@ -23,6 +24,7 @@ import store from './app/redux/store';
 
 // ReallySmoothScroll.shim();
 const baseUrl = process.env.PUBLIC_URL;
+const history = createBrowserHistory();
 
 const isTokenExpired = () => {
   const token = localStorage.getItem("user");
@@ -51,10 +53,24 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
+axios.interceptors.response.use(
+  response => response,
+  error => {
+      const {status} = error.response;
+      if (status === 401) {
+        store.dispatch(store.dispatch({
+          type: 'LOGOUT_USER',
+          payload: {history}
+        }));
+        // history.push('/#login');
+      }
+      return Promise.reject(error);
+ }
+);
+
 function App() {
   return (
     <Provider store={store} >
-    
         <Router basename={baseUrl}>
         <div className="App">
           <LoadingBar
