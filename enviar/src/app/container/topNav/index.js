@@ -34,7 +34,7 @@ class TopNav extends Component{
         return (
             <div>
                 <Navbar color="light" light expand="xs" className="position-fixed w-100 border-bottom " style={{zIndex:"1030"}}>
-                    <NavbarBrand title="home"><NavLink to="/" className="text-dark">enviar</NavLink></NavbarBrand>
+                    <NavLink className="navbar-brand" to="/">enviar</NavLink>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>

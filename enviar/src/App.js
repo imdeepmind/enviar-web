@@ -62,6 +62,7 @@ axios.interceptors.response.use(
           type: 'LOGOUT_USER',
           payload: {history}
         }));
+        //TODO: Need to fix this
         // history.push('/#login');
       }
       return Promise.reject(error);
