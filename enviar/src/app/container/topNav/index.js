@@ -16,7 +16,7 @@ import decode from 'jwt-decode';
 
 import Avatar from '../../components/avatar';
 
-const me = decode(localStorage.getItem('user'));
+const me = localStorage.getItem('user') ? decode(localStorage.getItem('user')) : {};
 
 
 class TopNav extends Component{

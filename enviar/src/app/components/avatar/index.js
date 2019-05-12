@@ -1,6 +1,8 @@
 import React, { Fragment } from 'react';
 
 import { RESOURCE } from '../../../constants/endpoints'
+import UserBlack from '../../../assets/img/user_black.png';
+import UserWhite from '../../../assets/img/user_white.png';
 
 const Avatar = (props) => {
     const width = props.width ? props.width : "48px";
@@ -15,7 +17,12 @@ const Avatar = (props) => {
                     alt={props.title}
                 />
             ) : (
-                <i className="far fa-user-circle" style={{fontSize: "3em"}}></i>
+                <img 
+                    className={"class-avatar"} 
+                    style={{width:width}} 
+                    src={props.border === 'light' ? UserWhite : UserBlack} 
+                    alt={props.title}
+                />
             )}
         </Fragment>
     )

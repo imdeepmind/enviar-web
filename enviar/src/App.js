@@ -22,6 +22,10 @@ import 'react-toastify/dist/ReactToastify.min.css';
 
 import store from './app/redux/store';
 
+/*
+TODO: Need to add the attribution - 
+<div>Icons made by <a href="https://www.freepik.com/?__hstc=57440181.34da643cb6a07b340fde999b532ce749.1556902993149.1556902993149.1557681941053.2&__hssc=57440181.5.1557681941053&__hsfp=1705634725" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+*/
 // ReallySmoothScroll.shim();
 const baseUrl = process.env.PUBLIC_URL;
 const history = createBrowserHistory();
