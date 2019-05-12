@@ -36,7 +36,6 @@ class TopNav extends Component{
         this.props.logoutUser(this.props.history);
     }
     render(){
-        console.log(me);
         return (
             <div>
                 <Navbar color="primary" dark expand="xs" className="position-fixed w-100 border-bottom " style={{zIndex:"1030"}}>
@@ -46,7 +45,7 @@ class TopNav extends Component{
                         <Nav className="ml-auto" navbar>
                             <NavItem>
                                 <NavLink className="m-1 text-dark"  title="profile" to="/profile">
-                                    <Avatar source={me.avatar} title={me.name} width="24px" border="light" />
+                                    <Avatar source={me.avatar} title={me.name} width="20px" border="light" />
                                 </NavLink>
                             </NavItem>
                             <NavItem>

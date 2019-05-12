@@ -13,7 +13,6 @@ class UserDetail extends Component {
         this.props.usersIndividual({username: this.props.match.params.username}, this.props.history);
     }
     render(){
-        console.log(this.props);
         return (
             <Fragment>
                 {this.props.userReducer.loading ? "loading" : (

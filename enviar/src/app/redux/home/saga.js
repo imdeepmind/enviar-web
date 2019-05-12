@@ -24,10 +24,8 @@ function* getPosts({ payload }) {
     try {
         const { page, limit } = payload.user;
         const myPosts = yield call(getPostsAsync, page, limit);
-        console.log(myPosts);
         yield put(postsSuccess(myPosts.data));
     } catch (error) {
-        console.log(error);
         yield put(postsError(error.response.data.message));
     }
 }
