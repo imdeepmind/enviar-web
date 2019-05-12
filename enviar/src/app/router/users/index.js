@@ -9,6 +9,7 @@ import Ucard from './components/ucard';
 import NoUsers from './components/noUsers';
 
 import { users } from '../../redux/actions';
+import FloatingActionButton from '../../container/floatingActionButton';
 
 const loading = {
     display: 'flex',
@@ -68,6 +69,8 @@ class Users extends Component{
 
                     {items.length < 1 && this.props.userReducer.loading === false ? <NoUsers /> : ""}
                 </Container>
+
+                <FloatingActionButton />
             </Fragment>
         )
     }

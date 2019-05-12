@@ -61,8 +61,6 @@ let CreatePost = (props) => {
     const { handleSubmit, image } = props;
     return (
         <Form onSubmit={handleSubmit}>
-        
-        
             <Label for="img-upload" style={inputFileLabelStyle}>
             {image ?
                <img src={URL.createObjectURL(image)} style={previewImageStyle} alt="Previewing uploading image" /> : 
@@ -72,7 +70,6 @@ let CreatePost = (props) => {
                   Select an image to upload
                 </div>
                )}
-              
             </Label>
             <Field name="img" id="img-upload" accept="image/*" style={inputFileStyle} component={FileInput} type="file" value={null} validate={[required(),file({ maxSize: '512KB' }), file({ minSize: '3KB' })]} />
             <Field name="caption" component={OwnInput} type="textarea" validate={[required()]} placeholder="Add a caption for your post" />

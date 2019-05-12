@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 
 import TopNav from '../../container/topNav';
 import PostForm from './components/postForm';
+import FloatingActionButton from '../../container/floatingActionButton';
 
 import { createPost } from '../../redux/actions';
 
@@ -19,6 +20,8 @@ class CreatePost extends Component{
                 <Container>
                     <PostForm onSubmit={this.submitPost} />
                 </Container>
+
+                <FloatingActionButton />
             </Fragment>
         )
     }

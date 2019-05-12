@@ -5,6 +5,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux';
 
 import TopNav from '../../container/topNav';
+import FloatingActionButton from '../../container/floatingActionButton';
 import Post from './components/posts';
 import New from './components/new';
 import NoPost from './components/nopost';
@@ -57,8 +58,7 @@ class Home extends Component{
                 <TopNav />
                 <Container>
                     <Row>
-                        <Col xs="12"><New /></Col>
-                        <Col xs="12" lg="7" className="mt-4 ">
+                        <Col xs="12" lg="7">
                         <InfiniteScroll
                             pageStart={1}
                             loadMore={this.loadMore}
@@ -75,6 +75,8 @@ class Home extends Component{
                         </Col>
                     </Row>
                 </Container>
+
+                <FloatingActionButton />
             </Fragment>
         )
     }
