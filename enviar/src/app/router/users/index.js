@@ -70,7 +70,7 @@ class Users extends Component{
                     {items.length < 1 && this.props.userReducer.loading === false ? <NoUsers /> : ""}
                 </Container>
 
-                <FloatingActionButton />
+                <FloatingActionButton history={this.props.history} />
             </Fragment>
         )
     }

@@ -63,7 +63,7 @@ let CreatePost = (props) => {
         <Form onSubmit={handleSubmit}>
             <Label for="img-upload" style={inputFileLabelStyle}>
             {image ?
-               <img src={URL.createObjectURL(image)} style={previewImageStyle} alt="Previewing uploading image" /> : 
+               <img src={URL.createObjectURL(image)} style={previewImageStyle} alt="preview" /> : 
                (
                 <div className="d-flex justify-content-center align-items-center flex-column text-center p-3 pt-5 pb-5  "> 
                   <i className="fas fa-cloud-upload-alt" style={{fontSize:"3em"}}></i>

@@ -15,7 +15,7 @@ const e404 = (props) => {
                 <p>I think you should learn typing properly</p>
             </Container>
 
-            <FloatingActionButton />
+            <FloatingActionButton history={this.props.history} />
         </Fragment>
     )
 }

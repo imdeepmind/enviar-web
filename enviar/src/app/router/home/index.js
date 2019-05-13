@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import TopNav from '../../container/topNav';
 import FloatingActionButton from '../../container/floatingActionButton';
 import Post from './components/posts';
-import New from './components/new';
 import NoPost from './components/nopost';
 
 import { posts } from '../../redux/actions';
@@ -76,7 +75,7 @@ class Home extends Component{
                     </Row>
                 </Container>
 
-                <FloatingActionButton />
+                <FloatingActionButton history={this.props.history} />
             </Fragment>
         )
     }

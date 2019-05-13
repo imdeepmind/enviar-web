@@ -38,7 +38,7 @@ class TopNav extends Component{
     render(){
         return (
             <div>
-                <Navbar color="primary" dark expand="xs" className="position-fixed w-100 border-bottom " style={{zIndex:"1030"}}>
+                <Navbar color="primary" dark expand="xs" className="position-fixed w-100" style={{zIndex:"1030"}}>
                     <NavLink className="navbar-brand font-weight-bold" to="/">enviar</NavLink>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>

@@ -21,7 +21,7 @@ class CreatePost extends Component{
                     <PostForm onSubmit={this.submitPost} />
                 </Container>
 
-                <FloatingActionButton />
+                <FloatingActionButton history={this.props.history} />
             </Fragment>
         )
     }
