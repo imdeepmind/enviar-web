@@ -78,9 +78,7 @@ function App() {
     <Provider store={store} >
         <Router basename={baseUrl}>
         <div className="App">
-          <LoadingBar
-            style={{ backgroundColor: 'black', height: '3px', zIndex: "99999999999" }} 
-          />
+          <LoadingBar style={{ backgroundColor: 'white', height: '3px', zIndex: "99999999999" }} />
           <Switch>
             <Route path={'/login'} exact component={Login} />
             <PrivateRoute path={'/'} exact component={Home} />
