@@ -8,7 +8,7 @@ import TopNav from '../../container/topNav';
 import Ucard from './components/ucard';
 import NoUsers from './components/noUsers';
 
-import { users } from '../../redux/actions';
+import { users, userAction } from '../../redux/actions';
 import FloatingActionButton from '../../container/floatingActionButton';
 
 const loading = {
@@ -38,6 +38,14 @@ class Users extends Component{
             this.props.users(data, this.props.history);
         }
     }
+
+    userAction = (what, username) => {
+        const data = {
+            what: what,
+            username: username
+        }
+        this.props.userAction(data, this.props.history);
+    }
     render(){
         const items = this.props.userReducer.users.map(val => {
             return (
@@ -50,6 +58,7 @@ class Users extends Component{
                     isBlocked={val.isBlocked}
                     isFollowers={val.isFollowers}
                     isFollowee={val.isFollowee}
+                    action={this.userAction}
                 />
             )
         })
@@ -80,6 +89,6 @@ const mapStateToProps = (state) => state;
 export default connect(
     mapStateToProps,
     {
-        users
+        users, userAction
     }
 )(Users);

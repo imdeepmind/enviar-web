@@ -1,13 +1,16 @@
 import axios from 'axios';
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
-import { USERS } from '../../../constants/endpoints';
+import { toast } from 'react-toastify';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
+
+import { USERS, USER_ACTION as USER_ACTION_URL } from '../../../constants/endpoints';
 import {
-    USERS as USERS_ACTION, USERS_INDIVIDUAL
+    USERS as USERS_ACTION, USERS_INDIVIDUAL, USER_ACTION
 } from '../../../constants/actions';
 
 
 import {
-    usersSuccess, usersError, usersSuccessIndividual, usersErrorIndividual
+    usersSuccess, usersError, usersSuccessIndividual, usersErrorIndividual, userActionSuccess, userActionError
 } from './action';
 
 const getUsersAsync = async (page, limit) => {
@@ -46,6 +49,34 @@ function* getUser({ payload }) {
     }
 }
 
+const userActionAsync = (what, username) => {
+    const url = USER_ACTION_URL + what + '/' + username;
+    return axios.put(url, {});
+}
+
+function* userAction ({payload}){
+    try {
+        yield put(showLoading());
+        const { what, username } = payload.user;
+        const actionMan = yield call(userActionAsync, what, username);
+        if (what === 'follow') 
+            toast.success(`You are now following ${actionMan.data.followers}`);
+        else 
+        toast.success(`You are not now following ${actionMan.data.followers}`);
+
+        yield put(userActionSuccess(actionMan.data));
+    } catch (error) {
+        toast.error(error.response.data.message);
+        yield put(userActionError(error.response.data.message));
+    } finally {
+        yield put(hideLoading());
+    }
+}
+
+export function* watchUserAction(){
+    yield takeEvery(USER_ACTION, userAction);
+}
+
 export function* watchUsers() {
     yield takeEvery(USERS_ACTION, getUsers);
 }
@@ -57,6 +88,7 @@ export function* watchUser() {
 export default function* rootSaga() {
     yield all([
         fork(watchUsers),
-        fork(watchUser)
+        fork(watchUser),
+        fork(watchUserAction)
     ]);
 }

@@ -1,5 +1,6 @@
 import {
     USERS, USERS_SUCCESS, USERS_ERROR, USERS_INDIVIDUAL, USERS_SUCCESS_INDIVIDUAL, USERS_ERROR_INDIVIDUAL, 
+    USER_ACTION, USER_ACTION_SUCCESS, USER_ACTION_ERROR
 } from '../../../constants/actions';
 
 const INIT_STATE = {
@@ -10,7 +11,8 @@ const INIT_STATE = {
     pages: 1,
     total: 1,
     error: null,
-    user: {}
+    user: {},
+    action: null
 };
 
 export default (state = INIT_STATE, action) => {
@@ -38,6 +40,12 @@ export default (state = INIT_STATE, action) => {
                     };
         case USERS_ERROR_INDIVIDUAL:
             return { ...state, loading: false, error: action.payload};
+        case USER_ACTION: 
+            return {...state, loading: true}
+        case USER_ACTION_SUCCESS: 
+            return {...state, loading: false, action: action.payload}
+        case USER_ACTION_ERROR: 
+            return {...state, loading: false, action: action.payload}
         default: return { ...state };
     }
 }

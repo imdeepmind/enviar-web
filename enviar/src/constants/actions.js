@@ -14,6 +14,9 @@ export const VERIFY_ERROR = 'VERIFY';
 export const POSTS = 'POSTS';
 export const POSTS_SUCCESS = 'POSTS_SUCCESS';
 export const POSTS_ERROR = 'POSTS_ERROR';
+export const USER_ACTION = 'USER_ACTION';
+export const USER_ACTION_SUCCESS = 'USER_ACTION_SUCCESS';
+export const USER_ACTION_ERROR = 'USER_ACTION_ERROR';
 
 /* USERS */
 export const USERS = 'USERS';
