@@ -16,7 +16,7 @@ class CreatePost extends Component{
     render(){
         return (
             <Fragment>
-                <TopNav />
+                <TopNav history={this.props.history} />
                 <Container>
                     <PostForm onSubmit={this.submitPost} />
                 </Container>

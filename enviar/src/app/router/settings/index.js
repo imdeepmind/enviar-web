@@ -8,7 +8,7 @@ class Settings extends Component{
     render(){
         return(
             <Fragment>
-                <TopNav />
+                <TopNav history={this.props.history} />
                 <Container>
                     <h1>Welcome to Settings page</h1>
                 </Container>

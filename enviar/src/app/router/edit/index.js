@@ -8,7 +8,7 @@ class Edit extends Component{
     render(){
         return(
             <Fragment>
-                <TopNav />
+                <TopNav history={this.props.history} />
                 <Container>
                     <h1>Welcome to Edit page</h1>
                 </Container>

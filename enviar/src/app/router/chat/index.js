@@ -8,7 +8,7 @@ class Chat extends Component{
     render(){
         return(
             <Fragment>
-                <TopNav />
+                <TopNav history={this.props.history} />
                 <Container>
                     <h1>Welcome to Chat page</h1>
                 </Container>

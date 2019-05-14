@@ -8,7 +8,7 @@ class Messages extends Component{
     render(){
         return(
             <Fragment>
-                <TopNav />
+                <TopNav history={this.props.history} />
                 <Container>
                     <h1>Welcome to Messages page</h1>
                 </Container>

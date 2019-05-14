@@ -8,7 +8,7 @@ import FloatingActionButton from '../../container/floatingActionButton';
 const e404 = (props) => {
     return (
         <Fragment>
-            <TopNav />
+            <TopNav history={props.history} />
             <Container className="d-flex justify-content-center align-items-center flex-column text-center" style={{minHeight:"300px"}}>
                 <h1 className="display-1"><i className="fas fa-skull-crossbones text-primary"></i></h1>
                 <h2>404 PAGE NOT FOUND</h2>

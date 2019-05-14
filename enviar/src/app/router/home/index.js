@@ -56,7 +56,7 @@ class Home extends Component{
         })
         return (
             <Fragment>
-                <TopNav />
+                <TopNav history={this.props.history} />
                 <Container>
                     <Row>
                         <Col xs="12" lg="7">

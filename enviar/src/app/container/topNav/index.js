@@ -4,7 +4,7 @@ import {
     Navbar,
     NavbarToggler,
     Nav,
-    NavItem,
+    NavItem
 } from 'reactstrap';
 
 import { NavLink } from 'react-router-dom';
@@ -17,7 +17,6 @@ import decode from 'jwt-decode';
 import Avatar from '../../components/avatar';
 
 const me = localStorage.getItem('user') ? decode(localStorage.getItem('user')) : {};
-
 
 class TopNav extends Component{
     constructor(props) {
@@ -39,6 +38,7 @@ class TopNav extends Component{
         return (
             <div>
                 <Navbar color="primary" dark expand="xs" className="position-fixed w-100" style={{zIndex:"1030"}}>
+                    <button onClick={() => this.props.history.goBack()} className="border-0 text-white bg-transparent"><i className="fas fa-chevron-circle-left"></i></button>
                     <NavLink className="navbar-brand font-weight-bold" to="/">enviar</NavLink>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>

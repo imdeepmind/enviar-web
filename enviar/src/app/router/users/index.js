@@ -66,7 +66,7 @@ class Users extends Component{
 
         return (
             <Fragment>
-                <TopNav />
+                <TopNav history={this.props.history} />
                 <Container>
                     <InfiniteScroll
                         pageStart={1}
