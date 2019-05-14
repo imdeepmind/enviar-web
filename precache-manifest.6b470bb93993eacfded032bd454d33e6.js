@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "e4e3e97a64c045ffc6f3a2a2fc3e1db8",
+    "revision": "3464b9a611b33c7371d2860fe44cf12c",
     "url": "/enviar-web/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/enviar-web/static/css/2.d38a2407.chunk.css"
   },
   {
-    "revision": "17cc7b5a67a0ab2642ef",
+    "revision": "894f0bb35970ea499684",
     "url": "/enviar-web/static/css/main.e74b84f6.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/enviar-web/static/js/2.bcbf86de.chunk.js"
   },
   {
-    "revision": "17cc7b5a67a0ab2642ef",
-    "url": "/enviar-web/static/js/main.ef35956e.chunk.js"
+    "revision": "894f0bb35970ea499684",
+    "url": "/enviar-web/static/js/main.1c676c1c.chunk.js"
   },
   {
     "revision": "86cedb7a7cb81b55f0c9",
