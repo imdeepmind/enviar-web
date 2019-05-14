@@ -9,14 +9,16 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { Provider } from "react-redux";
 
 import Login from './app/router/login';
-
 import Home from './app/router/home';
 import CreatePost from './app/router/createPost';
-
 import Users from './app/router/users';
 import UserDetail from './app/router/userDetail';
-
 import E404 from './app/router/e404';
+import Me from './app/router/me';
+import Edit from './app/router/edit';
+import Settings from './app/router/settings';
+import Messages from './app/router/messages';
+import Chat from './app/router/chat';
 
 import 'react-toastify/dist/ReactToastify.min.css'; 
 
@@ -85,6 +87,11 @@ function App() {
             <PrivateRoute path={'/post'} exact component={CreatePost} />
             <PrivateRoute path={'/users'} exact component={Users} />
             <PrivateRoute path={'/users/:username'} exact component={UserDetail} />
+            <PrivateRoute path={'/me'} exact component={Me} />
+            <PrivateRoute path={'/edit'} exact component={Edit} />
+            <PrivateRoute path={'/settings'} exact component={Settings} />
+            <PrivateRoute path={'/messages'} exact component={Messages} />
+            <PrivateRoute path={'messages/:username'} exact component={Chat} />
             <Route component={E404} />
           </Switch>
           <ToastContainer 

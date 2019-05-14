@@ -44,7 +44,7 @@ class TopNav extends Component{
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink className="m-1 text-dark"  title="profile" to="/profile">
+                                <NavLink className="m-1 text-dark"  title="profile" to="/me">
                                     <Avatar source={me.avatar} title={me.name} width="20px" border="light" />
                                 </NavLink>
                             </NavItem>
