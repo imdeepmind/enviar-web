@@ -1,5 +1,12 @@
-export const ENDPOINT = "http://localhost:5111/api/v1/"
-// export const ENDPOINT = "https://young-river-55469.herokuapp.com/api/v1/" 
+const NODE_ENV = process.env.NODE_ENV || 'development';
+
+let end = '';
+if (NODE_ENV === 'development')
+    end = "http://localhost:5111/api/v1/"
+else 
+    end = "https://young-river-55469.herokuapp.com/api/v1/" 
+
+export const ENDPOINT = end;
 
 // AUTH
 export const LOGIN = ENDPOINT + "auth/login/";
