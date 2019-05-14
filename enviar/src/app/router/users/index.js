@@ -9,6 +9,7 @@ import Ucard from './components/ucard';
 import NoUsers from './components/noUsers';
 
 import { users, userAction } from '../../redux/actions';
+import { defaultPageSize } from '../../../constants/configs';
 import FloatingActionButton from '../../container/floatingActionButton';
 
 const loading = {
@@ -24,7 +25,7 @@ class Users extends Component{
         if (this.props.userReducer.loading){
             const data = {
                 page:  1,
-                limit: 10
+                limit: defaultPageSize
             }
             this.props.users(data, this.props.history);
         } 
@@ -33,7 +34,7 @@ class Users extends Component{
         if (this.props.userReducer.loading === false){
             const data = {
                 page: this.props.userReducer.page + 1,
-                limit: 10
+                limit: defaultPageSize
             }
             this.props.users(data, this.props.history);
         }

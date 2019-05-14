@@ -10,6 +10,7 @@ import Post from './components/posts';
 import NoPost from './components/nopost';
 
 import { posts } from '../../redux/actions';
+import { defaultPageSize } from '../../../constants/configs';
 
 const loading = {
     display: 'flex',
@@ -24,7 +25,7 @@ class Home extends Component{
         if (this.props.homeReducer.loading){
             const data = {
                 page:  1,
-                limit: 10
+                limit: defaultPageSize
             }
             this.props.posts(data, this.props.history);
         } 
@@ -33,7 +34,7 @@ class Home extends Component{
         if (this.props.homeReducer.loading === false){
             const data = {
                 page: this.props.homeReducer.page + 1,
-                limit: 10
+                limit: defaultPageSize
             }
             this.props.posts(data, this.props.history);
         }
