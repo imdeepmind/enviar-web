@@ -8,6 +8,7 @@ import authReducer from './auth/reducer';
 import homeReducer from './home/reducer';
 import userReducer from './users/reducer';
 import createPostReducer from './users/reducer';
+import chatsReducer from './chats/reducer';
 
 
 const appReducer = combineReducers({
@@ -16,6 +17,7 @@ const appReducer = combineReducers({
     homeReducer,
     userReducer,
     createPostReducer,
+    chatsReducer,
 
 
     loadingBar: loadingBarReducer,

@@ -91,7 +91,7 @@ function App() {
             <PrivateRoute path={'/edit'} exact component={Edit} />
             <PrivateRoute path={'/settings'} exact component={Settings} />
             <PrivateRoute path={'/messages'} exact component={Messages} />
-            <PrivateRoute path={'messages/:username'} exact component={Chat} />
+            <PrivateRoute path={'/messages/:username'} exact component={Chat} />
             <Route component={E404} />
           </Switch>
           <ToastContainer 

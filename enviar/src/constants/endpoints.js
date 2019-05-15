@@ -22,3 +22,6 @@ export const POSTS = ENDPOINT + 'posts/';
 // USERS
 export const USERS = ENDPOINT + 'users/';   
 export const USER_ACTION = ENDPOINT + 'interactions/'; 
+
+// CHATS
+export const CHAT = ENDPOINT + 'chats/';
