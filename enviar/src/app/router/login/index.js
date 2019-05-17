@@ -1,32 +1,21 @@
 import React, { Component, Fragment } from 'react';
+import { Row, Col, Container } from 'reactstrap';
 import { connect } from 'react-redux';
 
 import Hero from './components/hero';
-import Modal from './components/modal';
+import Login from './components/login';
+import Registration from './components/registration'
+import WhyJoin from './components/whyJoin';
 
 import { loginUser, registerUser } from '../../redux/actions';
 
-class Login extends Component {
-    constructor(props){
-        super(props);
-        this.state = {
-            loginModal: false,
-            registerModal: false
-        }
-    }
+const style = {
+    'background' : 'linear-gradient(to right, #4A00E0, #8E2DE2)',
+    'minHeight'     : '100vh',
+    'width'      : '100%' 
+}
 
-    toggleLoginModal = () => {
-        this.setState(prevState => ({
-            loginModal: !prevState.loginModal
-        }));
-    }
-
-    toggleRegisterModal = () => {
-        this.setState(prevState => ({
-            registerModal: !prevState.registerModal
-        }));
-    }
-
+class Index extends Component {
     onLogin = data => {
         this.props.loginUser(data, this.props.history);
     }
@@ -36,11 +25,22 @@ class Login extends Component {
     }
     render(){
         return (
-            <Fragment>
-                <Hero registerMethod={this.toggleRegisterModal} loginMethod={this.toggleLoginModal}/>
-                <Modal isOpen={this.state.loginModal} toggle={this.toggleLoginModal} type="login" onSubmit={this.onLogin}/> 
-                <Modal isOpen={this.state.registerModal} toggle={this.toggleRegisterModal} type="register" onSubmit={this.onRegister} /> 
-            </Fragment>
+            <Container fluid style={style}>
+                 <Row>
+                    <Col xs="12" md="8">
+                        <Hero />
+                    </Col>
+                    <Col xs="12" md="4">
+                        <Login onSubmit={this.onLogin}/>
+                    </Col>
+                    <Col xs="12" md="4">
+                        <Registration onSubmit={this.onRegister}/>
+                    </Col>
+                    <Col xs="12" md="8" className="d-none d-md-block">
+                        <WhyJoin />
+                    </Col>
+                </Row>
+            </Container>
         )
     }
 }
@@ -53,4 +53,4 @@ export default connect(
         loginUser,
         registerUser
     }
-)(Login);
+)(Index);

@@ -8,9 +8,10 @@ const styleHero = {
 
 const Hero = (props) => {
     return (
-        <div className="d-flex align-items-start justify-content-center flex-column p-5" style={styleHero}>
+        <div className="d-flex align-items-end justify-content-center flex-column p-5" style={styleHero}>
             <Row>
-                <Col xs="12" lg="6">
+                <Col xs="0" lg="6" className="d-none d-block"></Col>
+                <Col xs="12" lg="6" className="text-right">
                     <h1 className="display-3 text-white">enviar</h1>
                     <h2 className="text-light">a open source social network that respects your privacy and private data</h2>
                     <p className="text-light">
