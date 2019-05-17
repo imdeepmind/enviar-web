@@ -46,8 +46,6 @@ class Hero extends Component{
             <Col xs="12" md="6" className="text-center">
                 <h1>{this.props.name}</h1>
                 <h3>@{this.props.username}</h3>
-            </Col>
-            <Col xs="12" className="text-center">
                 <ButtonGroup>
                     <Button onClick={this.handleFriendRequest}>
                         {this.state.isFollower ? 

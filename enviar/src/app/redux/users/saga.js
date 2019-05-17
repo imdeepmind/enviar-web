@@ -61,8 +61,12 @@ function* userAction ({payload}){
         const actionMan = yield call(userActionAsync, what, username);
         if (what === 'follow') 
             toast.success(`You are now following ${actionMan.data.followers}`);
+        else if (what === 'unfollow')
+            toast.success(`You are not now following ${actionMan.data.followers}`);
+        else if (what === 'block')
+            toast.success(`You have blocked ${actionMan.data.blocked}`);
         else 
-        toast.success(`You are not now following ${actionMan.data.followers}`);
+            toast.success(`You have unblocked ${actionMan.data.unblocked}`);
 
         yield put(userActionSuccess(actionMan.data));
     } catch (error) {
