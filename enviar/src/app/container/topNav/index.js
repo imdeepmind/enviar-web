@@ -38,7 +38,7 @@ class TopNav extends Component{
         return (
             <div>
                 <Navbar color="primary" dark expand="xs" className="position-fixed w-100" style={{zIndex:"1030"}}>
-                    <button onClick={() => this.props.history.goBack()} className="border-0 text-white bg-transparent"><i className="fas fa-chevron-circle-left"></i></button>
+                    <button style={{marginTop:"3px"}} onClick={() => this.props.history.goBack()} className="border-0 text-white bg-transparent"><i className="fas fa-chevron-circle-left"></i></button>
                     <NavLink className="navbar-brand font-weight-bold" to="/">enviar</NavLink>
                     <NavbarToggler onClick={this.toggle} />
                     <Collapse isOpen={this.state.isOpen} navbar>
