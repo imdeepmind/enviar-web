@@ -9,6 +9,7 @@ import homeReducer from './home/reducer';
 import userReducer from './users/reducer';
 import createPostReducer from './users/reducer';
 import chatsReducer from './chats/reducer';
+import meReducer from './me/reducer';
 
 
 const appReducer = combineReducers({
@@ -18,6 +19,7 @@ const appReducer = combineReducers({
     userReducer,
     createPostReducer,
     chatsReducer,
+    meReducer,
 
 
     loadingBar: loadingBarReducer,

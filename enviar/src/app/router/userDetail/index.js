@@ -5,7 +5,6 @@ import { Container } from 'reactstrap';
 
 import { usersIndividual, userAction } from '../../../app/redux/actions';
 
-import TopNav from '../../container/topNav';
 import FloatingActionButton from '../../container/floatingActionButton';
 import Hero from './components/hero';
 import Detail from './components/detail';
@@ -45,10 +44,8 @@ class UserDetail extends Component {
         this.props.userAction(data, this.props.history);
     }
     render(){
-        console.log(this.props);
         return (
             <Fragment>
-                {/* <TopNav history={this.props.history} /> */}
                 <Container>
                     {this.props.userReducer.loading ? <BeatLoader key={0} css={loading} /> : (
                         !this.props.userReducer.error ? 
