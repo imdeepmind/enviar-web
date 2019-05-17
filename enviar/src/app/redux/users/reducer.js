@@ -41,11 +41,11 @@ export default (state = INIT_STATE, action) => {
         case USERS_ERROR_INDIVIDUAL:
             return { ...state, loading: false, error: action.payload};
         case USER_ACTION: 
-            return {...state, loading: true}
+            return {...state}
         case USER_ACTION_SUCCESS: 
-            return {...state, loading: false, action: action.payload}
+            return {...state, action: action.payload}
         case USER_ACTION_ERROR: 
-            return {...state, loading: false, action: action.payload}
+            return {...state, action: action.payload}
         default: return { ...state };
     }
 }
