@@ -66,8 +66,6 @@ const FloatingActionButton = props => {
                 {props.history ? (
                     actionButtons(props.history)
                 ) : ""}
-                
-                
             </Fab>
         </Fragment>
         
