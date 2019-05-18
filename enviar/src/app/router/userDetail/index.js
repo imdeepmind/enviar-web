@@ -61,6 +61,7 @@ class UserDetail extends Component {
                                 action={this.userAction}
                                 history={this.props.history}
                                 status={this.props.userReducer.user.status}
+                                gender={this.props.userReducer.user.gender}
                             />
                             <Detail 
                                 location={this.buildAddress()} 

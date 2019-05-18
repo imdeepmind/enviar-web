@@ -38,14 +38,21 @@ class Hero extends Component{
         })
     }
     render(){
+        const styleGender = {
+            width: '100%',
+            height: '5px'
+        };
+        if (this.props.gender === 'm') styleGender['background'] = 'deepskyblue';
+        else styleGender['background'] = 'hotpink';
+
         return(
             <Row className="bg-primary">
                 <Col xs="12">
                     <button onClick={() => this.props.history.goBack()} className="border-0 text-white bg-transparent p-2 pt-4"><i style={{fontSize:"1.2rem"}} className="fas fa-chevron-circle-left"></i></button>
                     <span className="text-light p-2 pt-4 float-right font-weight-bold">{this.props.username}</span>
                 </Col>
-                <Col xs="12" md="6" className="text-center pb-3 pt-5 pl-5 pr-5 ">
-                    <Avatar source={this.props.avatar} title={this.props.name} width="200px" border="light" quality="medium"/>
+                <Col xs="12" md="6" className="text-center p-5">
+                    <Avatar source={this.props.avatar} title={this.props.name} width="120px" border="light" quality="medium"/>
                 </Col>
                 <Col xs="12" md="6" className="text-center text-light">
                     <h1 className="text-light">{this.props.name}</h1>
@@ -69,6 +76,7 @@ class Hero extends Component{
                         </Button>
                     </ButtonGroup>
                 </Col>
+                <Col xs="12" style={styleGender}></Col>
             </Row>
         )
     }
