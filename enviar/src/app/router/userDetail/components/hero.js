@@ -23,7 +23,7 @@ class Hero extends Component{
         });
     }
     handleFriendRequest = () => {
-        const name = this.state.isFollower ? 'unfollow' : 'follow';
+        const name = this.state.isFollowee ? 'unfollow' : 'follow';
         this.props.action(name, this.props.username);
         this.setState({
             isFollower: !this.state.isFollower,
@@ -38,6 +38,7 @@ class Hero extends Component{
         })
     }
     render(){
+        console.log(this.state);
         const styleGender = {
             width: '100%',
             height: '5px'
@@ -60,7 +61,7 @@ class Hero extends Component{
                     <h4 className="text-light">{this.props.status}</h4>
                     <ButtonGroup className="mb-2 mt-2">
                         <Button onClick={this.handleFriendRequest} color="primary">
-                            {this.state.isFollower ? 
+                            {this.state.isFollowee ? 
                                 <Fragment><i className="fas fa-user-times"></i>{" "}Unfollow</Fragment> : 
                                 <Fragment><i className="fas fa-user-plus"></i>{" "}Follow</Fragment>
                             }

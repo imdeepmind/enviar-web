@@ -13,6 +13,7 @@ import AError from './components/error';
 const loading = {
     display: 'flex',
     justifyContent: 'center',
+    padding: '30px'
 }
 
 class UserDetail extends Component {
