@@ -6,6 +6,7 @@ import userSagas from './users/saga';
 import createPost from './createPost/saga';
 import chatSaga from './chats/saga';
 import meSaga from './me/saga';
+import settingsSaga from './settings/saga';
 
 export default function* rootSaga(getState) {
   yield all([
@@ -14,6 +15,7 @@ export default function* rootSaga(getState) {
     userSagas(),
     createPost(),
     chatSaga(),
-    meSaga()
+    meSaga(),
+    settingsSaga()
   ]);
 }

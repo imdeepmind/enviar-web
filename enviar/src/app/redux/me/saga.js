@@ -21,7 +21,6 @@ function* getMe() {
         const me = yield call(getMeAsync);
         yield put(getMeSuccess(me.data));
     } catch (error) {
-        console.log(error)
         toast.error(error.response.data.message);
         yield put(getMeError(error.response.data.message));
     }

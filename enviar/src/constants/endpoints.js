@@ -28,3 +28,6 @@ export const CHAT = ENDPOINT + 'chats/';
 
 // ME
 export const ME = ENDPOINT + 'me/';
+
+// SETTINGS
+export const CHANGE_PASSWORD = ENDPOINT + 'settings/change/password';
