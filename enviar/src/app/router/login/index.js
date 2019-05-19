@@ -1,4 +1,4 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import { Row, Col, Container } from 'reactstrap';
 import { connect } from 'react-redux';
 

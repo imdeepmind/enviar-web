@@ -56,7 +56,6 @@ class Hero extends Component{
                 </Col>
                 <Col xs="12" md="6" className="text-center text-light">
                     <h1 className="text-light">{this.props.name}</h1>
-                    {/* <h3 className="text-light">@{this.props.username}</h3> */}
                     <h4 className="text-light">{this.props.status}</h4>
                     <ButtonGroup className="mb-2 mt-2">
                         <Button onClick={this.handleFriendRequest} color="primary">

@@ -13,6 +13,7 @@ import AError from './components/error';
 const loading = {
     display: 'flex',
     justifyContent: 'center',
+    padding: '30px'
 }
 
 class Me extends Component {
@@ -37,7 +38,6 @@ class Me extends Component {
         this.props.getMe();
     }
     render(){
-        console.log(this.props);
         return (
             <Fragment>
                 <Container>
@@ -50,6 +50,7 @@ class Me extends Component {
                                 avatar={this.props.meReducer.me.avatar} 
                                 history={this.props.history}
                                 status={this.props.meReducer.me.status}
+                                gender={this.props.meReducer.me.gender}
                             />
                             <Detail 
                                 location={this.buildAddress()} 
