@@ -13,18 +13,11 @@ import {
 } from './action';
 
 const createPostAsync = async (img, caption) => {
-
     const data = new FormData();
     data.append('caption', caption);
     data.append('img', img);
-    const config = {
-        headers: { 
-            'Authorization': localStorage.getItem('user'),
-            'Content-Type': img.type
-        }
-    };
 
-    return axios.post(POSTS, data, config);
+    return axios.post(POSTS, data);
 }
 
 function* createPosts({ payload }) { 

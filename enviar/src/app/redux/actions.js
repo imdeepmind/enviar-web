@@ -5,3 +5,4 @@ export * from './createPost/action';
 export * from './chats/action';
 export * from './me/action';
 export * from './settings/action';
+export * from './edit/action';

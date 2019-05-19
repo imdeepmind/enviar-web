@@ -31,3 +31,7 @@ export const ME = ENDPOINT + 'me/';
 
 // SETTINGS
 export const CHANGE_PASSWORD = ENDPOINT + 'settings/change/password';
+
+// EDIT
+export const UPDATE_DP = ENDPOINT + 'me/dp';
+export const UPDATE_INFO = ENDPOINT + 'me/';

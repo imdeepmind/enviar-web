@@ -11,6 +11,7 @@ import createPostReducer from './users/reducer';
 import chatsReducer from './chats/reducer';
 import meReducer from './me/reducer';
 import settingsReducer from './settings/reducer';
+import editReducer from './edit/reducer';
 
 
 const appReducer = combineReducers({
@@ -22,6 +23,7 @@ const appReducer = combineReducers({
     chatsReducer,
     meReducer,
     settingsReducer,
+    editReducer,
 
 
     loadingBar: loadingBarReducer,
