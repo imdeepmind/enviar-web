@@ -33,7 +33,7 @@ function* getChats({ payload }) {
     }
 }
 
-function* getAllPeoples(){
+function* getAllPeoples2(){
     try{
         yield put(showLoading());
         const peoples = yield call(getAllPeoplesAsync);
@@ -51,7 +51,7 @@ export function* watchChats() {
 }
 
 export function* watchAllPeoples() {
-    yield takeEvery(GET_ALL_PEOPLES, getAllPeoples);
+    yield takeEvery(GET_ALL_PEOPLES, getAllPeoples2);
 }
 
 export default function* rootSaga() {
