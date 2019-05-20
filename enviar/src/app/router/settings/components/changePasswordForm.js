@@ -18,9 +18,9 @@ let ChangePassword = (props) => {
     const { handleSubmit } = props;
     return (
         <Form onSubmit={handleSubmit}>
-            <Field name="old" component={OwnInput} type="text" validate={[required()]} placeholder="Enter your old password" />
-            <Field name="new" component={OwnInput} type="text" validate={[required()]} placeholder="Enter your new password" />
-            <Field name="conformNewPassword" component={OwnInput} type="text" validate={[required()]} placeholder="Enter your new password again" />
+            <Field name="old" component={OwnInput} type="password" autocomplete="new-password" validate={[required()]} placeholder="Enter your old password" />
+            <Field name="new" component={OwnInput} type="password" autocomplete="new-password" validate={[required()]} placeholder="Enter your new password" />
+            <Field name="conformNewPassword" component={OwnInput} type="password" autocomplete="new-password" validate={[required()]} placeholder="Enter your new password again" />
             <Button color="primary" className="w-100 mt-3" type="submit">Save</Button>
         </Form>
     )

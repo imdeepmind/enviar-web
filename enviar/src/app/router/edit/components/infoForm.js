@@ -1,8 +1,8 @@
 import React, { Fragment } from 'react'
-import { Field, reduxForm, formValueSelector } from 'redux-form'
+import { Field, reduxForm } from 'redux-form'
 import { required, email } from 'redux-form-validators';
 import { connect } from 'react-redux'
-import { Form, Input, Button, Label } from 'reactstrap';
+import { Form, Input, Button } from 'reactstrap';
 
 const genderOptions = [
     {
@@ -89,8 +89,6 @@ InfoForm =  reduxForm({
     enableReinitialize: true,
     updateUnregisteredFields: true
 })(InfoForm)
-
-const selector = formValueSelector('InfoForm')
 
 const mapStateToProps = (state, props) => {
     let dob = new Date(props.details.dob);
