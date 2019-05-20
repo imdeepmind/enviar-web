@@ -26,7 +26,8 @@ const editDpAsync = async (avatar) => {
 function* editInfo({payload}) {    
     try {
         yield put(showLoading());
-        const data = payload.data;
+        console.log('data', payload);
+        const data = payload;
         const edit = yield call(editInfoAsync, data);
         toast.success(`Successfully updated account`);
         yield put(editInfoSuccess(edit.data));

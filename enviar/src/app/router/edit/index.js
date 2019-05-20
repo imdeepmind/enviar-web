@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Container, Row, Col, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Container, Row, Col, Modal, ModalHeader, ModalBody } from 'reactstrap';
 import { connect } from 'react-redux';
 import { BeatLoader } from 'react-spinners';
 
@@ -7,8 +7,9 @@ import TopNav from '../../container/topNav';
 import FloatingActionButton from '../../container/floatingActionButton';
 import Avatar from '../../components/avatar';
 import DpForm from './components/dpForm';
+import InfoForm from './components/infoForm';
 
-import { getMe, editDp } from '../../redux/actions';
+import { getMe, editDp, editInfo } from '../../redux/actions';
 
 const loading = {
     display: 'flex',
@@ -33,9 +34,12 @@ class Edit extends Component{
         this.props.getMe();
     }
     onImageUpdate = avatar => {
-        console.log('Updating image...', avatar);
         this.props.editDp(avatar);
         this.toggleDpModal();
+    }
+    onImageUpdate = data => {
+        this.props.editInfo(data);
+        console.log(data);
     }
     render(){
         console.log(this.props);
@@ -56,8 +60,12 @@ class Edit extends Component{
                             <Col xs="12" md="6" className="text-center" onClick={this.toggleDpModal}>
                                 <Avatar source={this.props.meReducer.me.avatar} title={this.props.meReducer.me.name} width="120px" quality="medium"/>
                             </Col>
-                            <Col xs="6">
-                                Abhishek
+                            <Col xs="12" md="6" className="text-center mt-3">
+                                <h3>{this.props.meReducer.me.name}</h3>
+                                <h4>@{this.props.meReducer.me.username}</h4>    
+                            </Col>
+                            <Col xs="12">
+                                <InfoForm onSubmit={this.onImageUpdate} details={this.props.meReducer.me} />
                             </Col>
                         </Row>
                     }
@@ -73,6 +81,6 @@ const mapStateToProps = (state) => state;
 export default connect(
     mapStateToProps,
     {
-        getMe, editDp
+        getMe, editDp, editInfo
     }
 )(Edit);
