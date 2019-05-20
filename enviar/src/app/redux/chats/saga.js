@@ -1,20 +1,25 @@
 import axios from 'axios';
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 
-import { CHAT } from '../../../constants/endpoints';
+import { CHAT, ALL_PEOPLES } from '../../../constants/endpoints';
+import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import { toast } from 'react-toastify';
 
 import {
-    GET_CONVERSATION
+    GET_CONVERSATION, GET_ALL_PEOPLES
 } from '../../../constants/actions';
 
 import {
-    getChatSuccess, getChatError
+    getChatSuccess, getChatError, getAllPeoplesSuccess, getAllPeoplesError
 } from './action';
 
 const getChatAsync = async (username, page, limit) => {
     const url = CHAT + username + `?page=${page}&limit=${limit}`;
     return axios.get(url);
+}
+
+const getAllPeoplesAsync = async () => {
+    return axios.get(ALL_PEOPLES);
 }
 
 function* getChats({ payload }) { 
@@ -28,13 +33,30 @@ function* getChats({ payload }) {
     }
 }
 
+function* getAllPeoples(){
+    try{
+        yield put(showLoading());
+        const peoples = yield call(getAllPeoplesAsync);
+        yield put(getAllPeoplesSuccess(peoples.data));
+    } catch(error) {
+        toast.error(error.response.data.message);
+        yield put(getAllPeoplesError(error.response.data.message));
+    } finally {
+        yield put(hideLoading());
+    }
+}
 
 export function* watchChats() {
     yield takeEvery(GET_CONVERSATION, getChats);
 }
 
+export function* watchAllPeoples() {
+    yield takeEvery(GET_ALL_PEOPLES, getAllPeoples);
+}
+
 export default function* rootSaga() {
     yield all([
-        fork(watchChats)
+        fork(watchChats),
+        fork(watchAllPeoples)
     ]);
 }

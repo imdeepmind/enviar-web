@@ -25,6 +25,7 @@ export const USER_ACTION = ENDPOINT + 'interactions/';
 
 // CHATS
 export const CHAT = ENDPOINT + 'chats/';
+export const ALL_PEOPLES = ENDPOINT + 'chats/allpeoples';
 
 // ME
 export const ME = ENDPOINT + 'me/';
