@@ -3,6 +3,7 @@ import { Field, reduxForm, formValueSelector } from 'redux-form'
 import { required, file } from 'redux-form-validators';
 import { connect } from 'react-redux'
 import { Form, Button, Label } from 'reactstrap';
+import classnames from 'classnames';
 
 const adaptFileEventToValue = delegate => e => delegate(e.target.files[0]);
 
@@ -28,9 +29,11 @@ const FileInput = ({
   }) => {
     // console.log('omit data',omitMeta)
     //TODO: Need to fix the touched issue
+    console.log(!omitMeta.valid && omitMeta.error)
     return (
       <Fragment>
         <input
+          className={classnames({'mb-1' : true, 'is-invalid' : !omitMeta.valid && omitMeta.error})}
           onChange={adaptFileEventToValue(onChange)}
           onBlur={adaptFileEventToValue(onBlur)}
           type="file"
@@ -39,7 +42,7 @@ const FileInput = ({
         />
         {
             !omitMeta.valid && omitMeta.error &&
-            <span className="has-error text-danger">{omitMeta.error}</span>
+            <div className="has-error text-danger">{omitMeta.error}</div>
         }
       </Fragment>
     );
@@ -47,6 +50,7 @@ const FileInput = ({
 
 let CreatePost = (props) => {
     const { handleSubmit, image } = props;
+    console.log(props)
     return (
         <Form onSubmit={handleSubmit}>
             <Label for="img-upload" style={inputFileLabelStyle}>
@@ -60,7 +64,7 @@ let CreatePost = (props) => {
                )}
             </Label>
             <Field name="avatar" id="img-upload" accept="image/*" style={inputFileStyle} component={FileInput} type="file" value={null} validate={[required(),file({ maxSize: '512KB' }), file({ minSize: '3KB' })]} />
-            <Button color="primary" className="w-100 mt-3" type="submit">Save</Button>
+            <Button color="primary" disabled={!props.valid} className="w-100 mt-3" type="submit">Save</Button>
         </Form>
     )
 }
