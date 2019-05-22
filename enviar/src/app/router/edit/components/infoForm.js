@@ -37,7 +37,7 @@ const formatDate = date => {
 
 let OwnInput = (field) => (
     <Fragment>
-        <Input {...field.input}  {...field} />
+        <Input {...field.input}  {...field} className="mb-1" />
         {
             field.meta.touched && field.meta.error &&
             <span className="has-error text-danger">{field.meta.error}</span>
@@ -47,7 +47,7 @@ let OwnInput = (field) => (
 
 let selectBox = (field) => (
     <Fragment>
-        <Input {...field.input}  {...field}>
+        <Input {...field.input}  {...field} className="mb-1" >
             {field.options.map(val => {
                 return <option key={val.value} value={val.value}>{val.label}</option>
             })}
@@ -63,19 +63,25 @@ let InfoForm = (props) => {
     const { handleSubmit } = props;
     return (
         <Form onSubmit={handleSubmit}>
+            <b>a little bit about you</b>
             <Field name="name" component={OwnInput} type="text" validate={[required()]} placeholder="Name" />
             <Field name="email" component={OwnInput} type="email" validate={[required(), email()]} placeholder="Email" />
+            <Field name="gender" component={selectBox} type="select" validate={[required()]} placeholder="Gender" options={genderOptions} />
+            <Field name="dob" component={OwnInput} type="date" validate={[required()]} placeholder="Date of Birth" />
+
+            <b>share a little bit of you</b>
+            <Field name="status" component={OwnInput} type="textarea" validate={[required()]} placeholder="Status"/>
+            <Field name="bio" component={OwnInput} type="textarea" placeholder="Bio"/>
             
+            <b>where you live</b>
             <Field name="city" component={OwnInput} type="text" placeholder="City"/>
             <Field name="state" component={OwnInput} type="text" placeholder="State"/>
             <Field name="country" component={OwnInput} type="text" validate={[required()]} placeholder="Country"/>
             
             
-            <Field name="gender" component={selectBox} type="select" validate={[required()]} placeholder="Gender" options={genderOptions} />
-            <Field name="dob" component={OwnInput} type="date" validate={[required()]} placeholder="Date of Birth" />
+            
 
-            <Field name="status" component={OwnInput} type="textarea" validate={[required()]} placeholder="Status"/>
-            <Field name="bio" component={OwnInput} type="textarea" placeholder="Bio"/>
+            
 
             <Button color="primary" className="w-100 mt-3" type="submit">Save</Button>
         </Form>
