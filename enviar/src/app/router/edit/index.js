@@ -41,7 +41,7 @@ class Edit extends Component{
         this.props.editInfo(data);
     }
     render(){
-        console.log(this.props);
+        console.log('asd',this.state);
         return(
             <Fragment>
                 <TopNav history={this.props.history} />

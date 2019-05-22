@@ -26,7 +26,7 @@ const FileInput = ({
     meta: omitMeta, 
     ...props 
   }) => {
-    // console.log(omitMeta)
+    // console.log('omit data',omitMeta)
     //TODO: Need to fix the touched issue
     return (
       <Fragment>

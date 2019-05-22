@@ -11,6 +11,8 @@ import {
     editDpSuccess, editDpError, editInfoSuccess, editInfoError
 } from './action';
 
+import { getMe } from '../actions';
+
 
 const editInfoAsync = async (data) => {
     return axios.put(UPDATE_INFO, data);
@@ -26,7 +28,6 @@ const editDpAsync = async (avatar) => {
 function* editInfo({payload}) {    
     try {
         yield put(showLoading());
-        console.log('data', payload);
         const data = payload;
         const edit = yield call(editInfoAsync, data);
         toast.success(`Successfully updated account`);
@@ -46,6 +47,7 @@ function* editDp({payload}) {
         const me = yield call(editDpAsync, avatar);
         toast.success(`Successfully updated display picture`);
         yield put(editDpSuccess(me.data));
+        yield put(getMe());
     } catch (error) {
         toast.error(error.response.data.message);
         yield put(editDpError(error.response.data.message));
