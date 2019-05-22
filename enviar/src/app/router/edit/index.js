@@ -37,9 +37,8 @@ class Edit extends Component{
         this.props.editDp(avatar);
         this.toggleDpModal();
     }
-    onImageUpdate = data => {
+    onInfoUpdate = data => {
         this.props.editInfo(data);
-        console.log(data);
     }
     render(){
         console.log(this.props);
@@ -65,7 +64,7 @@ class Edit extends Component{
                                 <h4>@{this.props.meReducer.me.username}</h4>    
                             </Col>
                             <Col xs="12">
-                                <InfoForm onSubmit={this.onImageUpdate} details={this.props.meReducer.me} />
+                                <InfoForm onSubmit={this.onInfoUpdate} details={this.props.meReducer.me} />
                             </Col>
                         </Row>
                     }
