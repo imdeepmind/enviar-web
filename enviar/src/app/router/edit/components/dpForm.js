@@ -29,7 +29,6 @@ const FileInput = ({
   }) => {
     // console.log('omit data',omitMeta)
     //TODO: Need to fix the touched issue
-    console.log(!omitMeta.valid && omitMeta.error)
     return (
       <Fragment>
         <input
@@ -50,7 +49,6 @@ const FileInput = ({
 
 let CreatePost = (props) => {
     const { handleSubmit, image } = props;
-    console.log(props)
     return (
         <Form onSubmit={handleSubmit}>
             <Label for="img-upload" style={inputFileLabelStyle}>

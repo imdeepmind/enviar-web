@@ -51,8 +51,8 @@ class Hero extends Component{
                     <button onClick={() => this.props.history.goBack()} className="border-0 text-white bg-transparent p-2 pt-4"><i style={{fontSize:"1.2rem"}} className="fas fa-chevron-circle-left"></i></button>
                     <span className="text-light p-2 pt-4 float-right font-weight-bold">{this.props.username}</span>
                 </Col>
-                <Col xs="12" md="6" className="text-center p-5">
-                    <Avatar source={this.props.avatar} title={this.props.name} width="120px" border="light" quality="medium"/>
+                <Col xs="12" md="6" className="text-center p-3">
+                    <Avatar source={this.props.avatar} title={this.props.name} width="160px" border="light" quality="medium"/>
                 </Col>
                 <Col xs="12" md="6" className="text-center text-light">
                     <h1 className="text-light">{this.props.name}</h1>

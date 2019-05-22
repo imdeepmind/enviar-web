@@ -56,7 +56,7 @@ class Edit extends Component{
                             </Modal>
 
                             <Col xs="12" md="6" className="text-center" onClick={this.toggleDpModal}>
-                                <Avatar source={this.props.meReducer.me.avatar} title={this.props.meReducer.me.name} width="120px" quality="medium"/>
+                                <Avatar source={this.props.meReducer.me.avatar} title={this.props.meReducer.me.name} width="160px" quality="medium"/>
                             </Col>
                             <Col xs="12" md="6" className="text-center mt-3">
                                 <h3>{this.props.meReducer.me.name}</h3>
