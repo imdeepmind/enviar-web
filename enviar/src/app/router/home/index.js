@@ -18,29 +18,52 @@ const loading = {
 }
 
 class Home extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            list: [],
+            page: 1
+        }
+    }
+    isNewData(newData, existingData){
+        if (newData.length < 1)
+            return false;
+        
+        if (existingData.length < 1)
+            return true;
+
+        const newId = newData[0]._id;
+        let ans = true;
+
+        existingData.map(val => {
+            if (val._id === newId){
+                ans = false;
+            }
+            return 0;
+        })
+
+        return ans;
+    }
     componentDidMount(){
         this.dataListRender();
     }
-    dataListRender = () => {
-        if (this.props.homeReducer.loading){
-            const data = {
-                page:  1,
-                limit: defaultPageSize
-            }
-            this.props.posts(data, this.props.history);
-        } 
-    }
-    loadMore = () => {
+    componentDidUpdate(nextProps){
         if (this.props.homeReducer.loading === false){
-            const data = {
-                page: this.props.homeReducer.page + 1,
-                limit: defaultPageSize
+            if (this.isNewData(this.props.homeReducer.posts, this.state.list)){
+                let data = [...this.state.list, ...this.props.homeReducer.posts];
+                this.setState({list: data});
             }
-            this.props.posts(data, this.props.history);
         }
     }
+    dataListRender = () => {
+        const data = {
+            page:  this.state.page,
+            limit: defaultPageSize
+        }
+        this.setState({page: this.state.page + 1}, () => this.props.posts(data, this.props.history));
+    }
     render(){
-        const items = this.props.homeReducer.posts.map(val => {
+        const items = this.state.list.map(val => {
             return (
                 <Post 
                     key={val._id}
@@ -62,8 +85,8 @@ class Home extends Component{
                         <Col xs="12" lg="7">
                         <InfiniteScroll
                             pageStart={1}
-                            loadMore={this.loadMore}
-                            hasMore={this.props.homeReducer.pages >= this.props.homeReducer.page}
+                            loadMore={this.dataListRender}
+                            hasMore={this.props.homeReducer.more}
                             loader={<BeatLoader key={0} css={loading} />}
                         >
                             {items}

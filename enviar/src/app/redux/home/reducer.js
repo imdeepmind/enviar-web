@@ -4,28 +4,22 @@ import {
 
 const INIT_STATE = {
     posts: [],
-    limit: 1,
-    page: 1,
-    pages: 1,
-    total: 1,
+    more: false,
     loading: true
 };
 
 export default (state = INIT_STATE, action) => {
     switch (action.type) {
         case POSTS:
-            return { ...state, loading: true };
+            return { ...state, loading: true, more: false };
         case POSTS_SUCCESS:
             return { ...state, 
                 loading: false, 
-                posts: [...state.posts, ...action.payload.docs], 
-                limit: action.payload.limit,
-                page: action.payload.page,
-                pages: action.payload.pages,
-                total: action.payload.total,
+                posts: action.payload.docs,
+                more: action.payload.docs.length > 0 ? true : false
             };
         case POSTS_ERROR:
-            return { ...state, loading: false, error: action.payload};
+            return { ...state, loading: false, error: action.payload, more: false};
         default: return { ...state };
     }
 }
