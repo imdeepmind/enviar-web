@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/enviar-web/precache-manifest.a60b4911054b558b96ef05dfb2582ae1.js"
+  "/enviar-web/precache-manifest.3d80ef03f1b7a0da9b5d3986c2a12b7c.js"
 );
 
 self.addEventListener('message', (event) => {
