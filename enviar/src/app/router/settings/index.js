@@ -24,7 +24,7 @@ class Settings extends Component{
             <Fragment>
                 <TopNav history={this.props.history} />
                     <Container>
-                        <h3>Change your password</h3>
+                        <b>change your password</b>
                         <ChangePasswordForm onSubmit={this.onChangePassword} />
                     </Container>
                 <FloatingActionButton history={this.props.history} />
