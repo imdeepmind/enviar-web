@@ -6,10 +6,7 @@ import {
 const INIT_STATE = {
     users: [],
     loading: true,
-    limit: 1,
-    page: 1,
-    pages: 1,
-    total: 1,
+    more: false,
     error: null,
     user: {},
     action: null
@@ -18,18 +15,15 @@ const INIT_STATE = {
 export default (state = INIT_STATE, action) => {
     switch (action.type) {
         case USERS:
-            return { ...state, loading: true };
+            return { ...state, loading: true, more: false };
         case USERS_SUCCESS: 
             return { ...state, 
                         loading: false, 
-                        users: [...state.users, ...action.payload.docs], 
-                        limit: action.payload.limit,
-                        page: action.payload.page,
-                        pages: action.payload.pages,
-                        total: action.payload.total,
+                        users: action.payload.docs, 
+                        more: action.payload.docs.length > 0 ? true : false
                     };
         case USERS_ERROR:
-            return { ...state, loading: false, error: action.payload};
+            return { ...state, loading: false, error: action.payload, more: false};
 
         case USERS_INDIVIDUAL:
             return { ...state, loading: true };

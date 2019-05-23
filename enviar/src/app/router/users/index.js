@@ -18,28 +18,49 @@ const loading = {
 }
 
 class Users extends Component{
+    constructor(props){
+        super(props);
+        this.state = {
+            list: [],
+            page: 1
+        }
+    }
+    isNewData(newData, existingData){
+        if (newData.length < 1)
+            return false;
+        
+        if (existingData.length < 1)
+            return true;
+
+        const newId = newData[0]._id;
+        let ans = true;
+
+        existingData.map(val => {
+            if (val._id === newId){
+                ans = false;
+            }
+        })
+
+        return ans;
+    }
     componentDidMount(){
         this.dataListRender();
     }
-    dataListRender = () => {
-        if (this.props.userReducer.loading){
-            const data = {
-                page:  1,
-                limit: defaultPageSize
-            }
-            this.props.users(data, this.props.history);
-        } 
-    }
-    loadMore = () => {
+    componentDidUpdate(nextProps){
         if (this.props.userReducer.loading === false){
-            const data = {
-                page: this.props.userReducer.page + 1,
-                limit: defaultPageSize
+            if (this.isNewData(this.props.userReducer.users, this.state.list)){
+                let data = [...this.state.list, ...this.props.userReducer.users];
+                this.setState({list: data});
             }
-            this.props.users(data, this.props.history);
         }
     }
-
+    dataListRender = () => {
+        const data = {
+            page:  this.state.page,
+            limit: defaultPageSize
+        }
+        this.setState({page: this.state.page + 1}, () => this.props.users(data, this.props.history));
+    }
     userAction = (what, username) => {
         const data = {
             what: what,
@@ -48,7 +69,7 @@ class Users extends Component{
         this.props.userAction(data, this.props.history);
     }
     render(){
-        const items = this.props.userReducer.users.map(val => {
+        const items = this.state.list.map(val => {
             return (
                 <Ucard 
                     key={val._id}
@@ -70,8 +91,8 @@ class Users extends Component{
                 <Container>
                     <InfiniteScroll
                         pageStart={1}
-                        loadMore={this.loadMore}
-                        hasMore={this.props.userReducer.pages >= this.props.userReducer.page}
+                        loadMore={this.dataListRender}
+                        hasMore={this.props.userReducer.more}
                         loader={<BeatLoader key={0} css={loading} />}
                     >
                         {items}
