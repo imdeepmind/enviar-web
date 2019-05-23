@@ -39,6 +39,7 @@ class Users extends Component{
             if (val._id === newId){
                 ans = false;
             }
+            return 0;
         })
 
         return ans;
