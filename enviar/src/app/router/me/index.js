@@ -1,7 +1,8 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BeatLoader } from 'react-spinners';
-import { Container } from 'reactstrap';
+import { Container, TabContent, TabPane, Nav, NavItem, NavLink, Button } from 'reactstrap';
+import classnames from 'classnames';
 
 import { getMe } from '../../../app/redux/actions';
 
@@ -16,9 +17,27 @@ const loading = {
     padding: '30px'
 }
 
+const tabStyle = {
+    marginRight: "-15px",
+    marginLeft: "-15px"
+}
+
 class Me extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+          activeTab: '1'
+        };
+    }
     componentDidMount(){
         this.dataListRender();
+    }
+    toggle = tab => {
+        if (this.state.activeTab !== tab) {
+          this.setState({
+            activeTab: tab
+          });
+        }
     }
     buildAddress = () => {
         let arr = []
@@ -52,11 +71,25 @@ class Me extends Component {
                                 status={this.props.meReducer.me.status}
                                 gender={this.props.meReducer.me.gender}
                             />
-                            <Detail 
-                                location={this.buildAddress()} 
-                                dob={this.props.meReducer.me.dob} 
-                                bio={this.props.meReducer.me.bio}
-                            />
+                            <div className="d-flex justify-content-between align-items-center" style={tabStyle}>
+                                <Button className={classnames({ 'border-bottom border-primary': this.state.activeTab === '1' })} onClick={() => { this.toggle('1'); }}><i className="fas fa-book-open"></i></Button>
+                                <Button className={classnames({ 'border-bottom border-primary': this.state.activeTab === '2' })} onClick={() => { this.toggle('2'); }}><i className="fas fa-user-friends"></i></Button>
+                                <Button className={classnames({ 'border-bottom border-primary': this.state.activeTab === '3' })} onClick={() => { this.toggle('3'); }}><i className="fas fa-users"></i></Button>
+                                <Button className={classnames({ 'border-bottom border-primary': this.state.activeTab === '4' })} onClick={() => { this.toggle('4'); }}><i className="fas fa-user-slash"></i></Button>
+                            </div>
+                            <TabContent activeTab={this.state.activeTab}>
+                                <TabPane tabId="1">
+                                    <Detail 
+                                        location={this.buildAddress()} 
+                                        dob={this.props.meReducer.me.dob} 
+                                        bio={this.props.meReducer.me.bio}
+                                    />
+                                </TabPane>
+                            </TabContent>
+
+
+
+                            
                         </Fragment>
                         : <AError title={this.props.meReducer.error} />
                     )}
