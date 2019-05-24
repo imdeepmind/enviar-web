@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux';
 import { BeatLoader } from 'react-spinners';
-import { Container, TabContent, TabPane, Nav, NavItem, NavLink, Button } from 'reactstrap';
+import { Container, TabContent, TabPane, Button } from 'reactstrap';
 import classnames from 'classnames';
 
 import { getMe, getFollowersList, getFollowingList, getBlockedList, userAction } from '../../../app/redux/actions';
@@ -76,7 +76,6 @@ class Me extends Component {
         this.props.userAction(data, this.props.history);
     }
     render(){
-        console.log(this.props);
         return (
             <Fragment>
                 <Container>
@@ -120,7 +119,7 @@ class Me extends Component {
                                                     action={this.userAction}
                                                 />
                                             )
-                                        }) : "please follow someone to see them in this list"
+                                        }) : <div className="text-center mt-2">please follow someone to see them in this list</div>
                                     }
                                 </TabPane>
                                 <TabPane tabId="3">
@@ -138,7 +137,7 @@ class Me extends Component {
                                                     action={this.userAction}
                                                 />
                                             )
-                                        }) : "if someone follows you then you will see someone here"
+                                        }) : <div className="text-center mt-2">hey do want to know the secret to get more followers, well the answer is just to ask all your friends to join enviar</div>
                                     }
                                 </TabPane>
                                 <TabPane tabId="4">
@@ -156,7 +155,7 @@ class Me extends Component {
                                                     action={this.userAction}
                                                 />
                                             )
-                                        }) : "great that the list is empty"
+                                        }) : <div className="text-center mt-2">i really love empty lists</div>
                                     }
                                 </TabPane>
                             </TabContent>
