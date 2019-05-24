@@ -1,6 +1,7 @@
 import React, { Fragment } from 'react'
 import { Field, reduxForm } from 'redux-form'
 import { required, length } from 'redux-form-validators';
+import classnames from 'classnames';
 import {
     Form,
     Input,
@@ -9,10 +10,10 @@ import {
 
 let OwnInput = (field) => (
     <Fragment>
-        <Input {...field.input}  {...field} />
+        <Input {...field.input}  {...field} className={classnames({'mb-1' : true, 'is-invalid' : field.meta.touched && field.meta.error})} />
         {
             field.meta.touched && field.meta.error &&
-            <span className="has-error text-danger">{field.meta.error}</span>
+            <div className="has-error invalid-feedback text-left">{field.meta.error}</div>
         }
     </Fragment>
 )
@@ -23,7 +24,7 @@ let LoginUser = (props) => {
         <Form onSubmit={handleSubmit}>
             <Field name="username" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Username" />
             <Field name="password" component={OwnInput} type="password" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Password" />
-            <Button color="primary" className="w-100" type="submit">Login</Button>
+            <Button color="primary" disabled={!props.valid} className="w-100" type="submit">Login</Button>
         </Form>
     )
 }
