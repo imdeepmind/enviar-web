@@ -29,9 +29,9 @@ export const ALL_PEOPLES = ENDPOINT + 'chats/allpeoples';
 
 // ME
 export const ME = ENDPOINT + 'me/';
-export const MY_FOLLOWERS = ENDPOINT + 'followers/';
-export const MY_FOLLOWING = ENDPOINT + 'following/';
-export const MY_BLOCKED = ENDPOINT + 'blocked/';
+export const MY_FOLLOWERS = ENDPOINT + 'me/followers/';
+export const MY_FOLLOWING = ENDPOINT + 'me/followee/';
+export const MY_BLOCKED = ENDPOINT + 'me/blocked/';
 
 // SETTINGS
 export const CHANGE_PASSWORD = ENDPOINT + 'settings/change/password';

@@ -11,7 +11,9 @@ const INIT_STATE = {
     following: [],
     blocked: [],
     error: null,
-    loading: true
+    errorSmall: null,
+    loading: true,
+    loadingSmall: true
 };
 
 export default (state = INIT_STATE, action) => {
@@ -27,34 +29,34 @@ export default (state = INIT_STATE, action) => {
             return { ...state, loading: false, error: action.payload};
         
         case GET_FOLLOWERS_LIST:
-            return { ...state, loading: true };
+            return { ...state, loadingSmall: true };
         case GET_FOLLOWERS_LIST_SUCCESS: 
             return { ...state, 
-                        loading: false, 
+                        loadingSmall: false, 
                         followers: action.payload
                     };
         case GET_FOLLOWERS_LIST_ERROR:
-            return { ...state, loading: false, error: action.payload};
+            return { ...state, loadingSmall: false, errorSmall: action.payload};
 
         case GET_FOLLOWING_LIST:
-            return { ...state, loading: true };
+            return { ...state, loadingSmall: true };
         case GET_FOLLOWING_LIST_SUCCESS: 
             return { ...state, 
-                        loading: false, 
-                        followers: action.payload
+                        loadingSmall: false, 
+                        following: action.payload
                     };
         case GET_FOLLOWING_LIST_ERROR:
-            return { ...state, loading: false, error: action.payload};
+            return { ...state, loadingSmall: false, errorSmall: action.payload};
 
         case GET_BLOCKED_LIST:
-            return { ...state, loading: true };
+            return { ...state, loadingSmall: true };
         case GET_BLOCKED_LIST_SUCCESS: 
             return { ...state, 
-                        loading: false, 
+                        loadingSmall: false, 
                         blocked: action.payload
                     };
         case GET_BLOCKED_LIST_ERROR:
-            return { ...state, loading: false, error: action.payload};
+            return { ...state, loadingSmall: false, errorSmall: action.payload};
             
         default: return { ...state };
     }

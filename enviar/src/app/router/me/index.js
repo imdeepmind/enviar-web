@@ -4,12 +4,13 @@ import { BeatLoader } from 'react-spinners';
 import { Container, TabContent, TabPane, Nav, NavItem, NavLink, Button } from 'reactstrap';
 import classnames from 'classnames';
 
-import { getMe } from '../../../app/redux/actions';
+import { getMe, getFollowersList, getFollowingList, getBlockedList, userAction } from '../../../app/redux/actions';
 
 import FloatingActionButton from '../../container/floatingActionButton';
 import Hero from './components/hero';
 import Detail from './components/detail';
 import AError from './components/error';
+import Ucard from './components/ucard';
 
 const loading = {
     display: 'flex',
@@ -32,11 +33,22 @@ class Me extends Component {
     componentDidMount(){
         this.dataListRender();
     }
+    loadData = () => {
+        const tab = this.state.activeTab;
+
+        if (tab === '2'){
+            this.props.getFollowingList();
+        } else if (tab === '3'){
+            this.props.getFollowersList();
+        } else if (tab === '4'){
+            this.props.getBlockedList();
+        }
+    }
     toggle = tab => {
         if (this.state.activeTab !== tab) {
           this.setState({
             activeTab: tab
-          });
+          }, () => this.loadData());
         }
     }
     buildAddress = () => {
@@ -56,7 +68,15 @@ class Me extends Component {
     dataListRender = () => {
         this.props.getMe();
     }
+    userAction = (what, username) => {
+        const data = {
+            what: what,
+            username: username
+        }
+        this.props.userAction(data, this.props.history);
+    }
     render(){
+        console.log(this.props);
         return (
             <Fragment>
                 <Container>
@@ -85,6 +105,60 @@ class Me extends Component {
                                         bio={this.props.meReducer.me.bio}
                                     />
                                 </TabPane>
+                                <TabPane tabId="2">
+                                    {this.props.meReducer.loadingSmall ? <BeatLoader key={0} css={loading} /> : 
+                                        this.props.meReducer.following.length > 0 ? 
+                                        this.props.meReducer.following.map(val => {
+                                            return (
+                                                <Ucard 
+                                                    key={val._id}
+                                                    avatar={val.avatar} 
+                                                    username={val.username} 
+                                                    name={val.name}
+                                                    status={val.status}
+                                                    followee={true}
+                                                    action={this.userAction}
+                                                />
+                                            )
+                                        }) : "please follow someone to see them in this list"
+                                    }
+                                </TabPane>
+                                <TabPane tabId="3">
+                                    {this.props.meReducer.loadingSmall ? <BeatLoader key={0} css={loading} /> : 
+                                        this.props.meReducer.followers.length > 0 ? 
+                                        this.props.meReducer.followers.map(val => {
+                                            return (
+                                                <Ucard 
+                                                    key={val._id}
+                                                    avatar={val.avatar} 
+                                                    username={val.username} 
+                                                    name={val.name}
+                                                    status={val.status}
+                                                    followers={true}
+                                                    action={this.userAction}
+                                                />
+                                            )
+                                        }) : "if someone follows you then you will see someone here"
+                                    }
+                                </TabPane>
+                                <TabPane tabId="4">
+                                    {this.props.meReducer.loadingSmall ? <BeatLoader key={0} css={loading} /> : 
+                                        this.props.meReducer.blocked.length > 0 ? 
+                                        this.props.meReducer.blocked.map(val => {
+                                            return (
+                                                <Ucard 
+                                                    key={val._id}
+                                                    avatar={val.avatar} 
+                                                    username={val.username} 
+                                                    name={val.name}
+                                                    status={val.status}
+                                                    blocked={true}
+                                                    action={this.userAction}
+                                                />
+                                            )
+                                        }) : "great that the list is empty"
+                                    }
+                                </TabPane>
                             </TabContent>
 
 
@@ -106,6 +180,6 @@ const mapStateToProps = (state) => state;
 export default connect(
     mapStateToProps,
     {
-        getMe
+        getMe, getFollowersList, getFollowingList, getBlockedList, userAction
     }
 )(Me);
