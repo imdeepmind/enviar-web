@@ -1,5 +1,7 @@
 import React from 'react';
 import Moment from 'react-moment';
+import ImageLoader from 'react-loading-image';
+import { BounceLoader} from 'react-spinners';
 import {
     Card, CardBody, CardImg, CardTitle
 } from 'reactstrap';
@@ -17,6 +19,10 @@ const imageErr = (event) => {
     event.target.src=PostImage;
 }
 
+const style = {
+    height: "343px"
+}
+
 const Post = (props) => {
     return (
         <Card className="mb-4"> 
@@ -26,7 +32,12 @@ const Post = (props) => {
                     avatar={props.avatar} 
                     text={props.status} />
             </div>
-            <CardImg  top width="100%" src={`${RESOURCE}/post/${props.postImage}/medium`} alt={props.caption} onError={imageErr} />
+            <ImageLoader
+                className="w-100 h-auto"
+                src={`${RESOURCE}/post/${props.postImage}/medium`}
+                onError={imageErr}
+                loading={() => <div className="d-flex justify-content-center align-items-center w-100"  style={style} ><BounceLoader key={0} /></div>}
+            />
             <CardBody>
                 <CardTitle>
                     {props.caption}

@@ -19,8 +19,6 @@ import Settings from './app/router/settings';
 import Messages from './app/router/messages';
 import Chat from './app/router/chat';
 
-import 'react-toastify/dist/ReactToastify.min.css'; 
-
 import store from './app/redux/store';
 
 /*
