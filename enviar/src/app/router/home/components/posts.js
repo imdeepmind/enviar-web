@@ -10,6 +10,13 @@ import {  RESOURCE } from '../../../../constants/endpoints';
 
 import { dateTimeFormat } from '../../../../constants/configs';
 
+import PostImage from '../../../../assets/img/post.png';
+// author -<div>Icons made by <a href="https://www.freepik.com/" title="Freepik">Freepik</a> from <a href="https://www.flaticon.com/" 			    title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" 			    title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+const imageErr = (event) => {
+    event.target.src=PostImage;
+}
+
 const Post = (props) => {
     return (
         <Card className="mb-4"> 
@@ -19,7 +26,7 @@ const Post = (props) => {
                     avatar={props.avatar} 
                     text={props.status} />
             </div>
-            <CardImg top width="100%" src={`${RESOURCE}/post/${props.postImage}/medium`} alt={props.caption} />
+            <CardImg  top width="100%" src={`${RESOURCE}/post/${props.postImage}/medium`} alt={props.caption} onError={imageErr} />
             <CardBody>
                 <CardTitle>
                     {props.caption}
