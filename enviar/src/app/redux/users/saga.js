@@ -29,6 +29,7 @@ function* getUsers({ payload }) {
         const myUsers = yield call(getUsersAsync, page, limit);
         yield put(usersSuccess(myUsers.data));
     } catch (error) {
+        toast.error(error.response.data.message);
         yield put(usersError(error.response.data.message));
     }
 }
@@ -41,11 +42,15 @@ const getUserAsync = async (username) => {
 
 function* getUser({ payload }) {    
     try {
+        yield put(showLoading());
         const { username } = payload.user;
         const myUsers = yield call(getUserAsync, username);
         yield put(usersSuccessIndividual(myUsers.data));
     } catch (error) {
+        toast.error(error.response.data.message);
         yield put(usersErrorIndividual(error.response.data.message));
+    } finally {
+        yield put(hideLoading());
     }
 }
 

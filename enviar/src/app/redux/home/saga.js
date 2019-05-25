@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import { POSTS } from '../../../constants/endpoints';
+import { toast } from 'react-toastify';
 import {
     POSTS as POSTS_ACTION
 } from '../../../constants/actions';
@@ -26,6 +27,7 @@ function* getPosts({ payload }) {
         const myPosts = yield call(getPostsAsync, page, limit);
         yield put(postsSuccess(myPosts.data));
     } catch (error) {
+        toast.error(error.response.data.message);
         yield put(postsError(error.response.data.message));
     }
 }

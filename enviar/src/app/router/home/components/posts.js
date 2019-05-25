@@ -3,7 +3,7 @@ import Moment from 'react-moment';
 import ImageLoader from 'react-loading-image';
 import { BounceLoader} from 'react-spinners';
 import {
-    Card, CardBody, CardImg, CardTitle
+    Card, CardBody, CardTitle
 } from 'reactstrap';
 
 import ProfileCard from '../../../components/profileCard';
