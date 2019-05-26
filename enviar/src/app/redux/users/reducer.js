@@ -1,15 +1,22 @@
 import {
-    USERS, USERS_SUCCESS, USERS_ERROR, USERS_INDIVIDUAL, USERS_SUCCESS_INDIVIDUAL, USERS_ERROR_INDIVIDUAL, 
-    USER_ACTION, USER_ACTION_SUCCESS, USER_ACTION_ERROR
+    USERS, USERS_SUCCESS, USERS_ERROR, 
+    USERS_INDIVIDUAL, USERS_SUCCESS_INDIVIDUAL, USERS_ERROR_INDIVIDUAL, 
+    USER_ACTION, USER_ACTION_SUCCESS, USER_ACTION_ERROR,
+    USERS_FOLLOWEE, USERS_FOLLOWEE_ERROR, USERS_FOLLOWEE_SUCCESS,
+    USERS_FOLLOWERS, USERS_FOLLOWERS_ERROR, USERS_FOLLOWERS_SUCCESS
 } from '../../../constants/actions';
 
 const INIT_STATE = {
     users: [],
-    loading: true,
+    followers: [],
+    following: [],
     more: false,
-    error: null,
     user: {},
-    action: null
+    action: null,
+    error: null,
+    errorSmall: null,
+    loading: true,
+    loadingSmall: true
 };
 
 export default (state = INIT_STATE, action) => {
@@ -40,6 +47,24 @@ export default (state = INIT_STATE, action) => {
             return {...state, action: action.payload}
         case USER_ACTION_ERROR: 
             return {...state, action: action.payload}
+        case USERS_FOLLOWERS:
+            return { ...state, loadingSmall: true };
+        case USERS_FOLLOWERS_SUCCESS: 
+            return { ...state, 
+                        loadingSmall: false, 
+                        followers: action.payload
+                    };
+        case USERS_FOLLOWERS_ERROR:
+            return { ...state, loadingSmall: false, errorSmall: action.payload};
+        case USERS_FOLLOWEE:
+            return { ...state, loadingSmall: true };
+        case USERS_FOLLOWEE_SUCCESS: 
+            return { ...state, 
+                        loadingSmall: false, 
+                        followers: action.payload
+                    };
+        case USERS_FOLLOWEE_ERROR:
+            return { ...state, loadingSmall: false, errorSmall: action.payload};
         default: return { ...state };
     }
 }

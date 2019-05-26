@@ -3,14 +3,19 @@ import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
-import { USERS, USER_ACTION as USER_ACTION_URL } from '../../../constants/endpoints';
+import { 
+    USERS, USER_ACTION as USER_ACTION_URL, 
+    USERS_FOLLOWERS as USERS_FOLLOWERS_URL,
+    USERS_FOLLOWEE as USERS_FOLLOWEE_URL,
+} from '../../../constants/endpoints';
+
 import {
-    USERS as USERS_ACTION, USERS_INDIVIDUAL, USER_ACTION
+    USERS as USERS_ACTION, USERS_INDIVIDUAL, USER_ACTION, USERS_FOLLOWERS, USERS_FOLLOWEE
 } from '../../../constants/actions';
 
 
 import {
-    usersSuccess, usersError, usersSuccessIndividual, usersErrorIndividual, userActionSuccess, userActionError
+    usersSuccess, usersError, usersSuccessIndividual, usersErrorIndividual, userActionSuccess, userActionError, usersFolloweeSuccess, usersFollowersError, usersFollowersSuccess, usersFolloweeError
 } from './action';
 
 const getUsersAsync = async (page, limit) => {
@@ -82,6 +87,38 @@ function* userAction ({payload}){
     }
 }
 
+const usersFollowersAsync = (username) => {
+    const url = `${USERS_FOLLOWERS_URL}${username}`;
+    return axios.get(url);
+}
+
+function* usersFollowers({payload}){
+    try {
+        const { username } = payload.user;
+        const list = yield call(usersFollowersAsync, username);
+        yield put(usersFollowersSuccess(list.data));
+    } catch (error) {
+        toast.error(error.response.data.message);
+        yield put(usersFollowersError(error.response.data.message));
+    }
+}
+
+const usersFolloweeAsync = (username) => {
+    const url = `${USERS_FOLLOWEE_URL}${username}`;
+    return axios.get(url);
+}
+
+function* usersFollowee({payload}){
+    try {
+        const { username } = payload.user;
+        const list = yield call(usersFolloweeAsync, username);
+        yield put(usersFolloweeSuccess(list.data));
+    } catch (error) {
+        toast.error(error.response.data.message);
+        yield put(usersFolloweeError(error.response.data.message));
+    }
+}
+
 export function* watchUserAction(){
     yield takeEvery(USER_ACTION, userAction);
 }
@@ -94,10 +131,20 @@ export function* watchUser() {
     yield takeEvery(USERS_INDIVIDUAL, getUser);
 }
 
+export function* watchUsersFollowers(){
+    yield takeEvery(USERS_FOLLOWERS, usersFollowers);
+}
+
+export function* watchUsersFollowee(){
+    yield takeEvery(USERS_FOLLOWEE, usersFollowee);
+}
+
 export default function* rootSaga() {
     yield all([
         fork(watchUsers),
         fork(watchUser),
-        fork(watchUserAction)
+        fork(watchUserAction),
+        fork(watchUsersFollowers),
+        fork(watchUsersFollowee)
     ]);
 }
