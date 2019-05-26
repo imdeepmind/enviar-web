@@ -4,9 +4,7 @@ import { toast } from 'react-toastify';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 
 import { 
-    USERS, USER_ACTION as USER_ACTION_URL, 
-    USERS_FOLLOWERS as USERS_FOLLOWERS_URL,
-    USERS_FOLLOWEE as USERS_FOLLOWEE_URL,
+    USERS, USER_ACTION as USER_ACTION_URL,
 } from '../../../constants/endpoints';
 
 import {
@@ -88,7 +86,8 @@ function* userAction ({payload}){
 }
 
 const usersFollowersAsync = (username) => {
-    const url = `${USERS_FOLLOWERS_URL}${username}`;
+    console.log(username);
+    const url = `${USERS}${username}/followers`;
     return axios.get(url);
 }
 
@@ -104,8 +103,8 @@ function* usersFollowers({payload}){
 }
 
 const usersFolloweeAsync = (username) => {
-    const url = `${USERS_FOLLOWEE_URL}${username}`;
-    return axios.get(url);
+    const url = `${USERS}${username}/followee`;
+    return axios.get(url); 
 }
 
 function* usersFollowee({payload}){
