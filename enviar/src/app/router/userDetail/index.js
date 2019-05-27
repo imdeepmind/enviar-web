@@ -117,6 +117,9 @@ class UserDetail extends Component {
                                                         avatar={val.avatar} 
                                                         username={val.username} 
                                                         name={val.name}
+                                                        isBlocked={val.isBlocked}
+                                                        isFollowee={val.isFollowee}
+                                                        isFollowers={val.isFollowers}
                                                         status={val.status}
                                                         followee={true}
                                                         action={this.userAction}
@@ -136,7 +139,9 @@ class UserDetail extends Component {
                                                         username={val.username} 
                                                         name={val.name}
                                                         status={val.status}
-                                                        followers={true}
+                                                        isBlocked={val.isBlocked}
+                                                        isFollowee={val.isFollowee}
+                                                        isFollowers={val.isFollowers}
                                                         action={this.userAction}
                                                     />
                                                 )
