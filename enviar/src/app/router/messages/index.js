@@ -62,7 +62,6 @@ class Messages extends Component{
         }
     }
     render(){
-        console.log(this.props);
         const items = this.state.list.map(val => {
             return (
                 <UCard 
@@ -81,7 +80,7 @@ class Messages extends Component{
                     <InfiniteScroll
                         pageStart={1}
                         loadMore={this.dataListRender}
-                        hasMore={this.props.chatsReducer.more}
+                        hasMore={this.props.chatsReducer.more2}
                         loader={<BeatLoader key={0} css={loading} />}
                     >
                         {items}

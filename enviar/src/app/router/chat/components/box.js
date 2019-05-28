@@ -23,7 +23,7 @@ const messageBoxStyleYou = {
 }
 
 const Box = props => {
-    console.log(props);
+    // console.log(props);
     return (
         props.leftSide ? 
         <div className="d-flex w-75">

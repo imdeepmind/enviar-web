@@ -5,10 +5,11 @@ import { connect } from 'react-redux';
 import { BeatLoader } from 'react-spinners';
 import decode from 'jwt-decode';
 
-import TopNav from '../../container/topNav';
 import Box from './components/box';
+import Head from './components/head';
+import Sender from './components/sender';
 
-import { getChat } from '../../redux/actions';
+import { getChat, usersIndividual, sendMessage } from '../../redux/actions';
 import { defaultPageSize } from '../../../constants/configs';
 
 const me = localStorage.getItem('user') ? decode(localStorage.getItem('user')) : {};
@@ -19,33 +20,65 @@ const loading = {
 }
 
 class Chat extends Component{
-    componentDidMount(){
-        this.dataListRender();
-    }
-    dataListRender = () => {
-        if (this.props.chatsReducer.loading){
-            const data = {
-                page:  1,
-                limit: defaultPageSize,
-                username: this.props.match.params.username
-            }
-            this.props.getChat(data, this.props.history);
-        } 
-    }
-    loadMore = () => {
-        if (this.props.chatsReducer.loading === false){
-            const data = {
-                page: this.props.chatsReducer.page + 1,
-                limit: defaultPageSize,
-                username: this.props.match.params.username
-            }
-            this.props.getChat(data, this.props.history);
+    constructor(props){
+        super(props);
+        this.state = {
+                list: [],
+                page: 1
         }
     }
+    isNewData(newData, existingData){
+        if (newData.length < 1)
+            return false;
+        
+        if (existingData.length < 1)
+            return true;
+
+        const newId = newData[0]._id;
+        let ans = true;
+
+        existingData.map(val => {
+            if (val._id === newId){
+                ans = false;
+            }
+            return 0;
+        })
+
+        return ans;
+    }
+    componentDidMount(){
+        console.log('compoent did mount');
+        this.props.usersIndividual({username: this.props.match.params.username}, this.props.history);
+        this.setState({list:[],page:1}, () => this.dataListRender());
+    }
+    componentDidUpdate(nextProps){
+        if (this.props.chatsReducer.loading === false){
+            if (this.isNewData(this.props.chatsReducer.chats, this.state.list)){
+                let data = [...this.state.list, ...this.props.chatsReducer.chats];
+                this.setState({list: data});
+            }
+        }
+    }
+    dataListRender = () => {
+        const data = {
+            page:  this.state.page,
+            limit: defaultPageSize,
+            username: this.props.match.params.username
+        }
+        this.setState({page: this.state.page + 1}, () =>  this.props.getChat(data, this.props.history));
+    }
+
+    sendMessage = (message) => {
+        const data = {
+            message,
+            username:  this.props.match.params.username
+        }
+
+        this.props.sendMessage(data, this.props.history);
+    }
     render(){
-        console.log(this.props, me);
-        const you = this.props.match.params.username;
-        let items = this.props.chatsReducer.chats.map(val => {
+        console.log(this.props);
+        let items = this.state.list.map(val => {
             return (
                 <Box 
                     key={val._id}
@@ -53,28 +86,43 @@ class Chat extends Component{
                     createdAt={val.createdAt}
                     author={val.author}
                     to={val.to}
-                    leftSide={you === val.author ? true: false}
-                    avatar={you === val.author ? this.props.chatsReducer.friend.avatar : me.avatar}
+                    leftSide={this.props.match.params.username === val.author ? true: false}
                 />
             )
         });
 
-        items.reverse();
+        // items.reverse();
         return(
             <Fragment>
-                <TopNav history={this.props.history} />
+                {this.props.userReducer.loading ? "" : 
+                <Head 
+                    history={this.props.history}
+                    avatar={this.props.userReducer.user.avatar}
+                    name={this.props.userReducer.user.name}
+                    username={this.props.userReducer.user.username}
+                />}
+                 <InfiniteScroll
+                    pageStart={1}
+                    loadMore={this.dataListRender}
+                    hasMore={this.props.chatsReducer.more}
+                    loader={<BeatLoader key={0} css={loading} />}
+                >
+                    {items}
+                </InfiniteScroll> 
+                
                 <Container>
-                    <InfiniteScroll
-                        pageStart={1}
-                        loadMore={this.loadMore}
-                        hasMore={this.props.chatsReducer.pages >= this.props.chatsReducer.page}
-                        loader={<BeatLoader key={0} css={loading} />}
-                    >
-                        {items}
-                    </InfiniteScroll>
+
+               
 
                     {/* {items.length < 1 && this.props.userReducer.loading === false ? <NoUsers /> : ""} */}
+
+
+                    
+
+                    
                 </Container>
+
+                <Sender onSubmit={this.sendMessage}/>
             </Fragment>
         )
     }
@@ -85,6 +133,6 @@ const mapStateToProps = (state) => state;
 export default connect(
     mapStateToProps,
     {
-        getChat
+        getChat, usersIndividual, sendMessage
     }
 )(Chat);

@@ -8,3 +8,9 @@
 .rtf{
     z-index: 99999999;
 }
+
+.no-focus:focus{
+    border-color: none;
+    box-shadow: none;
+    outline: 0 none;
+}
