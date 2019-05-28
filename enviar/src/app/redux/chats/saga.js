@@ -18,8 +18,12 @@ const getChatAsync = async (username, page, limit) => {
     return axios.get(url);
 }
 
-const getAllPeoplesAsync = async () => {
-    return axios.get(ALL_PEOPLES);
+const getAllPeoplesAsync = async (page, limit) => {
+    if (!page || page < 0) page = 0;
+    if (!limit || limit <= 0) limit = 10;
+
+    const url = `${ALL_PEOPLES}?page=${page}&limit=${limit}`;
+    return axios.get(url);
 }
 
 function* getChats({ payload }) { 
@@ -33,10 +37,11 @@ function* getChats({ payload }) {
     }
 }
 
-function* getAllPeoples2(){
+function* getAllPeoples2({payload}){
     try{
         yield put(showLoading());
-        const peoples = yield call(getAllPeoplesAsync);
+        const { page, limit } = payload.data;
+        const peoples = yield call(getAllPeoplesAsync, page, limit);
         yield put(getAllPeoplesSuccess(peoples.data));
     } catch(error) {
         toast.error(error.response.data.message);

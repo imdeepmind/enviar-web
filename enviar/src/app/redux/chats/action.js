@@ -17,8 +17,9 @@ export const getChatError = (error) => ({
     payload: error
 });
 
-export const getAllPeoples = () => ({
-    type: GET_ALL_PEOPLES
+export const getAllPeoples = (data) => ({
+    type: GET_ALL_PEOPLES,
+    payload:{data}
 });
 
 export const getAllPeoplesSuccess = (peoples) => ({

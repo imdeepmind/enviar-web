@@ -44,16 +44,16 @@ const Post = (props) => {
                     <br /> <small><Moment format={dateTimeFormat}>{props.dateTime}</Moment></small>
                 </CardTitle>
             </CardBody>
-            <div className="d-flex justify-content-between align-items-center pl-3 pr-3 pb-2 pt-2 border-top" style={{fontSize:"1.2em"}}>
-                Will be added soon
+            {/* <div className="d-flex justify-content-between align-items-center pl-3 pr-3 pb-2 pt-2 border-top" style={{fontSize:"1.2em"}}>
+                 Will be added soon 
                 
-                {/* <div>
+                { <div>
                     <i className="far fa-heart class-cursor-pointer" onClick={props.likeMethod}></i> <span>{props.likes} likes</span> 
                 </div>
                 <div>
                     <i className="far fa-comment-dots float-right class-cursor-pointer" onClick={props.commentMethod}></i>
-                </div> */}
-            </div>
+                </div> 
+            </div> */}
         </Card>
     )
 }
