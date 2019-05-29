@@ -49,7 +49,6 @@ class Chat extends Component{
         return ans;
     }
     componentDidMount(){
-        console.log('compoent did mount');
         this.props.usersIndividual({username: this.props.match.params.username}, this.props.history);
         this.setState({list:[],page:1}, () => this.dataListRender());
     }
@@ -79,7 +78,6 @@ class Chat extends Component{
         this.props.sendMessage(data, this.props.history);
     }
     render(){
-        console.log(this.props);
         let items = this.state.list.map(val => {
             return (
                 <Box 

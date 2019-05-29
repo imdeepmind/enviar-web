@@ -36,7 +36,6 @@ const sendMessageAsync = (message, username) => {
 
 function* getChats({ payload }) { 
     try{
-        console.log(payload)
         const { username, page, limit } = payload.chat;
         const newChat = yield call(getChatAsync, username, page, limit);
         yield put(getChatSuccess(newChat.data));

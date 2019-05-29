@@ -26,7 +26,6 @@ const timeStyle = {
 }
 
 const Box = props => {
-    // console.log(props);
     return (
         props.leftSide ? 
         <div className="w-100 d-flex flex-column mb-3 text-left align-items-start">
