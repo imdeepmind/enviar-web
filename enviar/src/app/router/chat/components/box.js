@@ -42,11 +42,3 @@ const Box = props => {
 }
 
 export default Box;
-
-{/* <div className="d-flex w-75">
-{}
-<div style={messageBoxStyleYou} className="d-flex align-items-center">{props.message}</div>
-</div> : 
-<div className="d-flex w-75 float-right">
-<div style={messageBoxStyleMe} className="d-flex align-items-center">{props.message}</div>
-</div> */}
