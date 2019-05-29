@@ -14,7 +14,7 @@ class Ucard extends Component{
                             <Avatar source={this.props.avatar} title={this.props.name} />
                         </Col>
                         <Col xs="7" md="9" className="text-left">
-                            <CardTitle><Link to={`${this.props.username}`}>{this.props.name}<br /><small>@{this.props.username}</small></Link></CardTitle>
+                            <CardTitle><Link to={`/messages/${this.props.username}`}>{this.props.name}<br /><small>@{this.props.username}</small></Link></CardTitle>
                             <CardSubtitle>{this.props.status}</CardSubtitle>
                         </Col>
                     </Row>
