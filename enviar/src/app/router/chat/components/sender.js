@@ -3,7 +3,8 @@ import { Input, Button, Form } from 'reactstrap';
 
 const sender = {
     position:"absolute",
-    bottom: "0px"
+    bottom: "0px",
+    height: "46px"
 }
 const senderButton = {
     width: "30px",

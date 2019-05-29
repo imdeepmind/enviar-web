@@ -17,13 +17,12 @@ const INIT_STATE = {
 export default (state = INIT_STATE, action) => {
     switch (action.type) {
         case GET_CONVERSATION:
-            return { ...state, loading: true, more: false };
+            return { ...state, loading: true, more: false, chats: [] };
         case GET_CONVERSATION_SUCCESS:
-            console.log('before loading the data', state);
         return { ...state, 
             loading: false, 
             chats: action.payload.docs,
-            more: action.payload.length > 0 ? true : false
+            more: action.payload.docs.length > 0 ? true : false
         };
         case GET_CONVERSATION_ERROR:
             return { ...state, 

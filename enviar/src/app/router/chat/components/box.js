@@ -1,40 +1,52 @@
 import React from 'react';
+import Moment from 'react-moment';
 
-import Avatar from '../../../components/avatar';
+import { timeFormat } from '../../../../constants/configs';
 
-const messageBoxStyleMe = {
-    width: '100%',
-    minHeight: '44px',
-    background: '#1ddced',
-    color: "white",
-    margin: '8px 3px',
-    padding: '3px 8px',
-    borderRadius: '30px'
+const styleMessageRight = {
+    borderBottomLeftRadius:"30px",
+    borderTopLeftRadius:"30px",
+    background:"deepskyblue",
+    minWidth: "30%",
+    maxWidth: "70%"
 }
 
-const messageBoxStyleYou = {
-    width: '100%',
-    minHeight: '44px',
-    background: '#1adda4',
-    color: "white",
-    margin: '8px 3px',
-    padding: '3px 8px',
-    borderRadius: '30px'
+const styleMessageLeft = {
+    borderBottomRightRadius:"30px",
+    borderTopRightRadius:"30px",
+    background:"#72ff72",
+    minWidth: "30%",
+    maxWidth: "70%"
+}
+
+const timeStyle = {
+    color: "grey",
+    fontSize: "0.6rem",
+    fontStyle: "italic"
 }
 
 const Box = props => {
     // console.log(props);
     return (
         props.leftSide ? 
-        <div className="d-flex w-75">
-            <div className="d-flex justify-content-center align-items-center"><Avatar source={props.avatar} title={props.author} width="48px" /></div>
-            <div style={messageBoxStyleYou} className="d-flex align-items-center">{props.message}</div>
+        <div className="w-100 d-flex flex-column mb-3 text-left align-items-start">
+            <small className="">{props.author}</small>
+            <span className="p-2 text-white"  style={styleMessageLeft}>{props.message}{" "}<small style={timeStyle}><Moment format={timeFormat}>{props.createdAt}</Moment></small></span> 
         </div> : 
-        <div className="d-flex w-75 float-right">
-            <div style={messageBoxStyleMe} className="d-flex align-items-center">{props.message}</div>
-            <div className="d-flex justify-content-center align-items-center"><Avatar source={props.avatar} title={props.author} width="48px" /></div>
+        <div className="w-100 d-flex flex-column mb-3 text-right align-items-end">
+            <small className="">{props.author}</small>
+            <span className="p-2 text-white"  style={styleMessageRight}>{props.message}{" "}<small style={timeStyle}><Moment format={timeFormat}>{props.createdAt}</Moment></small></span> 
         </div>
+
     )
 }
 
 export default Box;
+
+{/* <div className="d-flex w-75">
+{}
+<div style={messageBoxStyleYou} className="d-flex align-items-center">{props.message}</div>
+</div> : 
+<div className="d-flex w-75 float-right">
+<div style={messageBoxStyleMe} className="d-flex align-items-center">{props.message}</div>
+</div> */}

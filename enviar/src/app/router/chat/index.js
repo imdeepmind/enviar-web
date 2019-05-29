@@ -1,9 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
 import InfiniteScroll from 'react-infinite-scroller';
-import { Container } from 'reactstrap';
 import { connect } from 'react-redux';
 import { BeatLoader } from 'react-spinners';
-import decode from 'jwt-decode';
 
 import Box from './components/box';
 import Head from './components/head';
@@ -12,11 +10,15 @@ import Sender from './components/sender';
 import { getChat, usersIndividual, sendMessage } from '../../redux/actions';
 import { defaultPageSize } from '../../../constants/configs';
 
-const me = localStorage.getItem('user') ? decode(localStorage.getItem('user')) : {};
-
 const loading = {
     display: 'flex',
     justifyContent: 'center',
+}
+
+const chatBoxStyle = {
+    height: "calc(100vh - 106px)",
+    overflowY: "scroll",
+    overflowX: "hidden"
 }
 
 class Chat extends Component{
@@ -91,9 +93,9 @@ class Chat extends Component{
             )
         });
 
-        // items.reverse();
+        items.reverse();
         return(
-            <Fragment>
+            <div style={{overflow:"hideen"}}>
                 {this.props.userReducer.loading ? "" : 
                 <Head 
                     history={this.props.history}
@@ -101,29 +103,19 @@ class Chat extends Component{
                     name={this.props.userReducer.user.name}
                     username={this.props.userReducer.user.username}
                 />}
-                 <InfiniteScroll
-                    pageStart={1}
-                    loadMore={this.dataListRender}
-                    hasMore={this.props.chatsReducer.more}
-                    loader={<BeatLoader key={0} css={loading} />}
-                >
-                    {items}
-                </InfiniteScroll> 
-                
-                <Container>
-
-               
-
-                    {/* {items.length < 1 && this.props.userReducer.loading === false ? <NoUsers /> : ""} */}
-
-
-                    
-
-                    
-                </Container>
+                <div style={chatBoxStyle}>
+                    <InfiniteScroll
+                        pageStart={1}
+                        loadMore={this.dataListRender}
+                        hasMore={this.props.chatsReducer.more}
+                        loader={<BeatLoader key={0} css={loading} />}
+                    >
+                        {items}
+                    </InfiniteScroll> 
+                </div>
 
                 <Sender onSubmit={this.sendMessage}/>
-            </Fragment>
+            </div>
         )
     }
 }
