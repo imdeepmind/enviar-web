@@ -83,6 +83,7 @@ class Home extends Component{
                 <Container>
                     <Row>
                         <Col xs="12" lg="7">
+                        { this.props.homeReducer.loading ? <BeatLoader key={0} css={loading} /> : ""}
                         <InfiniteScroll
                             pageStart={1}
                             loadMore={this.dataListRender}

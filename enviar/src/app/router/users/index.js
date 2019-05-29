@@ -90,6 +90,7 @@ class Users extends Component{
             <Fragment>
                 <TopNav history={this.props.history} />
                 <Container>
+                    { this.props.userReducer.loading ? <BeatLoader key={0} css={loading} /> : ""}
                     <InfiniteScroll
                         pageStart={1}
                         loadMore={this.dataListRender}

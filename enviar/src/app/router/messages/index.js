@@ -77,6 +77,7 @@ class Messages extends Component{
             <Fragment>
                 <TopNav history={this.props.history} />
                 <Container>
+                    { this.props.chatsReducer.loading ? <BeatLoader key={0} css={loading} /> : ""}
                     <InfiniteScroll
                         pageStart={1}
                         loadMore={this.dataListRender}
@@ -86,7 +87,7 @@ class Messages extends Component{
                         {items}
                     </InfiniteScroll>
 
-                    {items.length < 1 && this.props.homeReducer.loading === false ? "no post" : ""}
+                    {items.length < 1 && this.props.chatsReducer.loading === false ? "no post" : ""}
                 </Container>
                 <FloatingActionButton history={this.props.history} />
             </Fragment>
