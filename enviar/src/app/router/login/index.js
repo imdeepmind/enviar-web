@@ -4,16 +4,11 @@ import { connect } from 'react-redux';
 
 import Hero from './components/hero';
 import Login from './components/login';
+import Footer from './components/footer';
 import Registration from './components/registration'
 import WhyJoin from './components/whyJoin';
 
 import { loginUser, registerUser } from '../../redux/actions';
-
-const style = {
-    'background' : 'linear-gradient(to right, #4A00E0, #8E2DE2)',
-    'minHeight'     : '100vh',
-    'width'      : '100%' 
-}
 
 class Index extends Component {
     onLogin = data => {
@@ -25,9 +20,19 @@ class Index extends Component {
     }
     render(){
         return (
-            <Container fluid style={style}>
-                 <Row>
-                    <Col xs="12" md="8">
+            <div  className="w-100 mh-100v" id="index">
+                <div id="index-child"   className="w-100 mh-100v">
+                    <Hero />
+                    <Login onSubmit={this.onLogin}/>
+                    <Footer />
+                </div>
+                
+
+
+
+
+                 {/* <Row>
+                    <Col xs="12">
                         <Hero />
                     </Col>
                     <Col xs="12" md="4">
@@ -39,8 +44,8 @@ class Index extends Component {
                     <Col xs="12" md="8" className="d-none d-md-block">
                         <WhyJoin />
                     </Col>
-                </Row>
-            </Container>
+                </Row> */}
+            </div>
         )
     }
 }
