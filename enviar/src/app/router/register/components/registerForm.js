@@ -32,7 +32,7 @@ let OwnInput = (field) => (
         <Input {...field.input}  {...field} className={classnames({'mb-1' : true, 'is-invalid' : field.meta.touched && field.meta.error})} />
         {
             field.meta.touched && field.meta.error &&
-            <div className="has-error invalid-feedback text-left">{field.meta.error}</div>
+            <div className="has-error invalid-feedback text-center">{field.meta.error}</div>
         }
     </Fragment>
 )
@@ -46,7 +46,7 @@ let selectBox = (field) => (
         </Input>
         {
             field.meta.touched && field.meta.error &&
-            <div className="has-error invalid-feedback text-left">{field.meta.error}</div>
+            <div className="has-error invalid-feedback text-center">{field.meta.error}</div>
         }
     </Fragment>
 )
@@ -64,7 +64,7 @@ let RegisterUser = (props) => {
             <Field name="country" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Country"/>
             <Field name="gender" component={selectBox} type="select" validate={[required()]} placeholder="Gender" options={genderOptions} />
             <Field name="dob" component={OwnInput} type="date" validate={[required()]} placeholder="Date of Birth" />
-            <Button color="primary" disabled={!props.valid} className="w-100" type="submit">Register</Button>
+            <Button color="dark" disabled={!props.valid} className="w-100 mt-3" type="submit">Register</Button>
         </Form>
     )
 }

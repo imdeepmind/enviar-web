@@ -8,6 +8,7 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import { Provider } from "react-redux";
 
 import Login from './app/router/login';
+import Register from './app/router/register';
 import Home from './app/router/home';
 import CreatePost from './app/router/createPost';
 import Users from './app/router/users';
@@ -80,6 +81,7 @@ function App() {
           <LoadingBar style={{ backgroundColor: 'white', height: '3px', zIndex: "99999999999" }} />
           <Switch>
             <Route path={'/login'} exact component={Login} />
+            <Route path={'/register'} exact component={Register} />
             <PrivateRoute path={'/'} exact component={Home} />
             <PrivateRoute path={'/post'} exact component={CreatePost} />
             <PrivateRoute path={'/users'} exact component={Users} />
