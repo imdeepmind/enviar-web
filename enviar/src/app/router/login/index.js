@@ -14,11 +14,9 @@ class Index extends Component {
     render(){
         return (
             <div  className="w-100 mh-100v" id="index">
-                <div id="index-child"   className="w-100 mh-100v">
-                    <Hero />
-                    <Login onSubmit={this.onLogin}/>
-                    <Footer />
-                </div>
+                <Hero />
+                <Login onSubmit={this.onLogin}/>
+                <Footer />
             </div>
         )
     }

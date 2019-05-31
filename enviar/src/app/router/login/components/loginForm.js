@@ -24,7 +24,7 @@ let LoginUser = (props) => {
         <Form onSubmit={handleSubmit}>
             <Field name="username" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Username" />
             <Field name="password" component={OwnInput} type="password" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Password" />
-            <Button color="dark" disabled={!props.valid} className="w-100 mt-3" type="submit">Login</Button>
+            <Button color="primary" disabled={!props.valid} className="w-100 mt-3" type="submit">Login</Button>
         </Form>
     )
 }
