@@ -171,9 +171,7 @@ class Me extends Component {
                                         }
                                     </TabPane>
                                 </TabContent>
-
                             </Container>
-                           
                         </Fragment>
                         : <AError title={this.props.meReducer.error} />
                     )}
