@@ -9,8 +9,9 @@ import FloatingActionButton from '../../container/floatingActionButton';
 import Post from './components/posts';
 import NoPost from './components/nopost';
 import ProfileCard from '../../components/profileCard';
+import Actions from './components/actions';
 
-import { posts, getMe } from '../../redux/actions';
+import { posts, getMe, logoutUser } from '../../redux/actions';
 import { defaultPageSize } from '../../../constants/configs';
 
 const loading = {
@@ -84,7 +85,7 @@ class Home extends Component{
                 <TopNav history={this.props.history} />
                 <Container>
                     <Row>
-                        <Col xs="12" md="3">
+                        <Col xs="12" md="3" className="d-none d-md-block">
                             <Card>
                                 <CardBody>
                                     <ProfileCard 
@@ -109,8 +110,8 @@ class Home extends Component{
 
                         {items.length < 1 && this.props.homeReducer.loading === false ? <NoPost /> : ""}
                         </Col>
-                        <Col xs="12" md="4" className="mt-4 d-none d-md-block">
-                            Controllers
+                        <Col xs="12" md="4" className="d-none d-md-block">
+                            <Actions logout={this.props.logoutUser}/>
                         </Col>
                     </Row>
                 </Container>
@@ -125,6 +126,6 @@ const mapStateToProps = (state) => state;
 export default connect(
     mapStateToProps,
     {
-        posts, getMe
+        posts, getMe, logoutUser
     }
 )(Home);
