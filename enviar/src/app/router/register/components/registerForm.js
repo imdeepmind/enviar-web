@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react'
+import { Row, Col } from 'reactstrap';
+import { Link } from 'react-router-dom';
 import { Field, reduxForm } from 'redux-form'
 import { required, email, length } from 'redux-form-validators';
 import classnames from 'classnames';
@@ -56,15 +58,33 @@ let RegisterUser = (props) => {
     const { handleSubmit } = props;
     return (
         <Form onSubmit={handleSubmit}>
-            <Field name="name" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Name" />
-            <Field name="email" component={OwnInput} type="email" validate={[required(), email(), length({ min: 4, max: 24 })]} placeholder="Email" />
-            <Field name="username" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Username" />
-            <Field name="password" component={OwnInput} type="password" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Password" />
-            <Field name="conformPassword" component={OwnInput} type="password" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Password again" />
-            <Field name="country" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Country"/>
-            <Field name="gender" component={selectBox} type="select" validate={[required()]} placeholder="Gender" options={genderOptions} />
-            <Field name="dob" component={OwnInput} type="date" validate={[required()]} placeholder="Date of Birth" />
-            <Button color="dark" disabled={!props.valid} className="w-100 mt-3" type="submit">Register</Button>
+            <Row>
+                <Col xs="12" md="6">
+                    <Field name="name" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Name" />
+                </Col>
+                <Col xs="12" md="6">
+                    <Field name="email" component={OwnInput} type="email" validate={[required(), email(), length({ min: 4, max: 24 })]} placeholder="Email" />
+                </Col>
+                <Col xs="12" md="6">
+                    <Field name="username" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Username" />
+                </Col>
+                <Col xs="12" md="6">
+                    <Field name="password" component={OwnInput} type="password" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Password" />
+                </Col>
+                <Col xs="12" md="6">
+                    <Field name="gender" component={selectBox} type="select" validate={[required()]} placeholder="Gender" options={genderOptions} />
+                </Col>
+                <Col xs="12" md="6">
+                    <Field name="dob" component={OwnInput} type="date" validate={[required()]} placeholder="Date of Birth" />
+                </Col>
+                <Col xs="12">
+                    <Field name="country" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Country"/>
+                </Col>
+            </Row>
+            <Button color="primary" disabled={!props.valid} className="w-100 mt-3" type="submit">Register</Button>
+            <Link to="/login" className="font-weight-bold text-decoration-none">
+                    <Button color="primary" outline={true} className="w-100 mt-3  border border-primary"> or Login</Button>
+                </Link>
         </Form>
     )
 }

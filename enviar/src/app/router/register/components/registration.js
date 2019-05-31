@@ -1,16 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Container } from 'reactstrap';
 
 import RegisterForm from './registerForm';
 
 const Register = props => {
     return (
-        <div className="d-flex align-items-center justify-content-center flex-column w-100 mh-100v" id="login-form">
-            <div className="text-center p-3" id="login-form-box">
-                <h2 className="text-light mb-4">Register</h2>
+        <div className="d-flex align-items-center justify-content-center flex-column w-100 mh-100v" id="registration-form">
+            <Container className="text-center p-3">
+                <h1 className="text-primary">Register</h1>
+                <p className="text-primary mb-4">Create an account with some basic information</p>
                 <RegisterForm onSubmit={props.onSubmit} />
-                <p className="mt-2 text-light">already have an account, <Link to="/register" className="font-weight-bold text-light">login</Link> here</p>
-            </div>
+            </Container>
         </div>
     )
 }

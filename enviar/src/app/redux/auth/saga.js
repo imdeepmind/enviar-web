@@ -21,7 +21,7 @@ import {
     verifyError
 } from './action';
 
-const registerAccountAsync = async (name, email, username, password, country, gender, dob, conformPassword) => {
+const registerAccountAsync = async (name, email, username, password, country, gender, dob) => {
     const data = {
         name: name,
         email: email,
@@ -30,7 +30,7 @@ const registerAccountAsync = async (name, email, username, password, country, ge
         country: country,
         gender: gender,
         dob: dob,
-        conformPassword: conformPassword
+        conformPassword: password
     }
     return axios.post(REGISTER, data);
 }
@@ -38,8 +38,8 @@ const registerAccountAsync = async (name, email, username, password, country, ge
 function* registerAccount({ payload }) {    
     try {
         yield put(showLoading());
-        const { name, email, username, password, country, gender, dob, conformPassword } = payload.user;
-        const registerUser = yield call(registerAccountAsync, name, email, username, password, country, gender, dob, conformPassword);
+        const { name, email, username, password, country, gender, dob } = payload.user;
+        const registerUser = yield call(registerAccountAsync, name, email, username, password, country, gender, dob);
         toast.success(`Successfully created user with ${registerUser.data.username}`);
         yield put(registerUserSuccess(registerUser.data));
     } catch (error) {
