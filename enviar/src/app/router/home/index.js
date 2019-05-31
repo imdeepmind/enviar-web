@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Container, Row, Col } from 'reactstrap';
+import { Container, Row, Col, Card, CardBody } from 'reactstrap';
 import { BeatLoader } from 'react-spinners';
 import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux';
@@ -8,8 +8,9 @@ import TopNav from '../../container/topNav';
 import FloatingActionButton from '../../container/floatingActionButton';
 import Post from './components/posts';
 import NoPost from './components/nopost';
+import ProfileCard from '../../components/profileCard';
 
-import { posts } from '../../redux/actions';
+import { posts, getMe } from '../../redux/actions';
 import { defaultPageSize } from '../../../constants/configs';
 
 const loading = {
@@ -45,6 +46,7 @@ class Home extends Component{
         return ans;
     }
     componentDidMount(){
+        this.props.getMe();
         this.dataListRender();
     }
     componentDidUpdate(nextProps){
@@ -82,7 +84,19 @@ class Home extends Component{
                 <TopNav history={this.props.history} />
                 <Container>
                     <Row>
-                        <Col xs="12" lg="7">
+                        <Col xs="12" md="3">
+                            <Card>
+                                <CardBody>
+                                    <ProfileCard 
+                                        name={this.props.meReducer.me.name} 
+                                        avatar={this.props.meReducer.me.avatar} 
+                                        text={this.props.meReducer.me.status}
+                                        me={true}
+                                    />
+                                </CardBody>
+                            </Card>
+                        </Col>
+                        <Col xs="12" md="5">
                         { this.props.homeReducer.loading ? <BeatLoader key={0} css={loading} /> : ""}
                         <InfiniteScroll
                             pageStart={1}
@@ -95,7 +109,7 @@ class Home extends Component{
 
                         {items.length < 1 && this.props.homeReducer.loading === false ? <NoPost /> : ""}
                         </Col>
-                        <Col xs="12" lg="5" className="mt-4 d-none d-lg-block">
+                        <Col xs="12" md="4" className="mt-4 d-none d-md-block">
                             Controllers
                         </Col>
                     </Row>
@@ -111,6 +125,6 @@ const mapStateToProps = (state) => state;
 export default connect(
     mapStateToProps,
     {
-        posts
+        posts, getMe
     }
 )(Home);

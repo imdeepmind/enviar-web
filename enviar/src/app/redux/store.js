@@ -12,7 +12,7 @@ const sagaMiddleware = createSagaMiddleware();
 const store = createStore(reducer, applyMiddleware(sagaMiddleware));
 
 store.subscribe(() => {
-    // console.log('Store changed', store.getState());
+    console.log('Store changed', store.getState());
 })
 
 // then run the saga
