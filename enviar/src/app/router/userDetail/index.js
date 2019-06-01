@@ -76,7 +76,6 @@ class UserDetail extends Component {
     render(){
         return (
             <Fragment>
-                <Container>
                     {this.props.userReducer.loading ? <BeatLoader key={0} css={loading} /> : (
                         !this.props.userReducer.error ? 
                         <Fragment>
@@ -93,13 +92,23 @@ class UserDetail extends Component {
                                 status={this.props.userReducer.user.status}
                                 gender={this.props.userReducer.user.gender}
                             />
-                             <div className="d-flex justify-content-between align-items-center" style={tabStyle}>
-                                <Button className={classnames({ 'border-bottom border-primary': this.state.activeTab === '1' })} onClick={() => { this.toggle('1'); }}><i className="fas fa-book-open"></i></Button>
-                                <Button className={classnames({ 'border-bottom border-primary': this.state.activeTab === '2' })} onClick={() => { this.toggle('2'); }}><i className="fas fa-user-friends"></i></Button>
-                                <Button className={classnames({ 'border-bottom border-primary': this.state.activeTab === '3' })} onClick={() => { this.toggle('3'); }}><i className="fas fa-users"></i></Button>
-                            </div>
+                            <Container>
+                                <div className="d-flex justify-content-between align-items-center" style={tabStyle}>
+                                    <Button className={classnames({ 'no-focus border-bottom border-primary': this.state.activeTab === '1' })} onClick={() => { this.toggle('1'); }}>
+                                        <i className="fas fa-book-open"></i>
+                                        <span className="d-none d-md-inline ml-md-1">Details</span>
+                                    </Button>
+                                    <Button className={classnames({ 'no-focus border-bottom border-primary': this.state.activeTab === '2' })} onClick={() => { this.toggle('2'); }}>
+                                        <i className="fas fa-user-friends"></i>
+                                        <span className="d-none d-md-inline ml-md-1">Followers</span>
+                                    </Button>
+                                    <Button className={classnames({ 'no-focus border-bottom border-primary': this.state.activeTab === '3' })} onClick={() => { this.toggle('3'); }}>
+                                        <i className="fas fa-users"></i>
+                                        <span className="d-none d-md-inline ml-md-1">Following</span>
+                                    </Button>
+                                </div>
 
-                            <TabContent activeTab={this.state.activeTab}>
+                                <TabContent activeTab={this.state.activeTab}>
                                 <TabPane tabId="1">
                                     <Detail 
                                         location={this.buildAddress()} 
@@ -107,7 +116,7 @@ class UserDetail extends Component {
                                         bio={this.props.userReducer.user.bio}
                                     />
                                 </TabPane>
-                                <TabPane tabId="2">
+                                <TabPane tabId="3">
                                     {this.props.userReducer.loadingSmall ? <BeatLoader key={0} css={loading} /> : 
                                             this.props.userReducer.following.length > 0 ? 
                                             this.props.userReducer.following.map(val => {
@@ -128,7 +137,7 @@ class UserDetail extends Component {
                                             }) : <div className="text-center mt-2">this is not fair, this creature don't follow anyone</div>
                                         }
                                 </TabPane>
-                                <TabPane tabId="3">
+                                <TabPane tabId="2">
                                 {this.props.userReducer.loadingSmall ? <BeatLoader key={0} css={loading} /> : 
                                             this.props.userReducer.followers.length > 0 ? 
                                             this.props.userReducer.followers.map(val => {
@@ -149,11 +158,11 @@ class UserDetail extends Component {
                                         }
                                 </TabPane>
                             </TabContent>
+                            </Container>
                         </Fragment>
                         : <AError title={this.props.userReducer.error} />
                     )}
                     <FloatingActionButton history={this.props.history} />
-                </Container>
             </Fragment>
             
         )
