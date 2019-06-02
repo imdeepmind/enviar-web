@@ -59,4 +59,10 @@ $desktop: 840px;
     @include desktop{
         h1 {font-size: 3rem;}
     }
+
+    button{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
 }

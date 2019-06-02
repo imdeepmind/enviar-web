@@ -17,7 +17,7 @@ const Footer = () => {
                     <ul>
                         <li><Link className="text-light font-weight-regular" to="/login">Login</Link></li>
                         <li><Link className="text-light font-weight-regular" to="/register">Register</Link></li>
-                        <li><Link className="text-light font-weight-regular" to="/contributions">Contributions</Link></li>
+                        <li><Link className="text-light font-weight-regular" to="/contributors">Contributions</Link></li>
                         <li><Link className="text-light font-weight-regular" to="/support">Support</Link></li>
                     </ul>
                 </Col>
