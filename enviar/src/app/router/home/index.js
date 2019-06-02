@@ -85,7 +85,7 @@ class Home extends Component{
                 <TopNav history={this.props.history} />
                 <Container>
                     <Row>
-                        <Col xs="12" md="3" className="d-none d-md-block">
+                        <Col xs="12" xl="3" className="d-none d-xl-block">
                             <Card>
                                 <CardBody>
                                     <ProfileCard 
@@ -97,7 +97,7 @@ class Home extends Component{
                                 </CardBody>
                             </Card>
                         </Col>
-                        <Col xs="12" md="5">
+                        <Col xs="12" md="6" xl="5">
                         { this.props.homeReducer.loading ? <BeatLoader key={0} css={loading} /> : ""}
                         <InfiniteScroll
                             pageStart={1}
@@ -110,7 +110,7 @@ class Home extends Component{
 
                         {items.length < 1 && this.props.homeReducer.loading === false ? <NoPost /> : ""}
                         </Col>
-                        <Col xs="12" md="4" className="d-none d-md-block">
+                        <Col xs="12" md="6" xl="4" className="d-none d-md-block">
                             <Actions logout={this.props.logoutUser}/>
                         </Col>
                     </Row>
