@@ -9,6 +9,7 @@ import './assets/css/theme.scss';
 import './assets/css/classes.scss';
 import './assets/css/main.scss';
 import './assets/css/ReactToastify.css';
+import './assets/css/support.scss';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

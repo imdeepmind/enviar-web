@@ -1,0 +1,42 @@
+$desktop: 840px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+#support-hero{
+
+    clip-path: polygon(0 0, 100% 0, 100% 79%, 0 94%);
+    background-image: linear-gradient(to right, #4A00E0, #8E2DE2);
+
+    @include desktop {
+        clip-path: polygon(0 0, 100% 0, 100% 63%, 0 83%);
+    }
+
+    h1{
+        font-weight: 100;
+        font-size: 2rem;
+    }  
+
+    @include desktop{
+        h1 {font-size: 3rem;}
+    }
+    
+    p{
+        text-transform: uppercase;    
+    }
+
+    @include desktop{
+        p {
+            width: 60%;
+        }
+    }
+
+    button{
+        position: absolute;
+        top: 0px;
+        left: 0px;
+    }
+}
