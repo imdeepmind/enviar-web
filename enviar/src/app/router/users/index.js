@@ -80,7 +80,6 @@ class Users extends Component{
         }, () => this.dataListRender());
     }
     render(){
-        console.log('state', this.state);
         const items = this.state.list.map(val => {
             return (
                 <Ucard 

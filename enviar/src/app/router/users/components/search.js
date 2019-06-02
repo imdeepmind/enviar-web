@@ -1,6 +1,6 @@
 import React from 'react'
 import { Field, reduxForm } from 'redux-form'
-import { required, length } from 'redux-form-validators';
+import { length } from 'redux-form-validators';
 import {  Input, Button } from 'reactstrap';
 import classnames from 'classnames';
 
@@ -27,7 +27,7 @@ let SearchForm = (props) => {
     const { handleSubmit } = props;
     return (
         <form onSubmit={handleSubmit} className="d-flex mb-3">
-            <Field name="q" component={OwnInput} type="text" validate={[required(), length({minimum: 4, maximum: 255})]}  placeholder="search users..." />
+            <Field name="q" component={OwnInput} type="text" validate={[length({allowBlank: true, minimum: 4, maximum: 255})]}  placeholder="search users..." />
             <Button color="primary" disabled={!props.valid} style={searchButton} className="text-center d-flex justify-content-center" type="submit"><i className="fas fa-search"></i></Button>
         </form>
     )
