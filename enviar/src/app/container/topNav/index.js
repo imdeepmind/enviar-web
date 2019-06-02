@@ -62,7 +62,7 @@ class TopNav extends Component{
                         <Nav className="ml-auto" navbar>
                             <NavItem>
                                 <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
-                                    <DropdownToggle caret  style={buttonStyle} className="no-focus">
+                                    <DropdownToggle caret  style={buttonStyle} className="no-focus cursor-pointer">
                                         <Avatar source={me.avatar} title={me.name} width="20px" border="light" />
                                     </DropdownToggle>
                                     <DropdownMenu>

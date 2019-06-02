@@ -12,7 +12,7 @@ const Login = props => {
                 <p className="mb-4 text-primary">Please login with your username and password</p>
                 <LoginForm onSubmit={props.onSubmit} />
                 <Link to="/register" className="font-weight-bold text-decoration-none">
-                    <Button color="primary" outline={true} className="w-100 mt-3  border border-primary"> or Register</Button>
+                    <Button color="primary"  tabIndex="-1" outline={true} className="w-100 mt-3  border border-primary"> or Register</Button>
                 </Link>
             </div>
         </div>

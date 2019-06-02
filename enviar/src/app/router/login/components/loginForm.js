@@ -13,7 +13,7 @@ let OwnInput = (field) => (
         <Input {...field.input}  {...field} className={classnames({'mb-1' : true, 'is-invalid' : field.meta.touched && field.meta.error})} />
         {
             field.meta.touched && field.meta.error &&
-            <div className="has-error invalid-feedback text-center">{field.meta.error}</div>
+            <div className="has-error invalid-feedback text-left">{field.meta.error}</div>
         }
     </Fragment>
 )
