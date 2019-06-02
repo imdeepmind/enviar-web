@@ -73,7 +73,7 @@ class TopNav extends Component{
                                         <DropdownItem><Link to="#" className="text-decoration-none text-dark"><i className="fas fa-hands-helping text-dark" style={{width: "18px"}}></i>{" "}Contributions</Link></DropdownItem>
                                         <DropdownItem><Link to="#" className="text-decoration-none text-dark"><i className="fas fa-donate text-dark" style={{width: "18px"}}></i>{" "}Support</Link></DropdownItem>
                                         <DropdownItem divider />
-                                        <DropdownItem><i className="fas fa-sign-out-alt" style={{width: "18px"}} onClick={this.logout}></i>{" "}Logout</DropdownItem>
+                                        <DropdownItem onClick={this.logout}><i className="fas fa-sign-out-alt" style={{width: "18px"}}></i>{" "}Logout</DropdownItem>
                                     </DropdownMenu>
                                 </ButtonDropdown>
                             </NavItem>
