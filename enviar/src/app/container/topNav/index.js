@@ -4,10 +4,11 @@ import {
     Navbar,
     NavbarToggler,
     Nav,
-    NavItem
+    NavItem,
+    ButtonDropdown, DropdownToggle, DropdownMenu, DropdownItem
 } from 'reactstrap';
 
-import { NavLink } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import { logoutUser } from '../../redux/actions';
@@ -18,17 +19,29 @@ import Avatar from '../../components/avatar';
 
 const me = localStorage.getItem('user') ? decode(localStorage.getItem('user')) : {};
 
+const buttonStyle = {
+    padding: "0",
+    margin: "0",
+    backgroundColor: "rgba(0,0,0,0)"
+}
+
 class TopNav extends Component{
     constructor(props) {
         super(props);
         this.toggle = this.toggle.bind(this);
         this.state = {
-            isOpen: false
+            isOpen: false,
+            dropdownOpen: false
         };
     }
     toggle() {
         this.setState({
             isOpen: !this.state.isOpen
+        });
+    }
+    toggleDropdown = () => {
+        this.setState({
+          dropdownOpen: !this.state.dropdownOpen
         });
     }
     back = () => {
@@ -48,12 +61,21 @@ class TopNav extends Component{
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className="ml-auto" navbar>
                             <NavItem>
-                                <NavLink className="m-1 text-dark"  title="profile" to="/me">
-                                    <Avatar source={me.avatar} title={me.name} width="20px" border="light" />
-                                </NavLink>
-                            </NavItem>
-                            <NavItem>
-                                <NavLink className="m-1 text-dark"  title="log out" to="#" onClick={this.logout}><i className="fas fa-sign-out-alt text-white"></i></NavLink>
+                                <ButtonDropdown isOpen={this.state.dropdownOpen} toggle={this.toggleDropdown}>
+                                    <DropdownToggle caret  style={buttonStyle} className="no-focus">
+                                        <Avatar source={me.avatar} title={me.name} width="20px" border="light" />
+                                    </DropdownToggle>
+                                    <DropdownMenu>
+                                        <DropdownItem><Link to="/me" className="text-decoration-none text-dark"><i className="fas fa-user text-dark" style={{width: "18px"}}></i>{" "}Profile</Link></DropdownItem>
+                                        <DropdownItem><Link to="/edit" className="text-decoration-none text-dark"><i className="fas fa-user-edit text-dark" style={{width: "18px"}}></i>{" "}Edit</Link></DropdownItem>
+                                        <DropdownItem><Link to="/settings" className="text-decoration-none text-dark"><i className="fas fa-user-cog text-dark" style={{width: "18px"}}></i>{" "}Settings</Link></DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem><Link to="#" className="text-decoration-none text-dark"><i className="fas fa-hands-helping text-dark" style={{width: "18px"}}></i>{" "}Contributions</Link></DropdownItem>
+                                        <DropdownItem><Link to="#" className="text-decoration-none text-dark"><i className="fas fa-donate text-dark" style={{width: "18px"}}></i>{" "}Support</Link></DropdownItem>
+                                        <DropdownItem divider />
+                                        <DropdownItem><i className="fas fa-sign-out-alt" style={{width: "18px"}} onClick={this.logout}></i>{" "}Logout</DropdownItem>
+                                    </DropdownMenu>
+                                </ButtonDropdown>
                             </NavItem>
                         </Nav>
                     </Collapse>
