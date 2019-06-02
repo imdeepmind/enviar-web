@@ -76,7 +76,7 @@ const Actions = props => {
             <Col xs="4">
                 <Card>
                     <CardBody className="text-center">
-                        <Link to="#" className="text-dark text-decoration-none ">
+                        <Link to="/contributions" className="text-dark text-decoration-none ">
                             <h1><i className="fas fa-hands-helping text-dark"></i></h1>
                             Contributions
                         </Link>
@@ -87,7 +87,7 @@ const Actions = props => {
             <Col xs="4">
                 <Card>
                     <CardBody className="text-center">
-                        <Link to="#" className="text-dark text-decoration-none">
+                        <Link to="/support" className="text-dark text-decoration-none">
                             <h1><i className="fas fa-donate text-dark"></i></h1>
                             Support
                         </Link>

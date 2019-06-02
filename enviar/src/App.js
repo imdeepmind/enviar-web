@@ -19,6 +19,8 @@ import Edit from './app/router/edit';
 import Settings from './app/router/settings';
 import Messages from './app/router/messages';
 import Chat from './app/router/chat';
+import Support from './app/router/support';
+import Contributions from './app/router/contributions';
 
 import store from './app/redux/store';
 
@@ -91,6 +93,8 @@ function App() {
             <PrivateRoute path={'/settings'} exact component={Settings} />
             <PrivateRoute path={'/messages'} exact component={Messages} />
             <PrivateRoute path={'/messages/:username'} exact component={Chat} />
+            <Route path={'/support'} exact component={Support} />
+            <Route path={'/contributions'} exact component={Contributions} />
             <Route component={E404} />
           </Switch>
           <ToastContainer 

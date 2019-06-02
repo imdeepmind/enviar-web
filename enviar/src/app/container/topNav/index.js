@@ -70,8 +70,8 @@ class TopNav extends Component{
                                         <DropdownItem><Link to="/edit" className="text-decoration-none text-dark"><i className="fas fa-user-edit text-dark" style={{width: "18px"}}></i>{" "}Edit</Link></DropdownItem>
                                         <DropdownItem><Link to="/settings" className="text-decoration-none text-dark"><i className="fas fa-user-cog text-dark" style={{width: "18px"}}></i>{" "}Settings</Link></DropdownItem>
                                         <DropdownItem divider />
-                                        <DropdownItem><Link to="#" className="text-decoration-none text-dark"><i className="fas fa-hands-helping text-dark" style={{width: "18px"}}></i>{" "}Contributions</Link></DropdownItem>
-                                        <DropdownItem><Link to="#" className="text-decoration-none text-dark"><i className="fas fa-donate text-dark" style={{width: "18px"}}></i>{" "}Support</Link></DropdownItem>
+                                        <DropdownItem><Link to="/contributions" className="text-decoration-none text-dark"><i className="fas fa-hands-helping text-dark" style={{width: "18px"}}></i>{" "}Contributions</Link></DropdownItem>
+                                        <DropdownItem><Link to="/support" className="text-decoration-none text-dark"><i className="fas fa-donate text-dark" style={{width: "18px"}}></i>{" "}Support</Link></DropdownItem>
                                         <DropdownItem divider />
                                         <DropdownItem onClick={this.logout}><i className="fas fa-sign-out-alt" style={{width: "18px"}}></i>{" "}Logout</DropdownItem>
                                     </DropdownMenu>
