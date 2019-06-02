@@ -74,7 +74,7 @@ let CreatePost = (props) => {
                )}
             </Label>
             <Field name="img" id="img-upload" accept="image/*" style={inputFileStyle} component={FileInput} type="file" value={null} validate={[required(),file({ maxSize: '512KB' }), file({ minSize: '3KB' })]} />
-            <Field name="caption" component={OwnInput} type="textarea"validate={[required(), length({minimum: 4, maximum: 255})]}  placeholder="Add a caption for your post" />
+            <Field name="caption" component={OwnInput} type="textarea"validate={[length({allowBlank:true, minimum: 4, maximum: 255})]}  placeholder="Add a caption for your post" />
             <Button color="primary" disabled={!props.valid} className="w-100 mt-3" type="submit">Post</Button>
         </Form>
     )
