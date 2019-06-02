@@ -6,7 +6,7 @@ import classnames from 'classnames';
 
 let OwnInput = (field) => (
     <Fragment>
-        <Input {...field.input}  {...field} className={classnames({'mb-1' : true, 'is-invalid' : field.meta.touched && field.meta.error})} />
+        <Input {...field.input}  {...field} className={classnames({'mb-1 ml-md-5' : true, 'is-invalid' : field.meta.touched && field.meta.error})} />
         {
             field.meta.touched && field.meta.error &&
             <div className="has-error invalid-feedback">{field.meta.error}</div>    
