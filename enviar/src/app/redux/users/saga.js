@@ -16,20 +16,20 @@ import {
     usersSuccess, usersError, usersSuccessIndividual, usersErrorIndividual, userActionSuccess, userActionError, usersFolloweeSuccess, usersFollowersError, usersFollowersSuccess, usersFolloweeError
 } from './action';
 
-const getUsersAsync = async (page, limit) => {
+const getUsersAsync = async (page, limit, q) => {
 
     if (!page || page < 0) page = 0;
     if (!limit || limit <= 0) limit = 10;
 
-    const url = `${USERS}?page=${page}&limit=${limit}`;
+    const url = `${USERS}?page=${page}&limit=${limit}&q=${q}`;
 
     return axios.get(url);
 }
 
 function* getUsers({ payload }) {    
     try {
-        const { page, limit } = payload.user;
-        const myUsers = yield call(getUsersAsync, page, limit);
+        const { page, limit, q } = payload.user;
+        const myUsers = yield call(getUsersAsync, page, limit, q);
         yield put(usersSuccess(myUsers.data));
     } catch (error) {
         toast.error(error.response.data.message);

@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import TopNav from '../../container/topNav';
 import Ucard from './components/ucard';
 import NoUsers from './components/noUsers';
+import Search from './components/search';
 
 import { users, userAction } from '../../redux/actions';
 import { defaultPageSize } from '../../../constants/configs';
@@ -22,7 +23,8 @@ class Users extends Component{
         super(props);
         this.state = {
             list: [],
-            page: 1
+            page: 1,
+            q: ''
         }
     }
     isNewData(newData, existingData){
@@ -48,9 +50,9 @@ class Users extends Component{
         this.dataListRender();
     }
     componentDidUpdate(nextProps){
-        if (this.props.userReducer.loading === false){
-            if (this.isNewData(this.props.userReducer.users, this.state.list)){
-                let data = [...this.state.list, ...this.props.userReducer.users];
+        if (nextProps.userReducer.loading === false){
+            if (this.isNewData(nextProps.userReducer.users, this.state.list)){
+                let data = [...this.state.list, ...nextProps.userReducer.users];
                 this.setState({list: data});
             }
         }
@@ -58,7 +60,8 @@ class Users extends Component{
     dataListRender = () => {
         const data = {
             page:  this.state.page,
-            limit: defaultPageSize
+            limit: defaultPageSize,
+            q: this.state.q
         }
         this.setState({page: this.state.page + 1}, () => this.props.users(data, this.props.history));
     }
@@ -69,7 +72,15 @@ class Users extends Component{
         }
         this.props.userAction(data, this.props.history);
     }
+    handleSearch = data => {
+        this.setState({
+            list: [],
+            page: 1,
+            q: data.q
+        }, () => this.dataListRender());
+    }
     render(){
+        console.log('state', this.state);
         const items = this.state.list.map(val => {
             return (
                 <Ucard 
@@ -90,6 +101,7 @@ class Users extends Component{
             <Fragment>
                 <TopNav history={this.props.history} />
                 <Container>
+                    <Search onSubmit={this.handleSearch} />
                     { this.props.userReducer.loading ? <BeatLoader key={0} css={loading} /> : ""}
                     <InfiniteScroll
                         pageStart={1}
