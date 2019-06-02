@@ -55,10 +55,10 @@ class Edit extends Component{
                                 </ModalBody>
                             </Modal>
 
-                            <Col xs="12" md="6" className="text-center" onClick={this.toggleDpModal}>
+                            <Col xs="12" md="4" className="text-center text-md-right cursor-pointer" onClick={this.toggleDpModal}>
                                 <Avatar source={this.props.meReducer.me.avatar} title={this.props.meReducer.me.name} width="160px" quality="medium"/>
                             </Col>
-                            <Col xs="12" md="6" className="text-center mt-3">
+                            <Col xs="12" md="8" className="text-center text-md-left mt-3 d-md-flex flex-column align-items-start justify-content-center">
                                 <h3>{this.props.meReducer.me.name}</h3>
                                 <h4>@{this.props.meReducer.me.username}</h4>    
                             </Col>

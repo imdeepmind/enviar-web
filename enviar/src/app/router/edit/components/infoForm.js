@@ -38,7 +38,7 @@ const formatDate = date => {
 
 let OwnInput = (field) => (
     <Fragment>
-        <Input {...field.input}  {...field} className={classnames({'mb-1' : true, 'is-invalid' : field.meta.touched && field.meta.error})} />
+        <Input {...field.input}  {...field} className={classnames({'mb-1 ml-md-5' : true, 'is-invalid' : field.meta.touched && field.meta.error})} />
         {
             field.meta.touched && field.meta.error &&
             <div className="has-error invalid-feedback">{field.meta.error}</div>
@@ -48,7 +48,7 @@ let OwnInput = (field) => (
 
 let selectBox = (field) => (
     <Fragment>
-        <Input {...field.input}  {...field} className={classnames({'mb-1' : true, 'is-invalid' : field.meta.touched && field.meta.error})} >
+        <Input {...field.input}  {...field} className={classnames({'mb-1 ml-md-5' : true, 'is-invalid' : field.meta.touched && field.meta.error})} >
             {field.options.map(val => {
                 return <option key={val.value} value={val.value}>{val.label}</option>
             })}
@@ -63,18 +63,18 @@ let selectBox = (field) => (
 let InfoForm = (props) => {
     const { handleSubmit } = props;
     return (
-        <Form onSubmit={handleSubmit}>
-            <b>a little bit about you</b>
+        <Form onSubmit={handleSubmit} className="mb-3 mt-md-3">
+            <strong className="mt-2 mb-2">a little bit about you</strong>
             <Field name="name" component={OwnInput} type="text" validate={[required(), length({minimum: 4, maximum: 255})]} placeholder="Name" />
             <Field name="email" component={OwnInput} type="email" validate={[required(), email(), length({minimum: 4, maximum: 255}) ]} placeholder="Email" />
             <Field name="gender" component={selectBox} type="select" validate={[required()]} placeholder="Gender" options={genderOptions} />
             <Field name="dob" component={OwnInput} type="date" validate={[required()]} placeholder="Date of Birth" />
 
-            <b>share a little bit of you</b>
+            <strong className="mt-2 mb-2">share a little bit of you</strong>
             <Field name="status" component={OwnInput} type="textarea" validate={[required(),  length({minimum: 4, maximum: 255}) ]} placeholder="Status"/>
             <Field name="bio" component={OwnInput} type="textarea" placeholder="Bio" validate={[length({allowBlank: true, minimum: 24, maximum: 1024})]}/>
             
-            <b>where you live</b>
+            <strong className="mt-2 mb-2">where you live</strong>
             <Field name="city" component={OwnInput} type="text" placeholder="City" validate={[ length({allowBlank: true, minimum: 4, maximum: 255})]}/>
             <Field name="state" component={OwnInput} type="text" placeholder="State" validate={[ length({allowBlank: true, minimum: 4, maximum: 255})]} />
             <Field name="country" component={OwnInput} type="text" validate={[required(), length({minimum: 4, maximum: 255})]} placeholder="Country"/>

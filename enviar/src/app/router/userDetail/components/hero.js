@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react';
-import { Row, Col, Button, ButtonGroup, Container } from 'reactstrap';
+import { Row, Col, ButtonGroup, Container } from 'reactstrap';
 import { Link } from 'react-router-dom';
 
 import Avatar from '../../../components/avatar';
