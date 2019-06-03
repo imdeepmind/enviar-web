@@ -47,8 +47,8 @@ class Hero extends Component{
 
         return(
             <div className="bg-primary w-100">
-                <button onClick={() => this.props.history.goBack()} className="border-0 text-white bg-transparent p-2 pt-4  pl-md-4 no-focus"><i style={{fontSize:"1.2rem"}} className="fas fa-chevron-circle-left"></i></button>
-                <span className="text-light p-2 pt-4 pr-md-4 float-right font-weight-bold">{this.props.username}</span>
+                <button onClick={() => this.props.history.goBack()} className="border-0 text-white bg-transparent p-3 pt-4  pl-md-4 no-focus"><i style={{fontSize:"1.2rem"}} className="fas fa-chevron-circle-left"></i></button>
+                <span className="text-light p-3 pt-4 pr-md-4 float-right font-weight-bold">{this.props.username}</span>
                 <Container>
                     <Row className="bg-primary">
                         <Col xs="12" md="4" className="text-center p-3 p-md-5">
