@@ -101,16 +101,16 @@ class Users extends Component{
                 <TopNav history={this.props.history} />
                 <Container>
                     <Search onSubmit={this.handleSearch} />
-                    { this.props.userReducer.loading ? <BeatLoader key={0} css={loading} /> : ""}
+                    
                     <InfiniteScroll
                         pageStart={1}
                         loadMore={this.dataListRender}
                         hasMore={this.props.userReducer.more}
-                        loader={<BeatLoader key={0} css={loading} />}
                     >
                         {items}
                     </InfiniteScroll>
 
+                    { this.props.userReducer.loading ? <BeatLoader key={0} css={loading} /> : ""}
                     {items.length < 1 && this.props.userReducer.loading === false ? <NoUsers /> : ""}
                 </Container>
 

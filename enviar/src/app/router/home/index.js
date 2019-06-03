@@ -98,16 +98,16 @@ class Home extends Component{
                             </Card>
                         </Col>
                         <Col xs="12" md="6" xl="5">
-                            { this.props.homeReducer.loading ? <BeatLoader key={0} css={loading} /> : ""}
+                           
                             <InfiniteScroll
                                 pageStart={1}
                                 loadMore={this.dataListRender}
                                 hasMore={this.props.homeReducer.more}
-                                loader={<BeatLoader key={0} css={loading} />}
                             >
                                 {items}
                             </InfiniteScroll>
 
+                            { this.props.homeReducer.loading ? <BeatLoader key={0} css={loading} /> : ""}
                             {items.length < 1 && this.props.homeReducer.loading === false ? <NoPost /> : ""}
                         </Col>
                         <Col xs="12" md="6" xl="4" className="d-none d-md-block">
