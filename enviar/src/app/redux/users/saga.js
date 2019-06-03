@@ -21,7 +21,9 @@ const getUsersAsync = async (page, limit, q) => {
     if (!page || page < 0) page = 0;
     if (!limit || limit <= 0) limit = 10;
 
-    const url = `${USERS}?page=${page}&limit=${limit}&q=${q}`;
+    let url = '';
+    if (q === '' || q === undefined)  url = `${USERS}?page=${page}&limit=${limit}`;
+    else  url = `${USERS}?page=${page}&limit=${limit}&q=${q}`;
 
     return axios.get(url);
 }

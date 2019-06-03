@@ -65,7 +65,16 @@ class Hero extends Component{
                                     }
                                 </span>
                                 
-                                {this.state.isFollower ? <span className="text-light m-3 ml-md-0 text-center text-decoration-none cursor-pointer" ><Link to={"/messages/" + this.props.username} className="text-light"><i className="fas fa-comments"></i>{" "}Message</Link></span> : <span className="text-light m-3 ml-md-0 text-center text-decoration-none cursor-pointer" disabled><i className="fas fa-comments"></i>{" "}Message</span>}
+                                {this.state.isFollower ? 
+                                    <span className="text-light m-3 ml-md-0 text-center text-decoration-none cursor-pointer" >
+                                        <Link to={"/messages/" + this.props.username} className="text-light">
+                                            <i className="fas fa-comments"></i>{" "}
+                                            Message
+                                        </Link>
+                                    </span> : 
+                                    <span className="text-light m-3 ml-md-0 text-center text-decoration-none cursor-pointer" disabled>
+                                        <i className="fas fa-comments"></i>{" "}Message
+                                    </span>}
                                 
                                 <span onClick={this.handleBlockRequest} className="text-light m-3 ml-md-0 text-center text-decoration-none cursor-pointer">
                                     {this.state.isBlocked ? 
