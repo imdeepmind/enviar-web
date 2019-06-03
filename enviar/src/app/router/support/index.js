@@ -9,7 +9,7 @@ class Support  extends Component{
                     <p>
                         I really appreciate that you want to support this project. The best way to support this project is to use this project, share this project. Furthermore, if you are a developer, then please check the project at GitHub.
                     </p>  
-                    <button style={{marginTop:"3px"}} onClick={this.props.history.goBack} className="border-0 text-white bg-transparent p-3 no-focus"><i className="fas fa-chevron-circle-left"></i></button>
+                    <button style={{marginTop:"3px"}} onClick={this.props.history.goBack} className="border-0 text-white bg-transparent pl-4 pt-3 no-focus"><i className="fas fa-chevron-circle-left"></i>{" "}<strong>enviar</strong></button>
                 </div>
             </Fragment>
         )
