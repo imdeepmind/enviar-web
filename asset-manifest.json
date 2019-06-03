@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/enviar-web/static/css/main.960a6663.chunk.css",
-    "main.js": "/enviar-web/static/js/main.2588a10b.chunk.js",
-    "main.js.map": "/enviar-web/static/js/main.2588a10b.chunk.js.map",
+    "main.css": "/enviar-web/static/css/main.4da26f42.chunk.css",
+    "main.js": "/enviar-web/static/js/main.6010a8d2.chunk.js",
+    "main.js.map": "/enviar-web/static/js/main.6010a8d2.chunk.js.map",
     "runtime~main.js": "/enviar-web/static/js/runtime~main.364048e3.js",
     "runtime~main.js.map": "/enviar-web/static/js/runtime~main.364048e3.js.map",
     "static/css/2.571f644e.chunk.css": "/enviar-web/static/css/2.571f644e.chunk.css",
     "static/js/2.d69ef309.chunk.js": "/enviar-web/static/js/2.d69ef309.chunk.js",
     "static/js/2.d69ef309.chunk.js.map": "/enviar-web/static/js/2.d69ef309.chunk.js.map",
     "index.html": "/enviar-web/index.html",
-    "precache-manifest.938ea6a2197a64a7a78309d5810c74f6.js": "/enviar-web/precache-manifest.938ea6a2197a64a7a78309d5810c74f6.js",
+    "precache-manifest.637c05bf86a125946deeeeb558d9741f.js": "/enviar-web/precache-manifest.637c05bf86a125946deeeeb558d9741f.js",
     "service-worker.js": "/enviar-web/service-worker.js",
     "static/css/2.571f644e.chunk.css.map": "/enviar-web/static/css/2.571f644e.chunk.css.map",
-    "static/css/main.960a6663.chunk.css.map": "/enviar-web/static/css/main.960a6663.chunk.css.map",
+    "static/css/main.4da26f42.chunk.css.map": "/enviar-web/static/css/main.4da26f42.chunk.css.map",
     "static/media/post.png": "/enviar-web/static/media/post.4515ced5.png"
   }
 }
