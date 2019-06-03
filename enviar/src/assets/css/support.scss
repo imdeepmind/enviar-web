@@ -53,11 +53,16 @@ $desktop: 840px;
 
     h1{
         font-weight: 100;
-        font-size: 2rem;
+        font-size: 3rem;
     }  
 
+    p{
+        font-size: 1.3rem;
+    }
+
     @include desktop{
-        h1 {font-size: 3rem;}
+        h1 {font-size: 3.5rem;}
+        p{font-size: 1.5rem;}
     }
 
     button{
