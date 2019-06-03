@@ -22,7 +22,8 @@ const me = localStorage.getItem('user') ? decode(localStorage.getItem('user')) :
 const buttonStyle = {
     padding: "0",
     margin: "0",
-    backgroundColor: "rgba(0,0,0,0)"
+    backgroundColor: "rgba(0,0,0,0)",
+    boxShadow: "none"
 }
 
 class TopNav extends Component{
