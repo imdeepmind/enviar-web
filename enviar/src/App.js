@@ -7,6 +7,9 @@ import axios from 'axios';
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from "react-redux";
 
+import { createHashHistory } from 'history';
+
+
 import Login from './app/router/login';
 import Register from './app/router/register';
 import Home from './app/router/home';
@@ -23,6 +26,8 @@ import Support from './app/router/support';
 import Contributions from './app/router/contributions';
 
 import store from './app/redux/store';
+
+const history = createHashHistory();
 
 // ReallySmoothScroll.shim();
 const baseUrl = process.env.PUBLIC_URL;
@@ -54,22 +59,21 @@ axios.interceptors.request.use((config) => {
   return config;
 });
 
-// This cant be used
-// axios.interceptors.response.use(
-//   response => response,
-//   error => {
-//       const {status} = error.response;
-//       if (status === 401) {
-//         store.dispatch(store.dispatch({
-//           type: 'LOGOUT_USER',
-//           payload: {history}
-//         }));
-//         //TODO: Need to fix this
-//         // history.push('/#login');
-//       }
-//       return Promise.reject(error);
-//  }
-// );
+axios.interceptors.response.use(
+  response => response,
+  error => {
+      const {status} = error.response;
+      const { message } = error.response.data;
+      console.log(error.response);
+      if (status === 401 && message === "Invalid Token") {
+        store.dispatch(store.dispatch({
+          type: 'USER_LOGOUT'
+        }));
+        history.push('/login');
+      }
+      return Promise.reject(error);
+ }
+);
 
 function App() {
   return (
