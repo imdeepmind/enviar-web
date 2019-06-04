@@ -44,7 +44,10 @@ function* registerAccount({ payload }) {
         yield put(registerUserSuccess(registerUser.data));
         payload.history.push('/login');
     } catch (error) {
-        toast.error(error.response.data.message);
+        if (error.response.data[0]){
+            toast.error(error.response.data[0].msg);
+        } else toast.error(error.response.data.message);
+        
         yield put(registerUserError(error.response.data.message));
     } finally {
         yield put(hideLoading());

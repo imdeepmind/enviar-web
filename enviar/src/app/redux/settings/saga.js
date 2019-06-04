@@ -30,7 +30,9 @@ function* changePassword({payload}) {
         toast.success(`Successfully updated password`);
         yield put(changePasswordSuccess(pass.data));
     } catch (error) {
-        toast.error(error.response.data.message);
+        if (error.response.data[0]){
+            toast.error('New password didn\'t match with conform new password');
+        } else toast.error(error.response.data.message);
         yield put(changePasswordError(error.response.data.message));
     } finally {
         yield put(hideLoading());
