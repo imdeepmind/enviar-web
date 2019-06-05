@@ -92,12 +92,14 @@ class Home extends Component{
                         <Col xs="12" xl="3" className="d-none d-xl-block">
                             <Card>
                                 <CardBody>
-                                    <ProfileCard 
-                                        name={this.props.meReducer.me.name} 
-                                        avatar={this.props.meReducer.me.avatar} 
-                                        text={this.props.meReducer.me.status}
-                                        me={true}
-                                    />
+                                    {this.props.meReducer.loading ? <BeatLoader key={0} css={loading} /> : 
+                                        <ProfileCard 
+                                            name={this.props.meReducer.me.name} 
+                                            avatar={this.props.meReducer.me.avatar} 
+                                            text={this.props.meReducer.me.status}
+                                            me={true}
+                                        />
+                                    }
                                 </CardBody>
                             </Card>
                         </Col>
