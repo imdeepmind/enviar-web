@@ -29,7 +29,8 @@ const Post = (props) => {
                 <ProfileCard 
                     name={props.author} 
                     avatar={props.avatar} 
-                    text={props.status} />
+                    text={props.status}
+                    me={props.me} />
             </div>
             <ImageLoader
                 className="w-100 h-auto"

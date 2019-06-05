@@ -3,6 +3,7 @@ import { Container, Row, Col, Card, CardBody } from 'reactstrap';
 import { BeatLoader } from 'react-spinners';
 import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux';
+import decode from 'jwt-decode';
 
 import TopNav from '../../container/topNav';
 import FloatingActionButton from '../../container/floatingActionButton';
@@ -13,6 +14,8 @@ import Actions from './components/actions';
 
 import { posts, getMe, logoutUser } from '../../redux/actions';
 import { defaultPageSize } from '../../../constants/configs';
+
+const me = localStorage.getItem('user') ? decode(localStorage.getItem('user')) : {};
 
 const loading = {
     display: 'flex',
@@ -77,6 +80,7 @@ class Home extends Component{
                     dateTime={val.createdAt}
                     status={val.author[0].status}
                     caption={val.caption} 
+                    me={me.username === val.author[0].username}
                 />
             )
         })
