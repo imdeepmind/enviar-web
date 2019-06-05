@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Moment from 'react-moment';
 import ImageLoader from 'react-loading-image';
 import { BounceLoader} from 'react-spinners';
@@ -40,8 +40,8 @@ const Post = (props) => {
             />
             <CardBody>
                 <CardTitle>
-                    {props.caption ? props.caption : ""}
-                    <br /> <small><Moment format={dateTimeFormat}>{props.dateTime}</Moment></small>
+                    {props.caption ?  <Fragment>{props.caption}<br /></Fragment>  : null}
+                     <small><Moment format={dateTimeFormat}>{props.dateTime}</Moment></small>
                 </CardTitle>
             </CardBody>
             {/* <div className="d-flex justify-content-between align-items-center pl-3 pr-3 pb-2 pt-2 border-top" style={{fontSize:"1.2em"}}>

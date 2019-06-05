@@ -65,14 +65,14 @@ class Hero extends Component{
                                     }
                                 </span>
                                 
-                                {this.state.isFollower ? 
+                                {this.state.isFollower || this.state.isFollowee ? 
                                     <span className="text-light m-3 ml-md-0 text-center text-decoration-none cursor-pointer" >
-                                        <Link to={"/messages/" + this.props.username} className="text-light">
+                                        <Link to={"/messages/" + this.props.username} className="text-light text-decoration-none">
                                             <i className="fas fa-comments"></i>{" "}
                                             Message
                                         </Link>
                                     </span> : 
-                                    <span className="text-light m-3 ml-md-0 text-center text-decoration-none cursor-pointer" disabled>
+                                    <span className="text-light m-3 ml-md-0 text-center text-decoration-none cursor-pointer opacity-50">
                                         <i className="fas fa-comments"></i>{" "}Message
                                     </span>}
                                 

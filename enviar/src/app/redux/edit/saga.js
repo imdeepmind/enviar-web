@@ -15,7 +15,19 @@ import { getMe } from '../actions';
 
 
 const editInfoAsync = async (data) => {
-    return axios.put(UPDATE_INFO, data);
+    const dt = {};
+
+    if (data.name) dt.name = data.name;
+    if (data.email) dt.email = data.email;
+    if (data.gender) dt.gender = data.gender;
+    if (data.dob) dt.dob = data.dob;
+    if (data.status) dt.status = data.status;
+    if (data.bio) dt.bio = data.bio;
+    if (data.city) dt.city = data.city;
+    if (data.state) dt.state = data.state;
+    if (data.country) dt.country = data.country;
+
+    return axios.put(UPDATE_INFO, dt);
 }
 
 const editDpAsync = async (avatar) => {

@@ -14,7 +14,7 @@ import {
 
 const createPostAsync = async (img, caption) => {
     const data = new FormData();
-    data.append('caption', caption);
+    if (caption) data.append('caption', caption);
     data.append('img', img);
 
     return axios.post(POSTS, data);
