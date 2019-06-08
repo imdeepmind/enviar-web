@@ -1,0 +1,67 @@
+$desktop: 840px;
+
+@mixin desktop {
+    @media (min-width: #{$desktop}) {
+        @content;
+    }
+}
+
+
+#chat-head{
+    height: 60px;
+}
+
+#chatbox{
+    height: calc(100vh - 106px);
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#chat-sender{
+    position: absolute;
+    bottom:  0px;
+    height:  46px;
+
+    input{
+        height: 45px;
+        width:  calc(100%-30px);
+    }
+
+    button{
+        width: 30px;
+        height: 45px;
+        background: #f7f7f9;
+    }
+}
+
+#message{
+    .message-left{
+        border-bottom-right-radius: 10px;
+        border-top-right-radius: 10px;
+        background: #c0c0c0;
+        min-width: 30%;
+        max-width: 70%;
+
+        @include desktop{
+            min-width: 10%;
+        }
+    }
+
+    .message-right{
+        border-bottom-left-radius: 10px;
+        border-top-left-radius: 10px;
+        background: #d5d7f1;
+        min-width: 30%;
+        max-width: 70%;
+
+        @include desktop{
+            min-width: 10%;
+        }
+    }
+
+    .time{
+        color:  grey;
+        font-size:  0.6rem;
+        font-style:  italic;
+    }
+}

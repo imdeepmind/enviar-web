@@ -10,6 +10,7 @@ import './assets/css/classes.scss';
 import './assets/css/main.scss';
 import './assets/css/ReactToastify.css';
 import './assets/css/support.scss';
+import './assets/css/chat.scss';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

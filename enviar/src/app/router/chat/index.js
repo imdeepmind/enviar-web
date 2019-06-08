@@ -15,12 +15,6 @@ const loading = {
     justifyContent: 'center',
 }
 
-const chatBoxStyle = {
-    height: "calc(100vh - 106px)",
-    overflowY: "scroll",
-    overflowX: "hidden"
-}
-
 class Chat extends Component{
     constructor(props){
         super(props);
@@ -53,9 +47,9 @@ class Chat extends Component{
         this.setState({list:[],page:1}, () => this.dataListRender());
     }
     componentDidUpdate(nextProps){
-        if (this.props.chatsReducer.loading === false){
-            if (this.isNewData(this.props.chatsReducer.chats, this.state.list)){
-                let data = [...this.state.list, ...this.props.chatsReducer.chats];
+        if (nextProps.chatsReducer.loading === false){
+            if (this.isNewData(nextProps.chatsReducer.chats, this.state.list)){
+                let data = [...this.state.list, ...nextProps.chatsReducer.chats];
                 this.setState({list: data});
             }
         }
@@ -93,7 +87,7 @@ class Chat extends Component{
 
         items.reverse();
         return(
-            <div style={{overflow:"hideen"}}>
+            <div className="overflow-hidden">
                 {this.props.userReducer.loading ? "" : 
                 <Head 
                     history={this.props.history}
@@ -101,7 +95,7 @@ class Chat extends Component{
                     name={this.props.userReducer.user.name}
                     username={this.props.userReducer.user.username}
                 />}
-                <div style={chatBoxStyle}>
+                <div id="chatbox">
                     <InfiniteScroll
                         pageStart={1}
                         loadMore={this.dataListRender}

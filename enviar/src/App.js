@@ -3,12 +3,11 @@ import decode from 'jwt-decode';
 import { ToastContainer } from 'react-toastify';
 import LoadingBar from 'react-redux-loading-bar';
 import axios from 'axios';
-// import ReallySmoothScroll from 'really-smooth-scroll';
+
 import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from "react-redux";
 
 import { createHashHistory } from 'history';
-
 
 import Login from './app/router/login';
 import Register from './app/router/register';
@@ -29,7 +28,6 @@ import store from './app/redux/store';
 
 const history = createHashHistory();
 
-// ReallySmoothScroll.shim();
 const baseUrl = process.env.PUBLIC_URL;
 
 const isTokenExpired = () => {
