@@ -60,10 +60,10 @@ let RegisterUser = (props) => {
         <Form onSubmit={handleSubmit}>
             <Row>
                 <Col xs="12" md="6">
-                    <Field name="name" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Name" />
+                    <Field name="name" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 255 })]} placeholder="Name" />
                 </Col>
                 <Col xs="12" md="6">
-                    <Field name="email" component={OwnInput} type="email" validate={[required(), email(), length({ min: 4, max: 24 })]} placeholder="Email" />
+                    <Field name="email" component={OwnInput} type="email" validate={[required(), email(), length({ min: 4, max: 255 })]} placeholder="Email" />
                 </Col>
                 <Col xs="12" md="6">
                     <Field name="username" component={OwnInput} type="text" validate={[required(), length({ min: 4, max: 24 })]} placeholder="Username" />

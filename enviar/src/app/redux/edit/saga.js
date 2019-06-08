@@ -2,6 +2,7 @@ import axios from 'axios';
 import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
+import moment from 'moment';
 
 import { UPDATE_DP, UPDATE_INFO } from '../../../constants/endpoints';
 import {
@@ -20,7 +21,10 @@ const editInfoAsync = async (data) => {
     if (data.name) dt.name = data.name;
     if (data.email) dt.email = data.email;
     if (data.gender) dt.gender = data.gender;
-    if (data.dob) dt.dob = data.dob;
+    if (data.dob) {
+        const formatedDate = moment(new Date(data.dob)).format("YYYY-MM-DD");
+        dt.dob =formatedDate;
+    }
     if (data.status) dt.status = data.status;
     if (data.bio) dt.bio = data.bio;
     if (data.city) dt.city = data.city;

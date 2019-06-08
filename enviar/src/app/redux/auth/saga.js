@@ -3,6 +3,7 @@ import { all, call, fork, put, takeEvery } from 'redux-saga/effects';
 import { toast } from 'react-toastify';
 import { showLoading, hideLoading } from 'react-redux-loading-bar';
 import store from '../store';
+import moment from 'moment';
 
 import { LOGIN, REGISTER, VERIFY as VERIFY_ROUTE } from '../../../constants/endpoints';
 import {
@@ -22,6 +23,8 @@ import {
 } from './action';
 
 const registerAccountAsync = async (name, email, username, password, country, gender, dob) => {
+    const formatedDate = moment(new Date(dob)).format("YYYY-MM-DD");
+
     const data = {
         name: name,
         email: email,
@@ -29,7 +32,7 @@ const registerAccountAsync = async (name, email, username, password, country, ge
         password: password,
         country: country,
         gender: gender,
-        dob: dob,
+        dob: formatedDate,
         conformPassword: password
     }
     return axios.post(REGISTER, data);
@@ -47,7 +50,6 @@ function* registerAccount({ payload }) {
         if (error.response.data[0]){
             toast.error(error.response.data[0].msg);
         } else toast.error(error.response.data.message);
-        
         yield put(registerUserError(error.response.data.message));
     } finally {
         yield put(hideLoading());
