@@ -11,6 +11,7 @@ import './assets/css/main.scss';
 import './assets/css/ReactToastify.css';
 import './assets/css/support.scss';
 import './assets/css/chat.scss';
+import './assets/css/chatStyle.css';
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

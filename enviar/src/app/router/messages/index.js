@@ -73,6 +73,8 @@ class Messages extends Component{
                 />
             )
         })
+
+        console.log(this.props);
         return(
             <Fragment>
                 <TopNav history={this.props.history} />

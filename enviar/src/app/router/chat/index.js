@@ -1,66 +1,45 @@
 import React, { Component } from 'react';
-import InfiniteScroll from 'react-infinite-scroller';
 import { connect } from 'react-redux';
 import { BeatLoader } from 'react-spinners';
-
-import Box from './components/box';
-import Head from './components/head';
-import Sender from './components/sender';
+import { Widget, toggleWidget, addResponseMessage, addUserMessage } from 'react-chat-widget';
 
 import { getChat, usersIndividual, sendMessage } from '../../redux/actions';
-import { defaultPageSize } from '../../../constants/configs';
+import { defaultChatsSize } from '../../../constants/configs';
 
 const loading = {
     display: 'flex',
     justifyContent: 'center',
 }
 
+let chatsLoaded = false;
+
 class Chat extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-                list: [],
-                page: 1
-        }
-    }
-    isNewData(newData, existingData){
-        if (newData.length < 1)
-            return false;
-        
-        if (existingData.length < 1)
-            return true;
-
-        const newId = newData[0]._id;
-        let ans = true;
-
-        existingData.map(val => {
-            if (val._id === newId){
-                ans = false;
-            }
-            return 0;
-        })
-
-        return ans;
-    }
     componentDidMount(){
+        toggleWidget();
         this.props.usersIndividual({username: this.props.match.params.username}, this.props.history);
-        this.setState({list:[],page:1}, () => this.dataListRender());
+        this.dataListRender();
     }
-    componentDidUpdate(nextProps){
-        if (nextProps.chatsReducer.loading === false){
-            if (this.isNewData(nextProps.chatsReducer.chats, this.state.list)){
-                let data = [...this.state.list, ...nextProps.chatsReducer.chats];
-                this.setState({list: data});
-            }
+
+    componentWillReceiveProps(nextProps){
+        if (!nextProps.chatsReducer.loading && nextProps.chatsReducer.chats.length > 0 && !chatsLoaded){
+            chatsLoaded = true;
+            nextProps.chatsReducer.chats.map(val => {
+                if (val.username === this.props.match.params.username) addResponseMessage(val.message);
+                else addUserMessage(val.message);
+                
+            })
         }
     }
-    dataListRender = () => {
+
+    dataListRender(){
+        //TODO: This will load only the last 50 messages. As of now there is no way to retrieve more older messages. 
+        // I need to add a way to get those old messages
         const data = {
-            page:  this.state.page,
-            limit: defaultPageSize,
+            page: 0,
+            limit: defaultChatsSize,
             username: this.props.match.params.username
         }
-        this.setState({page: this.state.page + 1}, () =>  this.props.getChat(data, this.props.history));
+        this.props.getChat(data, this.props.history);
     }
 
     sendMessage = (message) => {
@@ -68,45 +47,21 @@ class Chat extends Component{
             message,
             username:  this.props.match.params.username
         }
-
         this.props.sendMessage(data, this.props.history);
     }
     render(){
-        let items = this.state.list.map(val => {
-            return (
-                <Box 
-                    key={val._id}
-                    message={val.message}
-                    createdAt={val.createdAt}
-                    author={val.author}
-                    to={val.to}
-                    leftSide={this.props.match.params.username === val.author ? true: false}
-                />
-            )
-        });
-
-        items.reverse();
+        console.log(this.props);
         return(
-            <div className="overflow-hidden">
-                {this.props.userReducer.loading ? "" : 
-                <Head 
-                    history={this.props.history}
-                    avatar={this.props.userReducer.user.avatar}
-                    name={this.props.userReducer.user.name}
-                    username={this.props.userReducer.user.username}
-                />}
-                <div id="chatbox">
-                    <InfiniteScroll
-                        pageStart={1}
-                        loadMore={this.dataListRender}
-                        hasMore={this.props.chatsReducer.more}
-                        loader={<BeatLoader key={0} css={loading} />}
-                    >
-                        {items}
-                    </InfiniteScroll> 
-                </div>
-
-                <Sender onSubmit={this.sendMessage}/>
+            <div>
+                {this.props.userReducer.loading ? <BeatLoader css={loading} /> :
+                    <Widget 
+                        fullScreenMode={true}
+                        handleNewUserMessage={this.sendMessage} 
+                        showCloseButton={false}
+                        title={this.props.userReducer.user.name}
+                        subtitle={this.props.userReducer.user.status}
+                    /> 
+                }
             </div>
         )
     }
