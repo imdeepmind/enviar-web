@@ -23,7 +23,8 @@ class Chat extends Component{
     componentWillReceiveProps(nextProps){
         if (!nextProps.chatsReducer.loading && nextProps.chatsReducer.chats.length > 0 && !chatsLoaded){
             chatsLoaded = true;
-            nextProps.chatsReducer.chats.map(val => {
+            const messages = nextProps.chatsReducer.chats.reverse();
+            messages.map(val => {
                 if (val.username === this.props.match.params.username) addResponseMessage(val.message);
                 else addUserMessage(val.message);
                 return 0; 
