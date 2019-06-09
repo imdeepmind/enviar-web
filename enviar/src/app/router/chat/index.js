@@ -26,9 +26,13 @@ class Chat extends Component{
             nextProps.chatsReducer.chats.map(val => {
                 if (val.username === this.props.match.params.username) addResponseMessage(val.message);
                 else addUserMessage(val.message);
-                return 0;
+                return 0; 
             })
         }
+    }
+
+    componentWillUnmount(){
+        toggleWidget();
     }
 
     dataListRender(){
